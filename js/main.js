@@ -195,7 +195,7 @@ function executeCommand(cmd, historyElem) {
   switch (cmd) {
     case 'help':
       res.innerHTML = `
-        <p class="text-yellow-400 mb-1 font-bold">Available MAVIS-CLI Commands:</p>
+        <p class="text-sky-400 mb-1 font-bold">Available MAVIS-CLI Commands:</p>
         <p>• <span class="text-sky-400">about</span>      - Print Akintunde Dolapo Elisha bio & details</p>
         <p>• <span class="text-sky-400">projects</span>   - List flagship security & software builds</p>
         <p>• <span class="text-sky-400">skills</span>     - Display tech stack (HTML5, CSS3, JS, PHP, Python, React, Node, Supabase, Postgres)</p>
@@ -203,53 +203,66 @@ function executeCommand(cmd, historyElem) {
         <p>• <span class="text-sky-400">security</span>   - View VaultGuard & Attendance integrity status</p>
         <p>• <span class="text-sky-400">clear</span>      - Clear terminal screen</p>
         <p>• <span class="text-sky-400">contact</span>    - Show contact details, email & social channels</p>
-        <p>• <span class="text-yellow-400">journey</span>    - <span class="text-yellow-400">🔓 Secret 3D Tech Journey (Easter Egg)</span></p>
       `;
       break;
     case 'about':
       res.innerHTML = `
-        <p class="text-yellow-400 font-semibold">Akintunde Dolapo Elisha (BK / MAVIS)</p>
-        <p>21-year-old Nigerian computer nerd, cybersecurity student (400 Level @ LAUTECH), developer & experimenter.</p>
-        <p class="text-sky-400 mt-1">"I build software, cybersecurity tools, and experiments."</p>
+        <p class="text-white font-bold">Akintunde Dolapo Elisha (MAVIS / BK)</p>
+        <p class="text-slate-300">400 Level Computer Science (Cybersecurity Specialization) Student at LAUTECH, Nigeria.</p>
+        <p class="text-slate-300">Developer, Security Researcher, Gamer & Computer Enthusiast.</p>
       `;
       break;
     case 'projects':
       res.innerHTML = `
-        <p class="text-yellow-400 font-semibold mb-1">Flagship Projects:</p>
-        <p>1. <span class="text-sky-400 font-bold">VaultGuard 360</span> - Windows Security & Remediation Suite</p>
-        <p>2. <span class="text-sky-400 font-bold">Blockchain Attendance</span> - SHA-256 & Device Fingerprinting</p>
-        <p>3. <span class="text-sky-400 font-bold">HIGH Q SOLID ACADEMY</span> - highqsolidacademy.com</p>
-        <p>4. <span class="text-yellow-400 font-bold">QUANTYX Platform</span> - AI Gaming Intelligence (Code Private)</p>
-        <p>5. <span class="text-sky-400 font-bold">Geo-Fence Link Generator</span> - Location-Aware JWT Security</p>
-        <p>6. <span class="text-sky-400 font-bold">Mind Control / MindGrid</span> - Klyvex Intelligence Prototype</p>
+        <p class="text-sky-400 font-bold mb-1">Flagship Builds:</p>
+        <p>1. <span class="text-white">QUANTYX</span> - AI Gaming Intelligence Platform (Python, PHP REST API, Multi-Model Routing)</p>
+        <p>2. <span class="text-white">VaultGuard 360</span> - Windows Security & Remediation Suite</p>
+        <p>3. <span class="text-white">Blockchain Attendance</span> - Tamper-Evident SHA-256 Hash Chain System</p>
+        <p>4. <span class="text-white">HIGH Q SOLID ACADEMY</span> - Production Educational Portal (highqsolidacademy.com)</p>
+        <p>5. <span class="text-white">MindGrid: Neural Clash</span> - Memory Arcade Game MVP (React, Phaser 3, Supabase)</p>
       `;
       break;
     case 'skills':
       res.innerHTML = `
-        <p class="text-yellow-400 font-bold">Core Stack & Languages:</p> HTML5, CSS3, JavaScript, PHP, Python, React, Node.js, Supabase, PostgreSQL, Git<br>
-        <p class="text-sky-400 mt-1">Specialties:</p> Web Security, SHA-256 Hash Chains, Device Fingerprinting, Multi-Model AI, Automation scripts.
+        <p class="text-sky-400 font-bold mb-1">Technical Stack & Competencies:</p>
+        <p>• <span class="text-amber-400">Core Languages:</span> HTML5, CSS3, JavaScript (ES6+), PHP, Python</p>
+        <p>• <span class="text-sky-400">Frontend:</span> React, TypeScript, Tailwind CSS, Phaser 3, Three.js</p>
+        <p>• <span class="text-indigo-300">Backend & DB:</span> Node.js, Express, PHP PDO, MySQL, Supabase, PostgreSQL</p>
+        <p>• <span class="text-emerald-400">AI & Security:</span> Groq, Gemini, OpenRouter Routing, SHA-256 Hashing, Geofencing</p>
       `;
       break;
     case 'exploring':
       res.innerHTML = `
-        <p class="text-yellow-400 font-bold">AI × Gaming × Software × Cybersecurity</p>
-        <p class="text-slate-300">Building next-level intelligent software systems. Keep the mystery.</p>
+        <p class="text-amber-400 font-bold">Current Frontier:</p>
+        <p class="text-slate-300">Building intelligent AI-driven systems at the intersection of Gaming Intelligence, Multi-Model AI Orchestration, and System Security Controls.</p>
       `;
       break;
     case 'security':
       res.innerHTML = `
-        <span class="badge-security-red"><span class="dot-pulse"></span> SYSTEM AUDIT: PROTECTED</span><br>
-        <span class="text-emerald-400 mt-1 inline-block">SHA-256 Chain Integrity: VERIFIED | VaultGuard Shields: ACTIVE</span>
+        <p class="text-red-400 font-bold">Cybersecurity & Research Status:</p>
+        <p>✓ VaultGuard 360 - Active Windows Remediation & Persistence Audit</p>
+        <p>✓ Cryptographic Attendance - SHA-256 Immutable Hash Chain Verified</p>
+        <p>✓ GPS Geofencing - Location Token Validation Engine Active</p>
       `;
       break;
     case 'clear':
       historyElem.innerHTML = '';
       return;
+    case 'mavis':
+      res.innerHTML = `
+        <p class="text-sky-400 font-bold">🔒 Secret Unlocked: MAVIS PLATFORM ARCHITECTURE</p>
+        <p class="text-slate-300">Accessing classified MAVIS ecosystem documentation...</p>
+        <p class="text-xs text-slate-500 mt-1">Redirecting to project-mavis.html in 2 seconds...</p>
+      `;
+      historyElem.appendChild(res);
+      historyElem.scrollTop = historyElem.scrollHeight;
+      setTimeout(() => { window.location.href = 'project-mavis.html'; }, 2000);
+      return;
     case 'journey':
     case 'klyvex':
     case 'secret':
       res.innerHTML = `
-        <p class="text-yellow-400 font-bold">🔓 Easter Egg Unlocked: KLYVEX ORIGINS</p>
+        <p class="text-amber-400 font-bold">🔓 Easter Egg Unlocked: KLYVEX ORIGINS 3D</p>
         <p class="text-slate-300">Launching 3D Tech Journey experience...</p>
         <p class="text-xs text-slate-500 mt-1">Redirecting to klyvex-journey.html in 2 seconds...</p>
       `;

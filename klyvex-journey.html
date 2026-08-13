@@ -3,90 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KLYVEX Journey — Secret 3D Tech Evolution | Akintunde Dolapo Elisha</title>
+  <title>KLYVEX Origins — 3D Cyber Core & Tech Journey | Akintunde Dolapo Elisha</title>
   <meta name="description" content="An interactive Three.js 3D experience tracing Akintunde's developer journey from HTML5 to Multi-Model AI and the KLYVEX vision.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    html, body { margin: 0; padding: 0; overflow: hidden; background: #030508; }
+    html, body { margin: 0; padding: 0; overflow: hidden; background: #030508; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
   </style>
 </head>
-<body>
+<body class="bg-slate-950 select-none">
 
-  <!-- Back Button -->
+  <!-- Floating Back Button -->
   <a href="terminal.html" class="journey-back-btn">
-    <i class="fa-solid fa-arrow-left"></i> Back to Terminal
+    <i class="fa-solid fa-arrow-left"></i> Terminal CLI
   </a>
 
-  <!-- Easter Egg Badge -->
-  <div style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 130;">
-    <span class="badge-in-development">
-      <span class="dot-pulse-yellow"></span> EASTER EGG — KLYVEX ORIGINS
+  <!-- Top Secret Easter Egg Badge -->
+  <div class="fixed top-6 right-6 z-[130] pointer-events-none">
+    <span class="badge-in-development shadow-lg">
+      <span class="dot-pulse-yellow"></span> SECRET // KLYVEX 3D ENGINE
     </span>
   </div>
 
   <!-- Three.js Canvas Container -->
   <div id="journeyCanvas" class="journey-canvas-container"></div>
 
-  <!-- Milestone Popup (hidden by default) -->
+  <!-- Milestone Detail Modal Popup -->
   <div id="milestonePopup" class="journey-milestone-popup hidden">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+    <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
       <div>
-        <span id="popupYear" class="text-xs font-mono text-yellow-400 font-bold"></span>
-        <h3 id="popupTech" class="font-display text-2xl font-extrabold text-white" style="margin-top: 0.25rem;"></h3>
+        <span id="popupYear" class="text-xs font-mono font-bold tracking-widest text-sky-400"></span>
+        <h3 id="popupTech" class="font-display text-2xl font-extrabold text-white mt-0.5"></h3>
       </div>
-      <button onclick="JourneyEngine.hideMilestone()" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-yellow-400 transition-all" style="cursor: pointer;">
+      <button onclick="JourneyEngine.hideMilestone()" class="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-sky-400 transition-all cursor-pointer">
         ✕
       </button>
     </div>
-    <p id="popupDesc" class="text-slate-300 text-sm leading-relaxed" style="margin-bottom: 0.75rem;"></p>
-    <p id="popupDetail" class="text-slate-400 text-xs font-mono leading-relaxed"></p>
+    <p id="popupDesc" class="text-slate-200 text-sm leading-relaxed mb-3"></p>
+    <div class="bg-slate-950 p-3 rounded.lg border border-slate-800">
+      <p id="popupDetail" class="text-slate-400 text-xs font-mono leading-relaxed"></p>
+    </div>
   </div>
 
-  <!-- HUD Overlay -->
+  <!-- HUD Control Overlay -->
   <div class="journey-hud">
-    <div style="max-width: 900px; margin: 0 auto;">
+    <div class="max-w-4xl mx-auto space-y-3">
 
       <!-- Progress Bar -->
-      <div class="journey-progress-bar" style="margin-bottom: 1rem;">
+      <div class="journey-progress-bar">
         <div id="journeyProgressFill" class="journey-progress-fill" style="width: 0%;"></div>
       </div>
 
-      <!-- Current Milestone Info -->
-      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+      <!-- Current Milestone Info & Controls -->
+      <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <span id="hudYear" class="text-xs font-mono text-sky-400 font-bold">2020</span>
-          <p id="hudTech" class="font-display text-xl font-extrabold text-white" style="margin: 0.25rem 0 0;">🏗️ HTML5</p>
-          <p id="hudDesc" class="text-slate-400 text-xs" style="margin: 0.25rem 0 0; max-width: 400px;">The Foundation — Structure, semantics, and the first lines of code.</p>
+          <span id="hudYear" class="text-xs font-mono text-sky-400 font-bold tracking-wider">2020</span>
+          <p id="hudTech" class="font-display text-2xl font-extrabold text-white mt-0.5">🏗️ HTML5</p>
+          <p id="hudDesc" class="text-slate-300 text-xs mt-1 max-w-lg font-light">
+            The Foundation — Structure, semantics, and the first lines of code.
+          </p>
         </div>
 
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <button id="autoWalkBtn" onclick="JourneyEngine.toggleAutoWalk()" class="btn-outline-slate text-xs" style="padding: 6px 14px; font-family: 'Fira Code', monospace; cursor: pointer;">
-            ⏸ Pause Auto-Walk
+        <div class="flex items-center gap-3">
+          <button id="autoWalkBtn" onclick="JourneyEngine.toggleAutoPlay()" class="btn-outline-slate text-xs py-2 px-4 font-mono cursor-pointer">
+            ⏸ Pause Auto-Scroll
           </button>
-          <button onclick="JourneyEngine.showMilestone()" class="btn-pill-blue text-xs" style="padding: 6px 14px; cursor: pointer;">
+          <button onclick="JourneyEngine.showMilestone()" class="btn-pill-blue text-xs py-2 px-5 cursor-pointer font-bold">
             SPACE — View Details
           </button>
         </div>
       </div>
 
-      <!-- Milestone Jump Buttons -->
-      <div style="display: flex; gap: 0.4rem; margin-top: 0.75rem; flex-wrap: wrap;">
-        <button onclick="JourneyEngine.goToMilestone(0)" class="tech-badge text-orange-400" style="cursor: pointer;">HTML5</button>
-        <button onclick="JourneyEngine.goToMilestone(1)" class="tech-badge text-sky-400" style="cursor: pointer;">CSS3</button>
-        <button onclick="JourneyEngine.goToMilestone(2)" class="tech-badge text-yellow-400" style="cursor: pointer;">JS</button>
-        <button onclick="JourneyEngine.goToMilestone(3)" class="tech-badge text-indigo-300" style="cursor: pointer;">PHP</button>
-        <button onclick="JourneyEngine.goToMilestone(4)" class="tech-badge text-yellow-400" style="cursor: pointer;">Python</button>
-        <button onclick="JourneyEngine.goToMilestone(5)" class="tech-badge text-sky-400" style="cursor: pointer;">React</button>
-        <button onclick="JourneyEngine.goToMilestone(6)" class="tech-badge text-emerald-400" style="cursor: pointer;">Supabase</button>
-        <button onclick="JourneyEngine.goToMilestone(7)" class="tech-badge text-yellow-400" style="cursor: pointer;">AI & KLYVEX</button>
+      <!-- Milestone Quick Jump Chips -->
+      <div class="flex flex-wrap gap-2 pt-1">
+        <button onclick="JourneyEngine.goToMilestone(0)" class="milestone-chip tech-badge cursor-pointer hover:border-orange-500">2020 · HTML5</button>
+        <button onclick="JourneyEngine.goToMilestone(1)" class="milestone-chip tech-badge cursor-pointer hover:border-sky-400">2021 · CSS3</button>
+        <button onclick="JourneyEngine.goToMilestone(2)" class="milestone-chip tech-badge cursor-pointer hover:border-amber-400">2022 · JS</button>
+        <button onclick="JourneyEngine.goToMilestone(3)" class="milestone-chip tech-badge cursor-pointer hover:border-indigo-300">2023 · PHP</button>
+        <button onclick="JourneyEngine.goToMilestone(4)" class="milestone-chip tech-badge cursor-pointer hover:border-amber-400">2023 · Python</button>
+        <button onclick="JourneyEngine.goToMilestone(5)" class="milestone-chip tech-badge cursor-pointer hover:border-sky-400">2024 · React/Node</button>
+        <button onclick="JourneyEngine.goToMilestone(6)" class="milestone-chip tech-badge cursor-pointer hover:border-emerald-400">2025 · Supabase</button>
+        <button onclick="JourneyEngine.goToMilestone(7)" class="milestone-chip tech-badge cursor-pointer hover:border-amber-400 font-bold">2026 · AI & KLYVEX</button>
       </div>
 
-      <!-- Controls Help -->
-      <div style="margin-top: 0.75rem; display: flex; gap: 1rem; font-size: 0.65rem; font-family: 'Fira Code', monospace; color: #475569;">
-        <span>← → Arrow Keys to walk</span>
-        <span>SPACE to view milestone</span>
-        <span>ESC to close popup</span>
+      <!-- Controls Guide Footer -->
+      <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-1">
+        <span>Scroll mouse wheel or drag touch/mouse to glide through 3D track</span>
+        <span>Keyboard: ← → Arrow keys to navigate | SPACE for details | ESC to close</span>
       </div>
 
     </div>
@@ -98,7 +102,9 @@
   <script src="js/journey-3d.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      JourneyEngine.init();
+      if (typeof JourneyEngine !== 'undefined') {
+        JourneyEngine.init();
+      }
     });
   </script>
 </body>

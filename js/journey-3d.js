@@ -1,32 +1,37 @@
-/* KLYVEX Journey — Three.js 3D Interactive Tech Journey Engine
-   A synthwave/cyberpunk side-scrolling experience showing Akintunde's developer evolution.
-   Technologies: Three.js, procedural geometry, keyframe animation. */
+/* KLYVEX Journey — 3D Cyber Core & Checkpoint Portal Engine
+   An immersive Three.js 3D experience tracing Akintunde's tech evolution.
+   Features a floating 3D Cyber Core, glowing checkpoint gateways, particle stars, and smooth scroll/drag navigation. */
 
 (function () {
   'use strict';
 
-  // ===== MILESTONE DATA =====
+  // ===== TECH MILESTONES DATA =====
   const MILESTONES = [
-    { year: '2020', tech: 'HTML5', icon: '🏗️', color: 0xe34f26, desc: 'The Foundation — Structure, semantics, and the first lines of code that started everything.', detail: 'Built my first web pages, learned about tags, forms, and how the browser renders content.' },
-    { year: '2021', tech: 'CSS3', icon: '🎨', color: 0x38bdf8, desc: 'Styling, Layouts & Visual Aesthetics — Making things look beautiful.', detail: 'Mastered Flexbox, Grid, animations, and responsive design. Fell in love with making interfaces.' },
-    { year: '2022', tech: 'JavaScript', icon: '⚡', color: 0xfacc15, desc: 'DOM Logic & Client-Side Interactivity — Bringing pages to life.', detail: 'Event listeners, async/await, fetch API, canvas games, and dynamic manipulation of everything.' },
-    { year: '2023', tech: 'PHP', icon: '🔧', color: 0xa78bfa, desc: 'Server-Side Scripting — Building backends, MySQL, and the QUANTYX architecture.', detail: 'PDO MySQL, REST APIs, authentication systems, CSRF protection, rate limiting, and admin dashboards.' },
-    { year: '2023', tech: 'Python', icon: '🐍', color: 0xfacc15, desc: 'Systems Automation, Scripting & Security Tools — The versatile weapon.', detail: 'Automation scripts, security research tools, AI orchestration services, and data processing pipelines.' },
-    { year: '2024', tech: 'Node.js & React', icon: '⚛️', color: 0x61dafb, desc: 'Modern Full-Stack Applications — Component-driven architecture.', detail: 'React components, TypeScript, hooks, Phaser 3 game integration, Tailwind CSS, and modern tooling.' },
-    { year: '2025', tech: 'Supabase & PostgreSQL', icon: '🗄️', color: 0x3ecf8e, desc: 'Real-Time Databases & Authentication — Production-grade data layers.', detail: 'Supabase auth, database migrations, row-level security, real-time subscriptions, and email authentication.' },
-    { year: '2026', tech: 'Vercel & Multi-Model AI', icon: '🚀', color: 0xf8db00, desc: 'Cloud Deployment & AI-Native Intelligence — The KLYVEX vision.', detail: 'Groq, Gemini, OpenRouter model routing, AI orchestration, cloud deployment, and building the future.' }
+    { year: '2020', tech: 'HTML5', icon: '🏗️', color: 0xe34f26, hexColor: '#e34f26', desc: 'The Foundation — Web semantics, structure, and the first lines of code.', detail: 'Learned HTML standards, DOM hierarchy, forms, semantic markup, and built my first interactive web pages.' },
+    { year: '2021', tech: 'CSS3', icon: '🎨', color: 0x38bdf8, hexColor: '#38bdf8', desc: 'Visual Design & Motion — Layouts, Flexbox, Grid, animations & micro-interactions.', detail: 'Mastered modern CSS architecture, responsive breakpoints, custom properties, glassmorphism, and keyframe animations.' },
+    { year: '2022', tech: 'JavaScript', icon: '⚡', color: 0xeab308, hexColor: '#eab308', desc: 'DOM Logic & Dynamic Interactivity — Bringing applications to life.', detail: 'Async/await, ES6+ features, fetch API, client-side state management, canvas rendering, and event-driven architecture.' },
+    { year: '2023', tech: 'PHP', icon: '🔧', color: 0xa5b4fc, hexColor: '#a5b4fc', desc: 'Server-Side Engineering & REST APIs — PDO MySQL, authentication & backend systems.', detail: 'Built structured PHP backends, PDO database abstraction layers, CSRF protection, rate-limiting DDoS firewalls, and admin control panels.' },
+    { year: '2023', tech: 'Python', icon: '🐍', color: 0xeab308, hexColor: '#eab308', desc: 'Systems Scripting, Automation & AI Orchestration — The versatile powerhouse.', detail: 'Automation scripts, security analysis tools, data processing pipelines, and building FastAPI orchestrators for multi-model AI routing.' },
+    { year: '2024', tech: 'Node.js & React', icon: '⚛️', color: 0x61dafb, hexColor: '#61dafb', desc: 'Modern Full-Stack Applications — Component architecture & Phaser 3 game engine.', detail: 'React functional components, custom hooks, TypeScript, Phaser 3 arcade physics integration, and scalable app architectures.' },
+    { year: '2025', tech: 'Supabase & Postgres', icon: '🗄️', color: 0x3ecf8e, hexColor: '#3ecf8e', desc: 'Real-Time Databases & Authentication — Enterprise-grade persistence.', detail: 'Supabase real-time subscriptions, row-level security policies, PostgreSQL schemas, email authentication, and password reset flows.' },
+    { year: '2026', tech: 'AI Orchestration & KLYVEX', icon: '🚀', color: 0xf59e0b, hexColor: '#f59e0b', desc: 'Multi-Model AI & The KLYVEX Vision — Building AI-native gaming intelligence.', detail: 'Groq (instant speed), Gemini (deep reasoning), OpenRouter routing, context management, and full-stack AI platform development.' }
   ];
 
-  const TRACK_SPACING = 18;
-  const TOTAL_LENGTH = MILESTONES.length * TRACK_SPACING;
+  const TRACK_SPACING = 22;
+  const TOTAL_LENGTH = (MILESTONES.length - 1) * TRACK_SPACING;
 
   let scene, camera, renderer, clock;
-  let character, characterMixer;
+  let cyberCore, coreInnerWire, coreLight;
+  let checkpoints = [];
   let currentMilestoneIndex = 0;
-  let targetX = 0;
-  let autoWalk = true;
-  let autoWalkSpeed = 0.012;
-  let milestonePopupVisible = false;
+  let scrollProgress = 0; // 0 to 1
+  let targetProgress = 0;
+  let autoPlay = true;
+  let popupVisible = false;
+
+  // Touch / Mouse Drag Tracking
+  let isDragging = false;
+  let previousMouseX = 0;
 
   // ===== INITIALIZE THREE.JS SCENE =====
   function init() {
@@ -34,11 +39,11 @@
     if (!container) return;
 
     scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x030508, 0.012);
+    scene.fog = new THREE.FogExp2(0x030508, 0.008);
 
     // Camera
-    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
-    camera.position.set(0, 6, 14);
+    camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 300);
+    camera.position.set(0, 5, 14);
     camera.lookAt(0, 2, 0);
 
     // Renderer
@@ -46,372 +51,365 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x030508);
-    renderer.shadowMap.enabled = true;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
     container.appendChild(renderer.domElement);
 
     clock = new THREE.Clock();
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0x1a1a3e, 0.6);
+    // Ambient & Directional Lighting
+    const ambientLight = new THREE.AmbientLight(0x0d1527, 0.8);
     scene.add(ambientLight);
 
-    const mainLight = new THREE.DirectionalLight(0xfacc15, 0.8);
-    mainLight.position.set(10, 20, 10);
-    mainLight.castShadow = true;
-    scene.add(mainLight);
+    const dirLight = new THREE.DirectionalLight(0x38bdf8, 0.9);
+    dirLight.position.set(15, 25, 15);
+    scene.add(dirLight);
 
-    const blueLight = new THREE.PointLight(0x38bdf8, 1.2, 50);
-    blueLight.position.set(-5, 8, 5);
-    scene.add(blueLight);
+    const goldLight = new THREE.DirectionalLight(0xeab308, 0.4);
+    goldLight.position.set(-15, 10, -10);
+    scene.add(goldLight);
 
-    const yellowLight = new THREE.PointLight(0xfacc15, 0.8, 40);
-    yellowLight.position.set(5, 6, -3);
-    scene.add(yellowLight);
+    // Build Sci-Fi Environment
+    createStarfield();
+    createCyberTrack();
+    createCheckpointPortals();
+    createCyberCore();
 
-    // Build the world
-    createSynthwaveGround();
-    createStarField();
-    createTrackPath();
-    createMilestonePillars();
-    createCharacter();
-
-    // Event listeners
+    // Event Listeners
     window.addEventListener('resize', onResize);
+    window.addEventListener('wheel', onWheel, { passive: false });
+    container.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
     document.addEventListener('keydown', onKeyDown);
-    document.addEventListener('keyup', onKeyUp);
 
-    // Start
+    // Start Engine
     animate();
+    updateHUD(0);
   }
 
-  // ===== SYNTHWAVE GRID GROUND =====
-  function createSynthwaveGround() {
-    // Grid floor
-    const gridHelper = new THREE.GridHelper(200, 100, 0xfacc15, 0x0a1628);
-    gridHelper.material.opacity = 0.15;
-    gridHelper.material.transparent = true;
-    gridHelper.position.y = -0.01;
-    scene.add(gridHelper);
-
-    // Ground plane
-    const groundGeo = new THREE.PlaneGeometry(200, 200);
-    const groundMat = new THREE.MeshStandardMaterial({
-      color: 0x050810,
-      roughness: 0.9,
-      metalness: 0.1,
-      transparent: true,
-      opacity: 0.95
-    });
-    const ground = new THREE.Mesh(groundGeo, groundMat);
-    ground.rotation.x = -Math.PI / 2;
-    ground.position.y = -0.02;
-    ground.receiveShadow = true;
-    scene.add(ground);
-  }
-
-  // ===== STAR FIELD =====
-  function createStarField() {
-    const starsGeo = new THREE.BufferGeometry();
-    const starCount = 800;
+  // ===== STARFIELD & COSMIC DUST =====
+  function createStarfield() {
+    const starCount = 1200;
+    const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
 
     for (let i = 0; i < starCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 150;
-      positions[i * 3 + 1] = Math.random() * 40 + 5;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 150;
+      positions[i * 3] = (Math.random() - 0.5) * 220;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 80 + 10;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 220;
 
-      // Blue or yellow stars
-      if (Math.random() > 0.5) {
+      // Theme colors: cyan-blue, electric blue, amber gold
+      const rand = Math.random();
+      if (rand > 0.6) {
         colors[i * 3] = 0.22; colors[i * 3 + 1] = 0.74; colors[i * 3 + 2] = 0.97; // sky blue
+      } else if (rand > 0.3) {
+        colors[i * 3] = 0.92; colors[i * 3 + 1] = 0.7; colors[i * 3 + 2] = 0.03; // amber gold
       } else {
-        colors[i * 3] = 0.98; colors[i * 3 + 1] = 0.8; colors[i * 3 + 2] = 0.08; // yellow
+        colors[i * 3] = 0.15; colors[i * 3 + 1] = 0.39; colors[i * 3 + 2] = 0.92; // royal blue
       }
     }
 
-    starsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    starsGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    const starsMat = new THREE.PointsMaterial({
-      size: 0.15,
+    const material = new THREE.PointsMaterial({
+      size: 0.18,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
-      sizeAttenuation: true
+      opacity: 0.85
     });
 
-    const stars = new THREE.Points(starsGeo, starsMat);
+    const stars = new THREE.Points(geometry, material);
     scene.add(stars);
   }
 
-  // ===== TRACK PATH (GLOWING NEON LINE) =====
-  function createTrackPath() {
+  // ===== CYBER GRID TRACK =====
+  function createCyberTrack() {
+    // Grid ground plane
+    const grid = new THREE.GridHelper(300, 150, 0x38bdf8, 0x0a1628);
+    grid.position.y = -0.05;
+    grid.material.opacity = 0.22;
+    grid.material.transparent = true;
+    scene.add(grid);
+
+    // Glowing main track line
     const points = [];
-    for (let i = -10; i <= TOTAL_LENGTH + 10; i += 0.5) {
-      points.push(new THREE.Vector3(i, 0.05, 0));
+    for (let x = -20; x <= TOTAL_LENGTH + 20; x += 1) {
+      points.push(new THREE.Vector3(x, 0.05, 0));
     }
-
     const trackGeo = new THREE.BufferGeometry().setFromPoints(points);
-    const trackMat = new THREE.LineBasicMaterial({
-      color: 0xfacc15,
-      transparent: true,
-      opacity: 0.4,
-      linewidth: 2
-    });
-    const track = new THREE.Line(trackGeo, trackMat);
-    scene.add(track);
+    const trackMat = new THREE.LineBasicMaterial({ color: 0x38bdf8, opacity: 0.6, transparent: true });
+    scene.add(new THREE.Line(trackGeo, trackMat));
 
-    // Second track line (blue, offset)
-    const points2 = points.map(p => new THREE.Vector3(p.x, 0.05, p.z + 0.3));
-    const track2Geo = new THREE.BufferGeometry().setFromPoints(points2);
-    const track2Mat = new THREE.LineBasicMaterial({
-      color: 0x38bdf8,
-      transparent: true,
-      opacity: 0.25
-    });
-    const track2 = new THREE.Line(track2Geo, track2Mat);
-    scene.add(track2);
+    // Parallel gold track lines
+    const pointsL = points.map(p => new THREE.Vector3(p.x, 0.05, -1.2));
+    const pointsR = points.map(p => new THREE.Vector3(p.x, 0.05, 1.2));
+    const sideMat = new THREE.LineBasicMaterial({ color: 0xeab308, opacity: 0.35, transparent: true });
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pointsL), sideMat));
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pointsR), sideMat));
   }
 
-  // ===== MILESTONE PILLARS =====
-  function createMilestonePillars() {
+  // ===== CHECKPOINT GATEWAY PORTALS =====
+  function createCheckpointPortals() {
     MILESTONES.forEach((m, idx) => {
       const x = idx * TRACK_SPACING;
 
-      // Pillar base
-      const pillarGeo = new THREE.CylinderGeometry(0.15, 0.25, 4, 8);
-      const pillarMat = new THREE.MeshStandardMaterial({
-        color: m.color,
-        emissive: m.color,
-        emissiveIntensity: 0.3,
-        metalness: 0.7,
-        roughness: 0.3
-      });
-      const pillar = new THREE.Mesh(pillarGeo, pillarMat);
-      pillar.position.set(x, 2, -2);
-      pillar.castShadow = true;
-      scene.add(pillar);
+      const group = new THREE.Group();
+      group.position.set(x, 0, 0);
 
-      // Glowing sphere on top
-      const sphereGeo = new THREE.SphereGeometry(0.5, 16, 16);
-      const sphereMat = new THREE.MeshStandardMaterial({
+      // Sci-Fi Arch Gateway (Torus / Ring Frame)
+      const ringGeo = new THREE.TorusGeometry(3.2, 0.08, 16, 32);
+      const ringMat = new THREE.MeshStandardMaterial({
         color: m.color,
         emissive: m.color,
-        emissiveIntensity: 0.8,
+        emissiveIntensity: 0.5,
+        metalness: 0.8,
+        roughness: 0.2
+      });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.position.y = 3.5;
+      group.add(ring);
+
+      // Rotating Outer Octahedron / Crystal at Center of Arch
+      const crystalGeo = new THREE.OctahedronGeometry(1.0, 0);
+      const crystalMat = new THREE.MeshStandardMaterial({
+        color: m.color,
+        emissive: m.color,
+        emissiveIntensity: 0.7,
+        wireframe: true
+      });
+      const crystal = new THREE.Mesh(crystalGeo, crystalMat);
+      crystal.position.y = 3.5;
+      crystal.name = 'crystal';
+      group.add(crystal);
+
+      // Solid inner core crystal
+      const coreGeo = new THREE.OctahedronGeometry(0.5, 0);
+      const coreMat = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        emissive: m.color,
+        emissiveIntensity: 0.9,
         transparent: true,
-        opacity: 0.9
+        opacity: 0.8
       });
-      const sphere = new THREE.Mesh(sphereGeo, sphereMat);
-      sphere.position.set(x, 4.3, -2);
-      scene.add(sphere);
+      const innerCore = new THREE.Mesh(coreGeo, coreMat);
+      innerCore.position.y = 3.5;
+      group.add(innerCore);
 
-      // Point light for glow effect
-      const glow = new THREE.PointLight(m.color, 0.6, 8);
-      glow.position.set(x, 4.5, -2);
-      scene.add(glow);
-
-      // Year platform
-      const platGeo = new THREE.BoxGeometry(2.5, 0.15, 1.5);
-      const platMat = new THREE.MeshStandardMaterial({
+      // Platform Pad under Gateway
+      const padGeo = new THREE.CylinderGeometry(2.0, 2.4, 0.2, 8);
+      const padMat = new THREE.MeshStandardMaterial({
         color: 0x0b111e,
         emissive: m.color,
-        emissiveIntensity: 0.1,
-        metalness: 0.5,
-        roughness: 0.5
+        emissiveIntensity: 0.2,
+        metalness: 0.6
       });
-      const platform = new THREE.Mesh(platGeo, platMat);
-      platform.position.set(x, 0.08, 0);
-      platform.receiveShadow = true;
-      scene.add(platform);
+      const pad = new THREE.Mesh(padGeo, padMat);
+      pad.position.y = 0.1;
+      group.add(pad);
+
+      // Point Light illuminating Checkpoint
+      const pLight = new THREE.PointLight(m.color, 0.8, 12);
+      pLight.position.set(0, 3.5, 0);
+      group.add(pLight);
+
+      scene.add(group);
+      checkpoints.push({ group, crystal, light: pLight, color: m.color });
     });
   }
 
-  // ===== PROCEDURAL 3D CHARACTER =====
-  function createCharacter() {
-    character = new THREE.Group();
+  // ===== FLOATING 3D CYBER CORE (REPLACES BLOCKY MAN) =====
+  function createCyberCore() {
+    cyberCore = new THREE.Group();
 
-    // Body (torso)
-    const bodyGeo = new THREE.BoxGeometry(0.6, 1.0, 0.4);
-    const bodyMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, emissive: 0x1e3a8a, emissiveIntensity: 0.2 });
-    const body = new THREE.Mesh(bodyGeo, bodyMat);
-    body.position.y = 1.8;
-    body.castShadow = true;
-    character.add(body);
-
-    // Head
-    const headGeo = new THREE.SphereGeometry(0.3, 12, 12);
-    const headMat = new THREE.MeshStandardMaterial({ color: 0xd4a574 });
-    const head = new THREE.Mesh(headGeo, headMat);
-    head.position.y = 2.6;
-    head.castShadow = true;
-    character.add(head);
-
-    // Eyes (yellow glow)
-    const eyeGeo = new THREE.SphereGeometry(0.05, 8, 8);
-    const eyeMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 1.0 });
-    const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
-    leftEye.position.set(-0.1, 2.65, 0.25);
-    character.add(leftEye);
-    const rightEye = new THREE.Mesh(eyeGeo, eyeMat);
-    rightEye.position.set(0.1, 2.65, 0.25);
-    character.add(rightEye);
-
-    // Arms
-    const armGeo = new THREE.BoxGeometry(0.2, 0.7, 0.2);
-    const armMat = new THREE.MeshStandardMaterial({ color: 0x1e3a8a });
-
-    const leftArm = new THREE.Mesh(armGeo, armMat);
-    leftArm.position.set(-0.5, 1.65, 0);
-    leftArm.name = 'leftArm';
-    character.add(leftArm);
-
-    const rightArm = new THREE.Mesh(armGeo, armMat);
-    rightArm.position.set(0.5, 1.65, 0);
-    rightArm.name = 'rightArm';
-    character.add(rightArm);
-
-    // Legs
-    const legGeo = new THREE.BoxGeometry(0.22, 0.8, 0.22);
-    const legMat = new THREE.MeshStandardMaterial({ color: 0x0f172a });
-
-    const leftLeg = new THREE.Mesh(legGeo, legMat);
-    leftLeg.position.set(-0.15, 0.9, 0);
-    leftLeg.name = 'leftLeg';
-    character.add(leftLeg);
-
-    const rightLeg = new THREE.Mesh(legGeo, legMat);
-    rightLeg.position.set(0.15, 0.9, 0);
-    rightLeg.name = 'rightLeg';
-    character.add(rightLeg);
-
-    // Shoes (yellow)
-    const shoeGeo = new THREE.BoxGeometry(0.25, 0.12, 0.35);
-    const shoeMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.2 });
-
-    const leftShoe = new THREE.Mesh(shoeGeo, shoeMat);
-    leftShoe.position.set(-0.15, 0.44, 0.05);
-    leftShoe.name = 'leftShoe';
-    character.add(leftShoe);
-
-    const rightShoe = new THREE.Mesh(shoeGeo, shoeMat);
-    rightShoe.position.set(0.15, 0.44, 0.05);
-    rightShoe.name = 'rightShoe';
-    character.add(rightShoe);
-
-    character.position.set(-5, 0, 0);
-    scene.add(character);
-  }
-
-  // ===== WALK ANIMATION =====
-  function animateCharacter(time) {
-    if (!character) return;
-
-    const walkCycle = Math.sin(time * 6);
-    const armSwing = Math.sin(time * 6) * 0.4;
-
-    // Leg swing
-    character.children.forEach(child => {
-      if (child.name === 'leftLeg' || child.name === 'leftShoe') {
-        child.rotation.x = walkCycle * 0.35;
-      }
-      if (child.name === 'rightLeg' || child.name === 'rightShoe') {
-        child.rotation.x = -walkCycle * 0.35;
-      }
-      if (child.name === 'leftArm') {
-        child.rotation.x = -armSwing;
-      }
-      if (child.name === 'rightArm') {
-        child.rotation.x = armSwing;
-      }
+    // Outer wireframe Icosahedron
+    const outerGeo = new THREE.IcosahedronGeometry(1.1, 1);
+    const outerMat = new THREE.MeshStandardMaterial({
+      color: 0x38bdf8,
+      emissive: 0x2563eb,
+      emissiveIntensity: 0.6,
+      wireframe: true
     });
+    const outerMesh = new THREE.Mesh(outerGeo, outerMat);
+    cyberCore.add(outerMesh);
 
-    // Subtle body bob
-    character.position.y = Math.abs(Math.sin(time * 12)) * 0.08;
+    // Inner glowing core sphere
+    const innerGeo = new THREE.SphereGeometry(0.55, 16, 16);
+    const innerMat = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      emissive: 0x38bdf8,
+      emissiveIntensity: 1.0,
+      transparent: true,
+      opacity: 0.9
+    });
+    coreInnerWire = new THREE.Mesh(innerGeo, innerMat);
+    cyberCore.add(coreInnerWire);
+
+    // Orbiting Ring 1
+    const ring1Geo = new THREE.TorusGeometry(1.4, 0.03, 12, 32);
+    const ring1Mat = new THREE.MeshStandardMaterial({ color: 0xeab308, emissive: 0xeab308, emissiveIntensity: 0.8 });
+    const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+    ring1.rotation.x = Math.PI / 3;
+    ring1.name = 'ring1';
+    cyberCore.add(ring1);
+
+    // Orbiting Ring 2
+    const ring2Geo = new THREE.TorusGeometry(1.6, 0.02, 12, 32);
+    const ring2Mat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x38bdf8, emissiveIntensity: 0.8 });
+    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2.rotation.y = Math.PI / 4;
+    ring2.name = 'ring2';
+    cyberCore.add(ring2);
+
+    // Core Point Light
+    coreLight = new THREE.PointLight(0x38bdf8, 1.5, 15);
+    cyberCore.add(coreLight);
+
+    cyberCore.position.set(0, 3.5, 0);
+    scene.add(cyberCore);
   }
 
-  // ===== CONTROLS =====
-  let keysPressed = {};
+  // ===== NAVIGATION & SCROLL HANDLERS =====
+  function onWheel(e) {
+    e.preventDefault();
+    autoPlay = false;
+    const delta = e.deltaY * 0.0008;
+    targetProgress = Math.max(0, Math.min(1, targetProgress + delta));
+  }
+
+  function onMouseDown(e) {
+    isDragging = true;
+    previousMouseX = e.clientX;
+    autoPlay = false;
+  }
+
+  function onMouseMove(e) {
+    if (!isDragging) return;
+    const deltaX = e.clientX - previousMouseX;
+    previousMouseX = e.clientX;
+    targetProgress = Math.max(0, Math.min(1, targetProgress - deltaX * 0.0015));
+  }
+
+  function onMouseUp() { isDragging = false; }
+
+  function onTouchStart(e) {
+    if (e.touches.length > 0) {
+      previousMouseX = e.touches[0].clientX;
+      autoPlay = false;
+    }
+  }
+
+  function onTouchMove(e) {
+    if (e.touches.length > 0) {
+      const deltaX = e.touches[0].clientX - previousMouseX;
+      previousMouseX = e.touches[0].clientX;
+      targetProgress = Math.max(0, Math.min(1, targetProgress - deltaX * 0.002));
+    }
+  }
 
   function onKeyDown(e) {
-    keysPressed[e.key] = true;
     if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-      autoWalk = false;
+      autoPlay = false;
+      targetProgress = Math.min(1, targetProgress + 1 / (MILESTONES.length - 1));
     }
     if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-      autoWalk = false;
+      autoPlay = false;
+      targetProgress = Math.max(0, targetProgress - 1 / (MILESTONES.length - 1));
     }
     if (e.key === ' ') {
       e.preventDefault();
-      showCurrentMilestone();
+      showMilestonePopup();
     }
     if (e.key === 'Escape') {
       hideMilestonePopup();
     }
   }
 
-  function onKeyUp(e) {
-    keysPressed[e.key] = false;
-  }
+  // ===== UPDATE SCENE & ANIMATION LOOP =====
+  function animate() {
+    requestAnimationFrame(animate);
+    const time = clock.getElapsedTime();
 
-  function updateMovement(delta) {
-    let moveSpeed = 8 * delta;
-
-    if (autoWalk && !milestonePopupVisible) {
-      targetX += autoWalkSpeed;
-      character.position.x += (targetX - character.position.x) * 0.05;
-    } else {
-      if (keysPressed['ArrowRight'] || keysPressed['d'] || keysPressed['D']) {
-        targetX += moveSpeed;
-      }
-      if (keysPressed['ArrowLeft'] || keysPressed['a'] || keysPressed['A']) {
-        targetX -= moveSpeed;
-      }
-      character.position.x += (targetX - character.position.x) * 0.08;
+    // Auto-walk slow progress if active
+    if (autoPlay && !popupVisible) {
+      targetProgress += 0.0004;
+      if (targetProgress > 1) targetProgress = 0;
     }
 
-    // Clamp
-    targetX = Math.max(-5, Math.min(TOTAL_LENGTH + 5, targetX));
+    // Smooth lerp progress
+    scrollProgress += (targetProgress - scrollProgress) * 0.08;
+    const currentX = scrollProgress * TOTAL_LENGTH;
 
-    // Update camera to follow
-    camera.position.x += (character.position.x - camera.position.x) * 0.05;
-    camera.lookAt(character.position.x, 2, 0);
+    // Move Cyber Core
+    if (cyberCore) {
+      cyberCore.position.x = currentX;
+      cyberCore.position.y = 3.5 + Math.sin(time * 2.5) * 0.3; // Floating bob
+      cyberCore.rotation.y = time * 0.8;
+      cyberCore.rotation.z = time * 0.4;
 
-    // Check milestone proximity
-    checkMilestoneProximity();
-  }
-
-  // ===== MILESTONE PROXIMITY =====
-  function checkMilestoneProximity() {
-    for (let i = 0; i < MILESTONES.length; i++) {
-      const mx = i * TRACK_SPACING;
-      const dist = Math.abs(character.position.x - mx);
-      if (dist < 2) {
-        if (currentMilestoneIndex !== i) {
-          currentMilestoneIndex = i;
-          updateHUD(i);
-        }
-        return;
-      }
+      const ring1 = cyberCore.getObjectByName('ring1');
+      const ring2 = cyberCore.getObjectByName('ring2');
+      if (ring1) ring1.rotation.z = time * 1.5;
+      if (ring2) ring2.rotation.x = time * 1.2;
     }
+
+    // Camera follow smoothly
+    camera.position.x += (currentX - camera.position.x) * 0.08;
+    camera.position.y = 5.2 + Math.sin(time * 1.5) * 0.15;
+    camera.lookAt(currentX + 1.5, 3.2, 0);
+
+    // Rotate Checkpoint Crystals
+    checkpoints.forEach((cp, idx) => {
+      if (cp.crystal) {
+        cp.crystal.rotation.y = time * (1 + idx * 0.2);
+        cp.crystal.rotation.x = time * 0.5;
+      }
+    });
+
+    // Check closest milestone
+    const activeIdx = Math.round(scrollProgress * (MILESTONES.length - 1));
+    if (activeIdx !== currentMilestoneIndex) {
+      currentMilestoneIndex = activeIdx;
+      updateHUD(activeIdx);
+    }
+
+    renderer.render(scene, camera);
   }
 
+  // ===== HUD & POPUP MANAGEMENT =====
   function updateHUD(idx) {
     const m = MILESTONES[idx];
-    const yearEl = document.getElementById('hudYear');
-    const techEl = document.getElementById('hudTech');
-    const descEl = document.getElementById('hudDesc');
-    const progressEl = document.getElementById('journeyProgressFill');
+    const hudYear = document.getElementById('hudYear');
+    const hudTech = document.getElementById('hudTech');
+    const hudDesc = document.getElementById('hudDesc');
+    const fill = document.getElementById('journeyProgressFill');
 
-    if (yearEl) yearEl.textContent = m.year;
-    if (techEl) techEl.textContent = m.icon + ' ' + m.tech;
-    if (descEl) descEl.textContent = m.desc;
-    if (progressEl) {
-      const pct = ((idx + 1) / MILESTONES.length) * 100;
-      progressEl.style.width = pct + '%';
+    if (hudYear) hudYear.textContent = m.year;
+    if (hudTech) {
+      hudTech.innerHTML = `<span style="color: ${m.hexColor}">${m.icon} ${m.tech}</span>`;
     }
+    if (hudDesc) hudDesc.textContent = m.desc;
+    if (fill) {
+      const pct = (idx / (MILESTONES.length - 1)) * 100;
+      fill.style.width = pct + '%';
+    }
+
+    // Highlight active chip
+    const chips = document.querySelectorAll('.milestone-chip');
+    chips.forEach((c, i) => {
+      if (i === idx) {
+        c.classList.add('border-sky-400', 'bg-sky-950/80', 'text-sky-300');
+      } else {
+        c.classList.remove('border-sky-400', 'bg-sky-950/80', 'text-sky-300');
+      }
+    });
   }
 
-  function showCurrentMilestone() {
+  function showMilestonePopup() {
     const m = MILESTONES[currentMilestoneIndex];
     const popup = document.getElementById('milestonePopup');
     const popupYear = document.getElementById('popupYear');
@@ -420,12 +418,13 @@
     const popupDetail = document.getElementById('popupDetail');
 
     if (popup) {
-      popupYear.textContent = m.year;
+      popupYear.textContent = m.year + ' MILESTONE';
+      popupYear.style.color = m.hexColor;
       popupTech.textContent = m.icon + ' ' + m.tech;
       popupDesc.textContent = m.desc;
       popupDetail.textContent = m.detail;
       popup.classList.remove('hidden');
-      milestonePopupVisible = true;
+      popupVisible = true;
     }
   }
 
@@ -433,43 +432,30 @@
     const popup = document.getElementById('milestonePopup');
     if (popup) {
       popup.classList.add('hidden');
-      milestonePopupVisible = false;
+      popupVisible = false;
     }
   }
 
-  // ===== RESIZE =====
   function onResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
-  // ===== MAIN ANIMATION LOOP =====
-  function animate() {
-    requestAnimationFrame(animate);
-    const delta = clock.getDelta();
-    const elapsed = clock.getElapsedTime();
-
-    animateCharacter(elapsed);
-    updateMovement(delta);
-
-    renderer.render(scene, camera);
-  }
-
-  // ===== PUBLIC API =====
+  // ===== PUBLIC API EXPOSED TO HUD BUTTONS =====
   window.JourneyEngine = {
     init: init,
-    showMilestone: showCurrentMilestone,
+    showMilestone: showMilestonePopup,
     hideMilestone: hideMilestonePopup,
-    toggleAutoWalk: function () {
-      autoWalk = !autoWalk;
+    toggleAutoPlay: function () {
+      autoPlay = !autoPlay;
       const btn = document.getElementById('autoWalkBtn');
-      if (btn) btn.textContent = autoWalk ? '⏸ Pause Auto-Walk' : '▶ Resume Auto-Walk';
+      if (btn) btn.textContent = autoPlay ? '⏸ Pause Auto-Scroll' : '▶ Resume Auto-Scroll';
     },
     goToMilestone: function (idx) {
       if (idx >= 0 && idx < MILESTONES.length) {
-        targetX = idx * TRACK_SPACING;
-        autoWalk = false;
+        targetProgress = idx / (MILESTONES.length - 1);
+        autoPlay = false;
         currentMilestoneIndex = idx;
         updateHUD(idx);
       }
