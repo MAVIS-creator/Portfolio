@@ -8,10 +8,10 @@
   --bg-surface-hover: #162032;
   --color-blue-primary: #38bdf8;
   --color-blue-electric: #2563eb;
-  --color-yellow-primary: #facc15;
-  --color-yellow-accent: #f8db00;
-  --color-yellow-glow: rgba(250, 204, 21, 0.45);
-  --color-blue-glow: rgba(56, 189, 248, 0.45);
+  --color-yellow-primary: #eab308;
+  --color-yellow-accent: #f59e0b;
+  --color-yellow-glow: rgba(234, 179, 8, 0.25);
+  --color-blue-glow: rgba(56, 189, 248, 0.4);
   --color-red-security: #ef4444;
   --color-text-main: #f8fafc;
   --color-text-secondary: #94a3b8;
@@ -35,34 +35,34 @@ html, body {
   font-family: 'Outfit', sans-serif;
 }
 
-/* Cyber Grid with Dual Blue & Yellow Grid Accent Lines */
+/* Cyber Grid with Dominant Blue Accent Lines and Subtle Warm Gold */
 .bg-cyber-grid {
   background-color: #07090e !important;
   background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(250, 204, 21, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
-/* Rich Co-Primary Dual Blue + Yellow Ambient Atmosphere Backdrop */
+/* Dominant Blue Atmosphere with Refined Warm Gold Highlights */
 .bg-radial-glow {
   background: 
-    radial-gradient(circle at 85% 12%, rgba(250, 204, 21, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 12% 45%, rgba(37, 99, 235, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(250, 204, 21, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 20% 90%, rgba(56, 189, 248, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 12% 25%, rgba(37, 99, 235, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(234, 179, 8, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 20% 90%, rgba(37, 99, 235, 0.25) 0%, transparent 50%),
     linear-gradient(180deg, #07090e 0%, #060912 100%);
 }
 
-/* Glowing Dual Blue & Yellow Circular Avatar Container */
+/* Glowing Dual Blue & Warm Gold Circular Avatar Container */
 .avatar-halo-container {
   position: relative;
   width: 310px;
   height: 310px;
   border-radius: 50%;
   padding: 7px;
-  background: linear-gradient(135deg, #facc15, #38bdf8, #2563eb, #eab308);
-  box-shadow: 0 0 50px rgba(250, 204, 21, 0.5), 0 0 80px rgba(56, 189, 248, 0.4), 0 0 30px rgba(37, 99, 235, 0.3);
+  background: linear-gradient(135deg, #38bdf8, #2563eb, #eab308, #1d4ed8);
+  box-shadow: 0 0 50px rgba(56, 189, 248, 0.45), 0 0 80px rgba(37, 99, 235, 0.35), 0 0 30px rgba(234, 179, 8, 0.25);
 }
 
 @media (min-width: 768px) {
@@ -109,22 +109,23 @@ html, body {
   100% { transform: translateY(4px) scale(0.96); }
 }
 
-/* Card Hover Effects with Dual Blue & Yellow Borders */
+/* Card Hover Effects with Dominant Blue and Warm Gold Borders */
 .card-hover-effect {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(250, 204, 21, 0.25);
-  background: rgba(11, 17, 30, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: rgba(11, 17, 30, 0.9);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+  overflow: hidden;
 }
 
 .card-hover-effect:hover {
-  transform: translateY(-5px);
-  border-color: rgba(250, 204, 21, 0.7);
-  box-shadow: 0 16px 40px -10px rgba(250, 204, 21, 0.3), 0 0 20px rgba(56, 189, 248, 0.3);
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 16px 40px -10px rgba(37, 99, 235, 0.3), 0 0 20px rgba(234, 179, 8, 0.15);
 }
 
-/* Button Variants: Electric Blue & Vibrant Yellow */
+/* Button Variants: Dominant Electric Blue & Warm Amber Gold */
 .btn-pill-blue {
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: #ffffff !important;
@@ -133,7 +134,7 @@ html, body {
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.45);
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.4);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -141,50 +142,50 @@ html, body {
 }
 
 .btn-pill-blue:hover {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  box-shadow: 0 6px 26px rgba(56, 189, 248, 0.6);
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  box-shadow: 0 6px 26px rgba(56, 189, 248, 0.5);
   transform: translateY(-2px);
 }
 
 .btn-pill-yellow {
-  background: linear-gradient(135deg, #facc15, #eab308);
+  background: linear-gradient(135deg, #eab308, #ca8a04);
   color: #07090e !important;
   padding: 10px 24px;
   border-radius: 9999px;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 18px rgba(250, 204, 21, 0.45);
+  box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(254, 240, 138, 0.6);
+  border: 1px solid rgba(253, 224, 71, 0.5);
 }
 
 .btn-pill-yellow:hover {
-  background: linear-gradient(135deg, #fef08a, #facc15);
-  box-shadow: 0 6px 26px rgba(250, 204, 21, 0.7);
+  background: linear-gradient(135deg, #facc15, #eab308);
+  box-shadow: 0 6px 22px rgba(234, 179, 8, 0.5);
   transform: translateY(-2px);
 }
 
 .btn-outline-yellow {
   background: rgba(11, 17, 30, 0.9);
-  color: #facc15 !important;
+  color: #eab308 !important;
   padding: 10px 24px;
   border-radius: 9999px;
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  border: 1.5px solid rgba(250, 204, 21, 0.5);
+  border: 1.5px solid rgba(234, 179, 8, 0.4);
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
 .btn-outline-yellow:hover {
-  background: #facc15;
+  background: #eab308;
   color: #07090e !important;
-  box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+  box-shadow: 0 0 18px rgba(234, 179, 8, 0.4);
 }
 
 .btn-outline-slate {
@@ -195,7 +196,7 @@ html, body {
   font-weight: 500;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  border: 1px solid rgba(51, 65, 85, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.3);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -203,8 +204,8 @@ html, body {
 
 .btn-outline-slate:hover {
   background: #162032;
-  border-color: var(--color-yellow-primary);
-  color: #facc15 !important;
+  border-color: #38bdf8;
+  color: #38bdf8 !important;
 }
 
 /* Active Nav Indicator with Yellow Accent */
@@ -283,16 +284,17 @@ html, body {
 }
 
 /* ============================================
-   Dynamic Angled/Skewed Container Geometry
+   Dynamic Container Geometry System
    ============================================ */
 .tilted-skew-backdrop {
   position: relative;
-  transform: skewY(-1.5deg);
-  padding: 4rem 0;
+  padding: 3.5rem 2rem;
   margin: 3rem 0;
   background: linear-gradient(135deg, rgba(11, 17, 30, 0.95), rgba(7, 9, 14, 0.98));
-  border-top: 1px solid rgba(250, 204, 21, 0.15);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-left: 4px solid #38bdf8;
+  border-radius: 1.5rem;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.12);
   overflow: hidden;
 }
 
@@ -301,13 +303,12 @@ html, body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(250, 204, 21, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(234, 179, 8, 0.08) 0%, transparent 45%);
   pointer-events: none;
 }
 
 .tilted-skew-content {
-  transform: skewY(1.5deg);
   position: relative;
   z-index: 2;
 }
