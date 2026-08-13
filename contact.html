@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Connect — Akintunde Dolapo Elisha (MAVIS / BK)</title>
+  <meta name="description" content="Connect with Akintunde Dolapo Elisha (BK / MAVIS) - 400 Level LAUTECH Computer Science & Cybersecurity student, developer, and experimenter.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/MAVIS-creator_logo.png" alt="MAVIS Logo" class="w-10 h-10 rounded-full border border-sky-500/50 object-cover group-hover:border-yellow-400 transition-colors">
+        <div>
+          <span class="font-display font-bold text-lg text-white group-hover:text-sky-400 transition-colors">MAVIS<span class="text-sky-400 font-mono">&lt;/&gt;</span></span>
+          <span class="block text-xs font-mono text-slate-400">BK // Akintunde</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="about.html" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="what-i-do.html" class="nav-link hover:text-white transition-colors">What I Do</a>
+        <a href="projects.html" class="nav-link hover:text-white transition-colors">Projects</a>
+        <a href="currently-exploring.html" class="nav-link hover:text-white transition-colors">Exploring</a>
+        <a href="terminal.html" class="nav-link hover:text-white transition-colors font-mono">Terminal</a>
+        <a href="contact.html" class="btn-pill-blue">Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </nav>
+
+      <button id="mobileMenuToggle" class="md:hidden text-slate-300 hover:text-white p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-6 py-4 space-y-3 font-medium">
+      <a href="index.html" class="block hover:text-sky-400">Home</a>
+      <a href="about.html" class="block hover:text-sky-400">About</a>
+      <a href="what-i-do.html" class="block hover:text-sky-400">What I Do</a>
+      <a href="projects.html" class="block hover:text-sky-400">Projects</a>
+      <a href="currently-exploring.html" class="block hover:text-sky-400">Exploring</a>
+      <a href="terminal.html" class="block font-mono text-yellow-400">Terminal CLI</a>
+      <a href="contact.html" class="block text-sky-400">Contact</a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-6xl mx-auto px-6 py-16 w-full z-10 space-y-16">
+
+    <!-- Header Section -->
+    <div class="space-y-4 border-b border-slate-800 pb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-sky-500/30 text-xs font-mono text-sky-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>GET IN TOUCH</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white">
+        LET'S <span class="text-sky-400">CONNECT</span>
+      </h1>
+      <p class="text-slate-300 max-w-2xl text-base sm:text-lg font-light">
+        Have a project idea, security inquiry, collaboration opportunity, or just want to talk software, AI, or gaming? Reach out anytime!
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+      <!-- Left Column: Direct Contact Info & Email Copy Card -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Direct Email Pill Card -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-3">
+          <div class="flex items-center gap-3 text-sky-400">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+            <span class="font-mono text-xs text-slate-400 uppercase">Direct Email</span>
+          </div>
+          <p class="font-mono text-base text-yellow-400 font-semibold break-all">
+            akintundedolapo02@gmail.com
+          </p>
+          <div class="pt-2">
+            <button id="copyEmailBtn" class="btn-outline-slate text-xs py-2 px-4 w-full justify-center">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Email Address
+            </button>
+            <p id="copyToast" class="hidden text-xs font-mono text-emerald-400 text-center mt-2">
+              ✓ Email copied to clipboard!
+            </p>
+          </div>
+        </div>
+
+        <!-- GitHub Profile Card -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-3">
+          <div class="flex items-center gap-3 text-sky-400">
+            <i data-lucide="github" class="w-5 h-5"></i>
+            <span class="font-mono text-xs text-slate-400 uppercase">GitHub Profile</span>
+          </div>
+          <p class="font-mono text-base text-white font-semibold">
+            github.com/MAVIS-creator
+          </p>
+          <a href="https://github.com/MAVIS-creator" target="_blank" class="btn-pill-blue text-xs py-2 px-4 w-full justify-center">
+            Visit GitHub Repositories <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Location & Academic Tag -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-2 font-mono text-xs text-slate-300">
+          <div class="flex items-center gap-2 text-yellow-400 font-semibold">
+            <i data-lucide="map-pin" class="w-4 h-4"></i> LOCATION & UNIVERSITY
+          </div>
+          <p class="text-slate-300">
+            Ladoke Akintola University of Technology (LAUTECH)<br>
+            Ogbomoso, Oyo State, Nigeria
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Encrypted Contact Form Simulator -->
+      <div class="lg:col-span-7 card-hover-effect p-8 rounded-3xl space-y-6">
+        <div>
+          <span class="badge-security-red"><span class="dot-pulse"></span> SECURE MESSAGE DISPATCH</span>
+          <h2 class="font-display text-2xl font-bold text-white mt-2">Send a Direct Message</h2>
+          <p class="text-slate-400 text-xs font-mono mt-1">
+            Simulated instant encrypted transmission directly to MAVIS inbox.
+          </p>
+        </div>
+
+        <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! Message dispatched successfully.');" class="space-y-4 font-sans text-sm">
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+            <input type="text" required placeholder="e.g. Alex Johnson" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Your Email</label>
+            <input type="email" required placeholder="name@example.com" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Subject</label>
+            <input type="text" placeholder="Project Inquiry / Security Collaboration" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Message</label>
+            <textarea rows="4" required placeholder="Type your message..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-500"></textarea>
+          </div>
+
+          <button type="submit" class="btn-pill-blue text-sm py-3 px-8 w-full justify-center">
+            <i data-lucide="send" class="w-4 h-4"></i> Dispatch Encrypted Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-slate-400 text-xs font-mono z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2026 Akintunde Dolapo Elisha (BK / MAVIS) · 400 Level LAUTECH, Nigeria</p>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/MAVIS-creator" target="_blank" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="terminal.html" class="hover:text-yellow-400 transition-colors">CLI Shell</a>
+        <a href="contact.html" class="hover:text-sky-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

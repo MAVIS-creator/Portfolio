@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal CLI — Akintunde Dolapo Elisha (MAVIS / BK)</title>
+  <meta name="description" content="Interactive cyber terminal CLI for Akintunde Dolapo Elisha (BK / MAVIS). Run live commands to inspect projects, security audits, and developer bio.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100 font-mono">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 font-sans">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/MAVIS-creator_logo.png" alt="MAVIS Logo" class="w-10 h-10 rounded-full border border-sky-500/50 object-cover group-hover:border-yellow-400 transition-colors">
+        <div>
+          <span class="font-display font-bold text-lg text-white group-hover:text-sky-400 transition-colors">MAVIS<span class="text-sky-400 font-mono">&lt;/&gt;</span></span>
+          <span class="block text-xs font-mono text-slate-400">BK // Akintunde</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="about.html" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="what-i-do.html" class="nav-link hover:text-white transition-colors">What I Do</a>
+        <a href="projects.html" class="nav-link hover:text-white transition-colors">Projects</a>
+        <a href="currently-exploring.html" class="nav-link hover:text-white transition-colors">Exploring</a>
+        <a href="terminal.html" class="nav-link hover:text-white transition-colors font-mono">Terminal</a>
+        <a href="contact.html" class="btn-pill-blue">Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </nav>
+
+      <button id="mobileMenuToggle" class="md:hidden text-slate-300 hover:text-white p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-6 py-4 space-y-3 font-medium">
+      <a href="index.html" class="block hover:text-sky-400">Home</a>
+      <a href="about.html" class="block hover:text-sky-400">About</a>
+      <a href="what-i-do.html" class="block hover:text-sky-400">What I Do</a>
+      <a href="projects.html" class="block hover:text-sky-400">Projects</a>
+      <a href="currently-exploring.html" class="block hover:text-sky-400">Exploring</a>
+      <a href="terminal.html" class="block text-yellow-400">Terminal CLI</a>
+      <a href="contact.html" class="block text-sky-400">Contact</a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-5xl mx-auto px-6 py-12 w-full z-10 space-y-6">
+
+    <!-- Terminal Window Container -->
+    <div class="card-hover-effect rounded-2xl border border-slate-700 bg-slate-950/95 shadow-2xl overflow-hidden">
+      
+      <!-- Terminal Header Bar -->
+      <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+          <span class="text-xs text-slate-400 ml-2 font-mono">mavis@lautech-cyberlab:~ (zsh)</span>
+        </div>
+        <span class="badge-security-red"><span class="dot-pulse"></span> ONLINE</span>
+      </div>
+
+      <!-- Terminal Body -->
+      <div class="p-6 h-[500px] flex flex-col justify-between font-mono text-sm leading-relaxed">
+        
+        <!-- Output History Container -->
+        <div id="termHistory" class="overflow-y-auto pr-2 space-y-3 flex-grow text-slate-300">
+          <div class="text-sky-400 font-bold">
+            Welcome to MAVIS-CLI v4.2 [Cyber Security & Developer Shell]
+          </div>
+          <div class="text-slate-400 text-xs">
+            Type <span class="text-yellow-400 font-bold">help</span> to list all interactive commands.
+          </div>
+          <div class="border-b border-slate-800/80 my-2"></div>
+        </div>
+
+        <!-- Terminal Input Line -->
+        <div class="pt-4 border-t border-slate-800/80 flex items-center gap-2 text-sm">
+          <span class="text-sky-400 font-bold whitespace-nowrap">mavis@lautech:~$</span>
+          <input id="termInput" type="text" placeholder="type 'help' and press Enter..." class="flex-grow bg-transparent text-white focus:outline-none font-mono caret-yellow-400" autofocus>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Quick Buttons Bar -->
+    <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-400">
+      <span class="text-slate-500">Quick commands:</span>
+      <button onclick="document.getElementById('termInput').value='about'; document.getElementById('termInput').focus();" class="px-2.5 py-1 rounded bg-slate-900 hover:bg-slate-800 text-sky-400 border border-slate-800">about</button>
+      <button onclick="document.getElementById('termInput').value='projects'; document.getElementById('termInput').focus();" class="px-2.5 py-1 rounded bg-slate-900 hover:bg-slate-800 text-sky-400 border border-slate-800">projects</button>
+      <button onclick="document.getElementById('termInput').value='security'; document.getElementById('termInput').focus();" class="px-2.5 py-1 rounded bg-slate-900 hover:bg-slate-800 text-red-400 border border-slate-800">security</button>
+      <button onclick="document.getElementById('termInput').value='exploring'; document.getElementById('termInput').focus();" class="px-2.5 py-1 rounded bg-slate-900 hover:bg-slate-800 text-yellow-400 border border-slate-800">exploring</button>
+      <button onclick="document.getElementById('termInput').value='clear'; document.getElementById('termInput').focus();" class="px-2.5 py-1 rounded bg-slate-900 hover:bg-slate-800 text-slate-400 border border-slate-800">clear</button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-slate-400 text-xs font-mono z-10 font-sans">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2026 Akintunde Dolapo Elisha (BK / MAVIS) · 400 Level LAUTECH, Nigeria</p>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/MAVIS-creator" target="_blank" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="terminal.html" class="hover:text-yellow-400 transition-colors">CLI Shell</a>
+        <a href="contact.html" class="hover:text-sky-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

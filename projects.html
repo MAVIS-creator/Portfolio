@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Projects & Repos — Akintunde Dolapo Elisha (MAVIS / BK)</title>
+  <meta name="description" content="Explore flagship software and cybersecurity projects by Akintunde Dolapo Elisha (BK / MAVIS): VaultGuard 360, Blockchain Attendance, High Q Solid Academy, QUANTYX, Geo-Fence Link Generator, and GitHub repositories.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100 bg-slate-950">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/MAVIS-creator_logo.png" alt="MAVIS Logo" class="w-10 h-10 rounded-full border border-sky-500/50 object-cover group-hover:border-yellow-400 transition-colors">
+        <div>
+          <span class="font-display font-bold text-lg text-white group-hover:text-sky-400 transition-colors">MAVIS<span class="text-sky-400 font-mono">&lt;/&gt;</span></span>
+          <span class="block text-xs font-mono text-slate-400">BK // Akintunde</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="about.html" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="what-i-do.html" class="nav-link hover:text-white transition-colors">What I Do</a>
+        <a href="projects.html" class="nav-link hover:text-white transition-colors">Projects</a>
+        <a href="currently-exploring.html" class="nav-link hover:text-white transition-colors">Exploring</a>
+        <a href="terminal.html" class="nav-link hover:text-white transition-colors font-mono">Terminal</a>
+        <a href="contact.html" class="btn-pill-blue">Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </nav>
+
+      <button id="mobileMenuToggle" class="md:hidden text-slate-300 hover:text-white p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-6 py-4 space-y-3 font-medium">
+      <a href="index.html" class="block hover:text-sky-400">Home</a>
+      <a href="about.html" class="block hover:text-sky-400">About</a>
+      <a href="what-i-do.html" class="block hover:text-sky-400">What I Do</a>
+      <a href="projects.html" class="block text-sky-400">Projects</a>
+      <a href="currently-exploring.html" class="block hover:text-sky-400">Exploring</a>
+      <a href="terminal.html" class="block font-mono text-yellow-400">Terminal CLI</a>
+      <a href="contact.html" class="block text-sky-400">Contact</a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto px-6 py-16 w-full z-10 space-y-20">
+
+    <!-- Header Section -->
+    <div class="space-y-4 border-b border-slate-800 pb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-sky-500/30 text-xs font-mono text-sky-400">
+        <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+        <span>SOFTWARE & SECURITY PORTFOLIO</span>
+      </div>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white">
+        FEATURED <span class="text-sky-400">PROJECTS</span>
+      </h1>
+      <p class="text-slate-300 max-w-2xl text-base sm:text-lg font-light">
+        A deep dive into flagship software builds, cybersecurity remediation tools, and experimental platforms — linked directly to public GitHub repositories.
+      </p>
+    </div>
+
+    <!-- FLAGSHIP 1: VaultGuard 360 -->
+    <section id="vaultguard" class="card-hover-effect p-8 sm:p-10 rounded-3xl space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <span class="text-yellow-400 font-mono font-bold text-xl">01 /</span>
+        <span class="badge-security-red"><span class="dot-pulse"></span> SYSTEM REMEDIATION SUITE</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <h2 class="font-display text-3xl font-extrabold text-white">VaultGuard 360</h2>
+          <p class="text-slate-300 text-base leading-relaxed font-light">
+            A comprehensive Windows security and malware-remediation suite built around protecting, restoring, and immunizing system environments. Pushed outside typical web-dev comfort zones to explore native Windows system APIs, persistence registry auditing, quarantine vaults, file integrity verification, and USB immunization.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono pt-2">
+            <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">WINDOWS DESKTOP</span>
+            <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">FILE INTEGRITY</span>
+            <span class="px-3 py-1 rounded bg-slate-900 text-red-400 border border-slate-700">USB IMMUNIZATION</span>
+            <span class="px-3 py-1 rounded bg-slate-900 text-yellow-400 border border-slate-700">PERSISTENCE AUDITING</span>
+          </div>
+          <div class="pt-3">
+            <a href="https://github.com/MAVIS-creator/PaintGuard" target="_blank" class="btn-pill-blue text-xs font-mono">
+              View Public GitHub Repo <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Sandbox Widget for VaultGuard -->
+        <div class="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4 font-mono text-xs">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-400">VaultGuard Audit Simulator</span>
+            <span class="text-emerald-400">STATUS: READY</span>
+          </div>
+          <div id="simScanOutput" class="h-32 overflow-y-auto bg-slate-900 p-3 rounded text-slate-300 leading-relaxed border border-slate-800">
+            Click scan below to trigger file integrity & registry audit sandbox...
+          </div>
+          <button id="simScanBtn" class="w-full py-2.5 rounded bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2">
+            <i data-lucide="shield-search" class="w-4 h-4"></i> RUN SECURITY SCAN
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP 2: Blockchain Attendance -->
+    <section id="blockchain" class="card-hover-effect p-8 sm:p-10 rounded-3xl space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <span class="text-yellow-400 font-mono font-bold text-xl">02 /</span>
+        <span class="px-3 py-1 rounded-full bg-blue-950 text-sky-400 border border-blue-500/30 text-xs font-mono font-semibold">BLOCKCHAIN INTEGRITY</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <h2 class="font-display text-3xl font-extrabold text-white">Blockchain-Secured Attendance System</h2>
+          <p class="text-slate-300 text-base leading-relaxed font-light">
+            Tamper-evident attendance infrastructure featuring SHA-256 hash chaining, device fingerprinting, geofence validation, AI administration, and Web3 anchoring.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono pt-2">
+            <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">SHA-256 HASH CHAIN</span>
+            <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">GEOFENCING</span>
+            <span class="px-3 py-1 rounded bg-slate-900 text-yellow-400 border border-slate-700">WEB3 ANCHORING</span>
+          </div>
+          <div class="pt-3">
+            <a href="https://github.com/MAVIS-creator/Blockchain-Based-Attendance-System" target="_blank" class="btn-pill-blue text-xs font-mono">
+              View Public GitHub Repo <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Live SHA-256 Hash Chain Simulator Widget -->
+        <div class="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4 font-mono text-xs">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-400">Live SHA-256 Hash Chain Tester</span>
+            <span class="text-sky-400">CHAIN: ACTIVE</span>
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">Enter Student Record / ID:</label>
+            <input id="simStudentName" type="text" placeholder="e.g. LAUTECH/CS/2026/042" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-white focus:outline-none focus:border-sky-500">
+          </div>
+          <div class="p-3 bg-slate-900 rounded border border-slate-800 text-[11px] space-y-1">
+            <p class="text-slate-400">Generated SHA-256 Hash:</p>
+            <p id="simHashResult" class="text-yellow-400 break-all font-mono font-bold">Type above to calculate hash...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP 3: HIGH Q SOLID ACADEMY -->
+    <section id="highq" class="card-hover-effect p-8 sm:p-10 rounded-3xl space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-yellow-400 font-mono font-bold text-xl">03 /</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-500/30 text-xs font-mono font-semibold">EDUCATION PLATFORM</span>
+      </div>
+      <h2 class="font-display text-3xl font-extrabold text-white">HIGH Q SOLID ACADEMY</h2>
+      <p class="text-slate-300 text-base leading-relaxed font-light max-w-3xl">
+        Educational platform and academic portal application developed to streamline learning management, course material access, student performance records, and administrative controls.
+      </p>
+      <div class="flex flex-wrap gap-2 text-xs font-mono pt-2">
+        <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">WEB PORTAL</span>
+        <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">EDUCATION TECH</span>
+        <span class="px-3 py-1 rounded bg-slate-900 text-slate-300 border border-slate-700">STUDENT DASHBOARD</span>
+      </div>
+      <div class="pt-3">
+        <a href="https://github.com/MAVIS-creator/akintunde-abiodun-isaiah-portfolio" target="_blank" class="btn-pill-blue text-xs font-mono">
+          View Public GitHub Repo <i data-lucide="external-link" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP 4: QUANTYX -->
+    <section id="quantyx" class="card-hover-effect p-8 sm:p-10 rounded-3xl space-y-6">
+      <div class="flex items-center justify-between">
+        <span class="text-yellow-400 font-mono font-bold text-xl">04 /</span>
+        <span class="px-3 py-1 rounded-full bg-yellow-950 text-yellow-400 border border-yellow-500/30 text-xs font-mono font-semibold">AI × GAMING INTELLIGENCE</span>
+      </div>
+      <h2 class="font-display text-3xl font-extrabold text-white">QUANTYX Platform</h2>
+      <p class="text-slate-300 text-base leading-relaxed font-light max-w-3xl">
+        Experimental gaming and development intelligence platform centered around AI-assisted game intelligence, performance analysis, contextual assistance, and multi-model AI orchestration.
+      </p>
+      <div class="flex flex-wrap gap-2 text-xs font-mono pt-2">
+        <span class="px-3 py-1 rounded bg-slate-900 text-yellow-400 border border-slate-700">MULTI-MODEL ORCHESTRATION</span>
+        <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">GAME INTELLIGENCE</span>
+        <span class="px-3 py-1 rounded bg-slate-900 text-slate-300 border border-slate-700">DEVELOPER TOOLING</span>
+      </div>
+      <div class="pt-3">
+        <a href="https://github.com/MAVIS-creator/mavis-gaming-site" target="_blank" class="btn-pill-blue text-xs font-mono">
+          View Public GitHub Repo <i data-lucide="external-link" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP 5: Geo-Fence Link Generator -->
+    <section id="geofence" class="card-hover-effect p-8 sm:p-10 rounded-3xl space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <span class="text-yellow-400 font-mono font-bold text-xl">05 /</span>
+        <span class="badge-security-red"><span class="dot-pulse"></span> LOCATION SECURITY</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <h2 class="font-display text-3xl font-extrabold text-white">Geo-Fence Link Generator</h2>
+          <p class="text-slate-300 text-base leading-relaxed font-light">
+            Location-aware security project creating links that only function within defined geographical coordinates. Combines GPS verification, JWT-based security tokens, QR codes, rate limiting, analytics, and link expiration timers.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono pt-2">
+            <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">GPS VERIFICATION</span>
+            <span class="px-3 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">JWT TOKENS</span>
+            <span class="px-3 py-1 rounded bg-slate-900 text-yellow-400 border border-slate-700">QR CODES</span>
+          </div>
+          <div class="pt-3">
+            <a href="https://github.com/MAVIS-creator/geo_fence" target="_blank" class="btn-pill-blue text-xs font-mono">
+              View Public GitHub Repo <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4 font-mono text-xs">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <span class="text-slate-400">GPS Boundary Tester</span>
+            <span class="text-emerald-400">LAUTECH GEOFENCE</span>
+          </div>
+          <div id="simFenceResult" class="text-slate-300">
+            Click button below to simulate location token check...
+          </div>
+          <button id="simFenceBtn" class="w-full py-2.5 rounded bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-semibold text-xs transition-colors flex items-center justify-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4"></i> TEST GEOFENCE TOKEN
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB REPOSITORY VAULT -->
+    <section class="space-y-8 pt-8 border-t border-slate-800">
+      <div>
+        <span class="text-xs font-mono text-yellow-400 uppercase tracking-widest">Public Repositories Vault</span>
+        <h2 class="font-display text-3xl font-bold text-white mt-1">OPEN-SOURCE & EXPERIMENTS</h2>
+        <p class="text-slate-400 text-sm font-light mt-1">
+          Direct public repositories from <a href="https://github.com/MAVIS-creator" target="_blank" class="text-sky-400 underline">github.com/MAVIS-creator</a> with real project logos.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Repo Card 1: Chess-game -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-sky-400 font-mono font-bold text-xl">
+                ♟️
+              </div>
+              <span class="text-xs font-mono text-slate-400">TypeScript</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">Chess-game</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Interactive web-based chess application built with modern TypeScript and responsive UI mechanics.
+            </p>
+          </div>
+          <a href="https://github.com/MAVIS-creator/Chess-game" target="_blank" class="btn-outline-slate text-xs justify-between w-full">
+            <span>View Public GitHub Repo</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-sky-400"></i>
+          </a>
+        </div>
+
+        <!-- Repo Card 2: DataBreachTool -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-red-500/30 flex items-center justify-center text-red-400">
+                <i data-lucide="shield-alert" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-mono text-slate-400">Python</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">DataBreachTool</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Cybersecurity audit tool designed for checking compromised data credentials and vulnerability leaks.
+            </p>
+          </div>
+          <a href="https://github.com/MAVIS-creator/DataBreachTool" target="_blank" class="btn-outline-slate text-xs justify-between w-full">
+            <span>View Public GitHub Repo</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-sky-400"></i>
+          </a>
+        </div>
+
+        <!-- Repo Card 3: File-Classifier -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-yellow-400">
+                <i data-lucide="folder-tree" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-mono text-slate-400">Python</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">File-Classifier</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Automated file organization utility that sorts, categorizes, and classifies filesystem documents.
+            </p>
+          </div>
+          <a href="https://github.com/MAVIS-creator/File-Classifier" target="_blank" class="btn-outline-slate text-xs justify-between w-full">
+            <span>View Public GitHub Repo</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-sky-400"></i>
+          </a>
+        </div>
+
+        <!-- Repo Card 4: CGPA Calculator -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-sky-400">
+                <i data-lucide="calculator" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-mono text-slate-400">Python</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">CGPA Calculator</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Academic GPA calculation tool crafted specifically for university grading systems and course metrics.
+            </p>
+          </div>
+          <a href="https://github.com/MAVIS-creator/CGPA" target="_blank" class="btn-outline-slate text-xs justify-between w-full">
+            <span>View Public GitHub Repo</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-sky-400"></i>
+          </a>
+        </div>
+
+        <!-- Repo Card 5: Snake-game -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <img src="assets/Snake-game_logo.png" alt="Snake Game Logo" class="w-10 h-10 rounded object-cover border border-slate-700" onerror="this.style.display='none'">
+              <span class="text-xs font-mono text-slate-400">JavaScript</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">Snake-game</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Classic retro snake game rebuilt with modern JavaScript canvas mechanics and collision logic.
+            </p>
+          </div>
+          <a href="https://github.com/MAVIS-creator/Snake-game" target="_blank" class="btn-outline-slate text-xs justify-between w-full">
+            <span>View Public GitHub Repo</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-sky-400"></i>
+          </a>
+        </div>
+
+        <!-- Repo Card 6: PaintGuard -->
+        <div class="card-hover-effect p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <img src="assets/PaintGuard_logo.svg" alt="PaintGuard Logo" class="w-10 h-10 rounded object-cover border border-slate-700" onerror="this.style.display='none'">
+              <span class="text-xs font-mono text-slate-400">Security</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">PaintGuard</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Security protection tool exploring desktop application auditing and system file defense.
+            </p>
+          </div>
+          <a href="https://github.com/MAVIS-creator/PaintGuard" target="_blank" class="btn-outline-slate text-xs justify-between w-full">
+            <span>View Public GitHub Repo</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-sky-400"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-slate-400 text-xs font-mono z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2026 Akintunde Dolapo Elisha (BK / MAVIS) · 400 Level LAUTECH, Nigeria</p>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/MAVIS-creator" target="_blank" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="terminal.html" class="hover:text-yellow-400 transition-colors">CLI Shell</a>
+        <a href="contact.html" class="hover:text-sky-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
