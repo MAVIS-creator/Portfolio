@@ -1,4 +1,4 @@
-/* Main JavaScript Engine - Akintunde Dolapo Elisha (MAVIS / BK) Portfolio */
+/* Master JavaScript Engine - Akintunde Dolapo Elisha (MAVIS / BK) Portfolio */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSimulators();
   initTerminalEngine();
   initCopyEmail();
+  initScrollAnimations();
 });
 
 /* 1. Mobile Navigation & Active Links */
@@ -31,7 +32,7 @@ function initNavbar() {
   });
 }
 
-/* 2. Background Particle Grid Canvas */
+/* 2. Background Particle Grid Canvas (Blue + Yellow Particles) */
 function initParticleCanvas() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
@@ -46,16 +47,16 @@ function initParticleCanvas() {
   });
 
   const particles = [];
-  const particleCount = Math.min(Math.floor(width / 25), 55);
+  const particleCount = Math.min(Math.floor(width / 22), 65);
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      size: Math.random() * 2 + 1,
-      color: Math.random() > 0.3 ? 'rgba(56, 189, 248, ' : 'rgba(250, 204, 21, '
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      size: Math.random() * 2.2 + 1,
+      color: Math.random() > 0.4 ? 'rgba(250, 204, 21, ' : 'rgba(56, 189, 248, '
     });
   }
 
@@ -72,7 +73,7 @@ function initParticleCanvas() {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + '0.6)';
+      ctx.fillStyle = p.color + '0.7)';
       ctx.fill();
 
       for (let j = i + 1; j < particles.length; j++) {
@@ -81,11 +82,11 @@ function initParticleCanvas() {
         let dy = p.y - p2.y;
         let dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 110) {
+        if (dist < 115) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(56, 189, 248, ${0.12 * (1 - dist / 110)})`;
+          ctx.strokeStyle = `rgba(250, 204, 21, ${0.12 * (1 - dist / 115)})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
@@ -121,11 +122,11 @@ function initSimulators() {
 
   if (scanBtn && scanOutput) {
     scanBtn.addEventListener('click', () => {
-      scanOutput.innerHTML = `<span class="text-sky-400">[AUDIT]</span> Initializing file integrity verification...<br>`;
+      scanOutput.innerHTML = `<span class="text-yellow-400">[AUDIT]</span> Initializing system integrity verification...<br>`;
       scanBtn.disabled = true;
 
       const steps = [
-        '<span class="text-slate-400">[1/4]</span> Checking system process integrity...',
+        '<span class="text-sky-400">[1/4]</span> Auditing system process memory & handles...',
         '<span class="text-yellow-400">[2/4]</span> Scanning startup persistence registry entries...',
         '<span class="text-emerald-400">[3/4]</span> USB Immunization shield: ACTIVE',
         '<span class="badge-security-red"><span class="dot-pulse"></span> SYSTEM AUDIT CLEAN: 0 Threats Detected</span>'
@@ -149,9 +150,9 @@ function initSimulators() {
       const lat = (8.4799 + (Math.random() - 0.5) * 0.01).toFixed(4);
       const lng = (4.5418 + (Math.random() - 0.5) * 0.01).toFixed(4);
       fenceOutput.innerHTML = `
-        <div class="p-3 bg-slate-900/90 rounded border border-sky-500/30 text-xs font-mono">
-          <p class="text-slate-300">GPS Coords: <span class="text-sky-400">${lat}° N, ${lng}° E</span></p>
-          <p class="text-slate-300">Geofence Radius: <span class="text-yellow-400">500m (LAUTECH Campus)</span></p>
+        <div class="p-3 bg-slate-900/90 rounded border border-yellow-500/40 text-xs font-mono">
+          <p class="text-slate-300">GPS Coords: <span class="text-yellow-400">${lat}° N, ${lng}° E</span></p>
+          <p class="text-slate-300">Geofence Radius: <span class="text-sky-400">500m (LAUTECH Campus)</span></p>
           <p class="mt-1 font-semibold text-emerald-400">✅ LINK VALIDATED: Token Expires in 14m 59s</p>
         </div>
       `;
@@ -185,7 +186,7 @@ function initTerminalEngine() {
 function executeCommand(cmd, historyElem) {
   const line = document.createElement('div');
   line.className = 'mb-2';
-  line.innerHTML = `<span class="text-sky-400">mavis@lautech:~$</span> <span class="text-white">${escapeHtml(cmd)}</span>`;
+  line.innerHTML = `<span class="text-yellow-400">mavis@lautech:~$</span> <span class="text-white">${escapeHtml(cmd)}</span>`;
   historyElem.appendChild(line);
 
   const res = document.createElement('div');
@@ -194,7 +195,7 @@ function executeCommand(cmd, historyElem) {
   switch (cmd) {
     case 'help':
       res.innerHTML = `
-        <p class="text-yellow-400 mb-1">Available MAVIS-CLI Commands:</p>
+        <p class="text-yellow-400 mb-1 font-bold">Available MAVIS-CLI Commands:</p>
         <p>• <span class="text-sky-400">about</span>      - Print Akintunde Dolapo Elisha bio & details</p>
         <p>• <span class="text-sky-400">projects</span>   - List flagship security & software builds</p>
         <p>• <span class="text-sky-400">skills</span>     - Display tech stack (HTML5, CSS3, JS, PHP, Python, React, Node, Supabase, Postgres)</p>
@@ -206,9 +207,9 @@ function executeCommand(cmd, historyElem) {
       break;
     case 'about':
       res.innerHTML = `
-        <p class="text-sky-400 font-semibold">Akintunde Dolapo Elisha (BK / MAVIS)</p>
+        <p class="text-yellow-400 font-semibold">Akintunde Dolapo Elisha (BK / MAVIS)</p>
         <p>21-year-old Nigerian computer nerd, cybersecurity student (400 Level @ LAUTECH), developer & experimenter.</p>
-        <p class="text-yellow-400 mt-1">"I build software, cybersecurity tools, and experiments."</p>
+        <p class="text-sky-400 mt-1">"I build software, cybersecurity tools, and experiments."</p>
       `;
       break;
     case 'projects':
@@ -217,20 +218,21 @@ function executeCommand(cmd, historyElem) {
         <p>1. <span class="text-sky-400 font-bold">VaultGuard 360</span> - Windows Security & Remediation Suite</p>
         <p>2. <span class="text-sky-400 font-bold">Blockchain Attendance</span> - SHA-256 & Device Fingerprinting</p>
         <p>3. <span class="text-sky-400 font-bold">HIGH Q SOLID ACADEMY</span> - highqsolidacademy.com</p>
-        <p>4. <span class="text-sky-400 font-bold">QUANTYX</span> - AI Multi-Model Gaming Intelligence</p>
+        <p>4. <span class="text-yellow-400 font-bold">QUANTYX Platform</span> - AI Gaming Intelligence (Code Private)</p>
         <p>5. <span class="text-sky-400 font-bold">Geo-Fence Link Generator</span> - Location-Aware JWT Security</p>
+        <p>6. <span class="text-sky-400 font-bold">Mind Control / MindGrid</span> - Klyvex Intelligence Prototype</p>
       `;
       break;
     case 'skills':
       res.innerHTML = `
-        <p class="text-sky-400">Core Languages & Stack:</p> HTML5, CSS3, JavaScript, PHP, Python, React, Node.js, Supabase, PostgreSQL, Git<br>
+        <p class="text-yellow-400 font-bold">Core Stack & Languages:</p> HTML5, CSS3, JavaScript, PHP, Python, React, Node.js, Supabase, PostgreSQL, Git<br>
         <p class="text-sky-400 mt-1">Specialties:</p> Web Security, SHA-256 Hash Chains, Device Fingerprinting, Multi-Model AI, Automation scripts.
       `;
       break;
     case 'exploring':
       res.innerHTML = `
         <p class="text-yellow-400 font-bold">AI × Gaming × Software × Cybersecurity</p>
-        <p class="text-slate-400">Building next-level intelligent software systems. Keep the mystery.</p>
+        <p class="text-slate-300">Building next-level intelligent software systems. Keep the mystery.</p>
       `;
       break;
     case 'security':
@@ -246,8 +248,8 @@ function executeCommand(cmd, historyElem) {
       res.innerHTML = `
         <p>Email: <span class="text-yellow-400">akintunde.dolapo1@gmail.com</span></p>
         <p>GitHub: <span class="text-sky-400">github.com/MAVIS-creator</span></p>
-        <p>X (Twitter): <span class="text-sky-400">@Klyvex</span></p>
-        <p>Instagram: <span class="text-sky-400">@adetayoibk</span></p>
+        <p>X (Twitter): <span class="text-yellow-400">@Klyvex</span></p>
+        <p>Instagram: <span class="text-pink-400">@adetayoibk</span></p>
       `;
       break;
     case '':
@@ -272,6 +274,26 @@ function initCopyEmail() {
       setTimeout(() => copyToast.classList.add('hidden'), 2500);
     });
   }
+}
+
+/* 6. Scroll Fade-In-Out Animation Observer */
+function initScrollAnimations() {
+  const elements = document.querySelectorAll('.fade-in-on-scroll');
+  
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(el => el.classList.add('fade-in-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in-visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  elements.forEach(el => observer.observe(el));
 }
 
 function escapeHtml(str) {
