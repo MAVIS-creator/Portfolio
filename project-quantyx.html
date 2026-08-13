@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUANTYX — AI Gaming Intelligence Platform | Akintunde Dolapo Elisha</title>
+  <meta name="description" content="QUANTYX is the AI intelligence layer behind the Mavis Gaming AI System — a full-stack platform exploring AI-assisted gaming, gameplay performance analysis, gaming intelligence, controlled simulations, and developer tooling.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100 bg-slate-950">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-yellow-500/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/MAVIS-creator_logo.png" alt="MAVIS Logo" loading="lazy" class="w-10 h-10 rounded-full border-2 border-yellow-400/80 object-cover group-hover:scale-105 transition-all">
+        <div>
+          <span class="font-display font-extrabold text-lg text-white group-hover:text-yellow-400 transition-colors">MAVIS<span class="text-yellow-400 font-mono">&lt;/&gt;</span></span>
+          <span class="block text-xs font-mono text-sky-400 font-semibold">BK // Akintunde</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-yellow-400 transition-colors">Home</a>
+        <a href="about.html" class="nav-link hover:text-yellow-400 transition-colors">About</a>
+        <a href="what-i-do.html" class="nav-link hover:text-yellow-400 transition-colors">What I Do</a>
+        <a href="projects.html" class="nav-link hover:text-yellow-400 transition-colors">Projects</a>
+        <a href="currently-exploring.html" class="nav-link hover:text-yellow-400 transition-colors">Exploring</a>
+        <a href="terminal.html" class="nav-link hover:text-yellow-400 transition-colors font-mono">Terminal</a>
+        <a href="contact.html" class="btn-pill-yellow">Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </nav>
+      <button id="mobileMenuToggle" title="Toggle Navigation Menu" class="md:hidden text-slate-300 hover:text-yellow-400 p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 border-b border-yellow-500/30 px-6 py-4 space-y-3 font-medium">
+      <a href="index.html" class="block hover:text-yellow-400">Home</a>
+      <a href="about.html" class="block hover:text-yellow-400">About</a>
+      <a href="what-i-do.html" class="block hover:text-yellow-400">What I Do</a>
+      <a href="projects.html" class="block text-yellow-400 font-bold">Projects</a>
+      <a href="currently-exploring.html" class="block hover:text-yellow-400">Exploring</a>
+      <a href="terminal.html" class="block font-mono text-yellow-400">Terminal CLI</a>
+      <a href="contact.html" class="block text-yellow-400">Contact</a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full z-10 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+      <a href="projects.html" class="hover:text-yellow-400 transition-colors">Projects</a>
+      <span class="text-slate-600">/</span>
+      <span class="text-yellow-400 font-bold">QUANTYX</span>
+    </div>
+
+    <!-- Project Detail Hero -->
+    <section class="project-detail-hero space-y-6 fade-in-on-scroll">
+      <div class="hero-glow"></div>
+      
+      <div class="flex flex-wrap items-start justify-between gap-6">
+        <div class="space-y-4 max-w-3xl">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="badge-in-development"><span class="dot-pulse-yellow"></span> IN DEVELOPMENT</span>
+            <span class="tech-badge text-yellow-400">AI × GAMING</span>
+          </div>
+          
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white leading-tight">
+            QUANTYX
+          </h1>
+          <p class="font-display text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-sky-400">
+            AI Gaming Intelligence Platform
+          </p>
+          
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+            QUANTYX is the AI intelligence layer behind the Mavis Gaming AI System — a full-stack platform exploring AI-assisted gaming, gameplay performance analysis, gaming intelligence, controlled simulations, and developer tooling.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <span class="px-4 py-2 rounded-full bg-yellow-400/10 text-yellow-400 border border-yellow-500/40 text-xs font-mono font-bold text-center">
+            🔒 PROPRIETARY CODE
+          </span>
+          <a href="projects.html" class="btn-outline-yellow text-sm justify-center">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Built Summary -->
+    <section class="space-y-4 fade-in-on-scroll">
+      <h2 class="font-display text-2xl font-extrabold text-white">What I Built</h2>
+      <p class="text-slate-300 text-base leading-relaxed font-light max-w-4xl">
+        Designed a modular architecture separating the frontend, PHP API layer, Python AI orchestration service, and MySQL data layer. QUANTYX uses model routing across <strong class="text-yellow-400">Groq</strong>, <strong class="text-sky-400">Gemini</strong>, and <strong class="text-yellow-400">OpenRouter</strong> to match different tasks with different AI providers while supporting fallback strategies and extensibility for future models.
+      </p>
+    </section>
+
+    <!-- System Architecture Section -->
+    <section class="tilted-skew-backdrop">
+      <div class="tilted-skew-content max-w-7xl mx-auto px-6 space-y-8">
+        <div>
+          <span class="text-xs font-mono text-yellow-400 uppercase tracking-widest font-bold">Multi-Service Architecture</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">System Architecture</h2>
+        </div>
+
+        <!-- Architecture Layer Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Frontend Layer -->
+          <div class="arch-layer-card space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-yellow-950/80 border border-yellow-500/40 flex items-center justify-center">
+                <i class="fa-brands fa-html5 text-lg text-orange-400"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Frontend</h3>
+                <p class="text-xs font-mono text-slate-400">HTML / JS / Tailwind</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              User-facing dashboard, chat interface, analysis views, and performance reporting. Built with HTML, Tailwind CSS, and JavaScript.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-badge text-orange-400">HTML</span>
+              <span class="tech-badge text-sky-400">TAILWIND</span>
+              <span class="tech-badge text-yellow-400">JS</span>
+            </div>
+          </div>
+
+          <!-- PHP API Layer -->
+          <div class="arch-layer-card space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-indigo-950/80 border border-indigo-500/40 flex items-center justify-center">
+                <i class="fa-brands fa-php text-lg text-indigo-300"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">PHP API Layer</h3>
+                <p class="text-xs font-mono text-slate-400">REST Backend</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Authentication, JWT refresh-token rotation, RBAC access control, HMAC service verification, request rate-limiting, API routing, validation, persistence, and audit logging.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-badge text-indigo-300">PHP</span>
+              <span class="tech-badge text-yellow-400">JWT</span>
+              <span class="tech-badge text-red-400">RBAC</span>
+              <span class="tech-badge text-sky-400">REST API</span>
+            </div>
+          </div>
+
+          <!-- Python AI Orchestrator -->
+          <div class="arch-layer-card space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-yellow-950/80 border border-yellow-500/40 flex items-center justify-center">
+                <i class="fa-brands fa-python text-lg text-yellow-400"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Python AI Orchestrator</h3>
+                <p class="text-xs font-mono text-slate-400">Intelligence Engine</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              The AI brain — handling model routing, task prioritization, memory context management, execution services, performance analysis, and search integration.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-badge text-yellow-400">PYTHON</span>
+              <span class="tech-badge text-emerald-400">FASTAPI</span>
+              <span class="tech-badge text-sky-400">AI ROUTER</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model Routing Architecture -->
+        <div class="arch-layer-card space-y-4 max-w-3xl mx-auto">
+          <h3 class="font-display font-bold text-white text-lg flex items-center gap-3">
+            <i class="fa-solid fa-brain text-yellow-400"></i>
+            Multi-Model Routing Engine
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Intelligently routes AI tasks between different providers based on complexity, speed requirements, and provider health:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-emerald-500/30 space-y-2">
+              <p class="font-mono text-emerald-400 font-bold text-sm">GROQ</p>
+              <p class="text-xs text-slate-400">Instant speed tasks</p>
+              <p class="text-[10px] font-mono text-slate-500">Simple / fast queries</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-sky-500/30 space-y-2">
+              <p class="font-mono text-sky-400 font-bold text-sm">GEMINI</p>
+              <p class="text-xs text-slate-400">Deep reasoning</p>
+              <p class="text-[10px] font-mono text-slate-500">Complex analysis</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-yellow-500/30 space-y-2">
+              <p class="font-mono text-yellow-400 font-bold text-sm">OPENROUTER</p>
+              <p class="text-xs text-slate-400">Specialized models</p>
+              <p class="text-[10px] font-mono text-slate-500">Fallback & specialty</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 Core Capabilities -->
+    <section class="space-y-8 fade-in-on-scroll">
+      <div>
+        <span class="text-xs font-mono text-yellow-400 uppercase tracking-widest font-bold">Platform Modules</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">5 Core Capabilities</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="capability-card space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="cap-number">1</span>
+            <h3 class="font-display font-bold text-white">Game Intelligence Hub</h3>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Collects and summarizes game updates, patch notes, gaming news, and trending information across the gaming ecosystem.
+          </p>
+        </div>
+
+        <div class="capability-card space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="cap-number">2</span>
+            <h3 class="font-display font-bold text-white">AI Gaming Assistant</h3>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Interactive AI for strategy guidance, contextual gaming conversations, and game-related assistance powered by multi-model routing.
+          </p>
+        </div>
+
+        <div class="capability-card space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="cap-number">3</span>
+            <h3 class="font-display font-bold text-white">Performance Analyzer</h3>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Takes gameplay metrics and transforms them into actionable recommendations and coaching through AI interpretation.
+          </p>
+        </div>
+
+        <div class="capability-card space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="cap-number">4</span>
+            <h3 class="font-display font-bold text-white">Controlled Game AI</h3>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Controlled offline/custom simulation workflows for experimenting with game AI in safe, sandboxed environments.
+          </p>
+        </div>
+
+        <div class="capability-card space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="cap-number">5</span>
+            <h3 class="font-display font-bold text-white">Developer & Testing Assistant</h3>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Code diagnostics, API testing, execution-driven feedback, and AI-assisted development workflows for builders.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Python AI Service Structure -->
+    <section class="space-y-6 fade-in-on-scroll">
+      <div>
+        <span class="text-xs font-mono text-yellow-400 uppercase tracking-widest font-bold">Repository Structure</span>
+        <h2 class="font-display text-2xl font-extrabold text-white mt-1">AI Service Architecture</h2>
+      </div>
+
+      <div class="card-hover-effect p-6 rounded-2xl font-mono text-xs sm:text-sm text-slate-300 leading-relaxed space-y-1 overflow-x-auto">
+        <p class="text-yellow-400 font-bold">ai-service-python/</p>
+        <p class="pl-4">app/</p>
+        <p class="pl-8">├── api/</p>
+        <p class="pl-12">│   ├── <span class="text-sky-400">routes_execution.py</span></p>
+        <p class="pl-12">│   └── <span class="text-sky-400">routes_performance.py</span></p>
+        <p class="pl-8">├── orchestrator/</p>
+        <p class="pl-12">│   ├── <span class="text-yellow-400">providers.py</span></p>
+        <p class="pl-12">│   ├── <span class="text-yellow-400">router.py</span></p>
+        <p class="pl-12">│   └── <span class="text-yellow-400">task_manager.py</span></p>
+        <p class="pl-8">└── services/</p>
+        <p class="pl-12">    ├── <span class="text-emerald-400">execution_service.py</span></p>
+        <p class="pl-12">    ├── <span class="text-emerald-400">memory_service.py</span></p>
+        <p class="pl-12">    ├── <span class="text-emerald-400">performance_analyzer.py</span></p>
+        <p class="pl-12">    └── <span class="text-emerald-400">search_service.py</span></p>
+      </div>
+    </section>
+
+    <!-- Full Tech Stack -->
+    <section class="space-y-6 fade-in-on-scroll">
+      <h2 class="font-display text-xl font-extrabold text-white">Technology Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        <span class="tech-badge text-yellow-400"><i class="fa-brands fa-python mr-1"></i> PYTHON</span>
+        <span class="tech-badge text-indigo-300"><i class="fa-brands fa-php mr-1"></i> PHP</span>
+        <span class="tech-badge text-yellow-400"><i class="fa-brands fa-js mr-1"></i> JAVASCRIPT</span>
+        <span class="tech-badge text-sky-400">TAILWIND CSS</span>
+        <span class="tech-badge text-sky-400">MYSQL</span>
+        <span class="tech-badge text-emerald-400">GROQ</span>
+        <span class="tech-badge text-sky-400">GEMINI</span>
+        <span class="tech-badge text-yellow-400">OPENROUTER</span>
+        <span class="tech-badge text-red-400">JWT</span>
+        <span class="tech-badge text-red-400">RBAC</span>
+        <span class="tech-badge text-sky-400">REST API</span>
+        <span class="tech-badge text-yellow-400">AI ORCHESTRATION</span>
+      </div>
+    </section>
+
+    <!-- Navigation CTA -->
+    <div class="pt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800">
+      <a href="projects.html" class="btn-outline-slate text-sm">
+        ← Back to All Projects
+      </a>
+      <a href="project-mavis.html" class="btn-pill-yellow text-sm">
+        Next: MAVIS Platform <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-yellow-500/20 bg-slate-950 py-8 text-slate-400 text-xs font-mono z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2026 Akintunde Dolapo Elisha (BK / MAVIS) · 400 Level LAUTECH, Nigeria</p>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/MAVIS-creator" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors">GitHub</a>
+        <a href="https://x.com/Klyvex" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors">X (@Klyvex)</a>
+        <a href="https://instagram.com/adetayoibk" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors">IG (@adetayoibk)</a>
+        <a href="terminal.html" class="hover:text-yellow-400 transition-colors">CLI Shell</a>
+        <a href="contact.html" class="hover:text-yellow-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

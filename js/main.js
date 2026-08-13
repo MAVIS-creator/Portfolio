@@ -203,6 +203,7 @@ function executeCommand(cmd, historyElem) {
         <p>• <span class="text-sky-400">security</span>   - View VaultGuard & Attendance integrity status</p>
         <p>• <span class="text-sky-400">clear</span>      - Clear terminal screen</p>
         <p>• <span class="text-sky-400">contact</span>    - Show contact details, email & social channels</p>
+        <p>• <span class="text-yellow-400">journey</span>    - <span class="text-yellow-400">🔓 Secret 3D Tech Journey (Easter Egg)</span></p>
       `;
       break;
     case 'about':
@@ -243,6 +244,18 @@ function executeCommand(cmd, historyElem) {
       break;
     case 'clear':
       historyElem.innerHTML = '';
+      return;
+    case 'journey':
+    case 'klyvex':
+    case 'secret':
+      res.innerHTML = `
+        <p class="text-yellow-400 font-bold">🔓 Easter Egg Unlocked: KLYVEX ORIGINS</p>
+        <p class="text-slate-300">Launching 3D Tech Journey experience...</p>
+        <p class="text-xs text-slate-500 mt-1">Redirecting to klyvex-journey.html in 2 seconds...</p>
+      `;
+      historyElem.appendChild(res);
+      historyElem.scrollTop = historyElem.scrollHeight;
+      setTimeout(() => { window.location.href = 'klyvex-journey.html'; }, 2000);
       return;
     case 'contact':
       res.innerHTML = `

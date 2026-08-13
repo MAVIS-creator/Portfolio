@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KLYVEX Journey — Secret 3D Tech Evolution | Akintunde Dolapo Elisha</title>
+  <meta name="description" content="An interactive Three.js 3D experience tracing Akintunde's developer journey from HTML5 to Multi-Model AI and the KLYVEX vision.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    html, body { margin: 0; padding: 0; overflow: hidden; background: #030508; }
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <a href="terminal.html" class="journey-back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Terminal
+  </a>
+
+  <!-- Easter Egg Badge -->
+  <div style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 130;">
+    <span class="badge-in-development">
+      <span class="dot-pulse-yellow"></span> EASTER EGG — KLYVEX ORIGINS
+    </span>
+  </div>
+
+  <!-- Three.js Canvas Container -->
+  <div id="journeyCanvas" class="journey-canvas-container"></div>
+
+  <!-- Milestone Popup (hidden by default) -->
+  <div id="milestonePopup" class="journey-milestone-popup hidden">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+      <div>
+        <span id="popupYear" class="text-xs font-mono text-yellow-400 font-bold"></span>
+        <h3 id="popupTech" class="font-display text-2xl font-extrabold text-white" style="margin-top: 0.25rem;"></h3>
+      </div>
+      <button onclick="JourneyEngine.hideMilestone()" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-yellow-400 transition-all" style="cursor: pointer;">
+        ✕
+      </button>
+    </div>
+    <p id="popupDesc" class="text-slate-300 text-sm leading-relaxed" style="margin-bottom: 0.75rem;"></p>
+    <p id="popupDetail" class="text-slate-400 text-xs font-mono leading-relaxed"></p>
+  </div>
+
+  <!-- HUD Overlay -->
+  <div class="journey-hud">
+    <div style="max-width: 900px; margin: 0 auto;">
+
+      <!-- Progress Bar -->
+      <div class="journey-progress-bar" style="margin-bottom: 1rem;">
+        <div id="journeyProgressFill" class="journey-progress-fill" style="width: 0%;"></div>
+      </div>
+
+      <!-- Current Milestone Info -->
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+        <div>
+          <span id="hudYear" class="text-xs font-mono text-yellow-400 font-bold">2020</span>
+          <p id="hudTech" class="font-display text-xl font-extrabold text-white" style="margin: 0.25rem 0 0;">🏗️ HTML5</p>
+          <p id="hudDesc" class="text-slate-400 text-xs" style="margin: 0.25rem 0 0; max-width: 400px;">The Foundation — Structure, semantics, and the first lines of code.</p>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button id="autoWalkBtn" onclick="JourneyEngine.toggleAutoWalk()" class="btn-outline-yellow text-xs" style="padding: 6px 14px; font-family: 'Fira Code', monospace; cursor: pointer;">
+            ⏸ Pause Auto-Walk
+          </button>
+          <button onclick="JourneyEngine.showMilestone()" class="btn-pill-yellow text-xs" style="padding: 6px 14px; cursor: pointer;">
+            SPACE — View Details
+          </button>
+        </div>
+      </div>
+
+      <!-- Milestone Jump Buttons -->
+      <div style="display: flex; gap: 0.4rem; margin-top: 0.75rem; flex-wrap: wrap;">
+        <button onclick="JourneyEngine.goToMilestone(0)" class="tech-badge text-orange-400" style="cursor: pointer;">HTML5</button>
+        <button onclick="JourneyEngine.goToMilestone(1)" class="tech-badge text-sky-400" style="cursor: pointer;">CSS3</button>
+        <button onclick="JourneyEngine.goToMilestone(2)" class="tech-badge text-yellow-400" style="cursor: pointer;">JS</button>
+        <button onclick="JourneyEngine.goToMilestone(3)" class="tech-badge text-indigo-300" style="cursor: pointer;">PHP</button>
+        <button onclick="JourneyEngine.goToMilestone(4)" class="tech-badge text-yellow-400" style="cursor: pointer;">Python</button>
+        <button onclick="JourneyEngine.goToMilestone(5)" class="tech-badge text-sky-400" style="cursor: pointer;">React</button>
+        <button onclick="JourneyEngine.goToMilestone(6)" class="tech-badge text-emerald-400" style="cursor: pointer;">Supabase</button>
+        <button onclick="JourneyEngine.goToMilestone(7)" class="tech-badge text-yellow-400" style="cursor: pointer;">AI & KLYVEX</button>
+      </div>
+
+      <!-- Controls Help -->
+      <div style="margin-top: 0.75rem; display: flex; gap: 1rem; font-size: 0.65rem; font-family: 'Fira Code', monospace; color: #475569;">
+        <span>← → Arrow Keys to walk</span>
+        <span>SPACE to view milestone</span>
+        <span>ESC to close popup</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Journey 3D Engine -->
+  <script src="js/journey-3d.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      JourneyEngine.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAVIS Platform — Gaming & Development Ecosystem | Akintunde Dolapo Elisha</title>
+  <meta name="description" content="MAVIS is a full-stack gaming and development platform combining competitive gaming infrastructure, AI-assisted features, community showcases, APIs, tournaments, subscriptions, and developer-focused tools.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100 bg-slate-950">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-yellow-500/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/MAVIS-creator_logo.png" alt="MAVIS Logo" loading="lazy" class="w-10 h-10 rounded-full border-2 border-yellow-400/80 object-cover group-hover:scale-105 transition-all">
+        <div>
+          <span class="font-display font-extrabold text-lg text-white group-hover:text-yellow-400 transition-colors">MAVIS<span class="text-yellow-400 font-mono">&lt;/&gt;</span></span>
+          <span class="block text-xs font-mono text-sky-400 font-semibold">BK // Akintunde</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="index.html" class="nav-link hover:text-yellow-400 transition-colors">Home</a>
+        <a href="about.html" class="nav-link hover:text-yellow-400 transition-colors">About</a>
+        <a href="what-i-do.html" class="nav-link hover:text-yellow-400 transition-colors">What I Do</a>
+        <a href="projects.html" class="nav-link hover:text-yellow-400 transition-colors">Projects</a>
+        <a href="currently-exploring.html" class="nav-link hover:text-yellow-400 transition-colors">Exploring</a>
+        <a href="terminal.html" class="nav-link hover:text-yellow-400 transition-colors font-mono">Terminal</a>
+        <a href="contact.html" class="btn-pill-yellow">Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </nav>
+      <button id="mobileMenuToggle" title="Toggle Navigation Menu" class="md:hidden text-slate-300 hover:text-yellow-400 p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-950/95 border-b border-yellow-500/30 px-6 py-4 space-y-3 font-medium">
+      <a href="index.html" class="block hover:text-yellow-400">Home</a>
+      <a href="about.html" class="block hover:text-yellow-400">About</a>
+      <a href="what-i-do.html" class="block hover:text-yellow-400">What I Do</a>
+      <a href="projects.html" class="block text-yellow-400 font-bold">Projects</a>
+      <a href="currently-exploring.html" class="block hover:text-yellow-400">Exploring</a>
+      <a href="terminal.html" class="block font-mono text-yellow-400">Terminal CLI</a>
+      <a href="contact.html" class="block text-yellow-400">Contact</a>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full z-10 space-y-16">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+      <a href="projects.html" class="hover:text-yellow-400 transition-colors">Projects</a>
+      <span class="text-slate-600">/</span>
+      <span class="text-sky-400 font-bold">MAVIS Platform</span>
+    </div>
+
+    <!-- Project Detail Hero -->
+    <section class="project-detail-hero space-y-6 fade-in-on-scroll">
+      <div class="hero-glow"></div>
+
+      <div class="flex flex-wrap items-start justify-between gap-6">
+        <div class="space-y-4 max-w-3xl">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="badge-evolving"><span class="dot-pulse-blue"></span> EVOLVING</span>
+            <span class="tech-badge text-sky-400">GAMING × DEVELOPMENT</span>
+          </div>
+
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white leading-tight">
+            MAVIS <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-yellow-400">Platform</span>
+          </h1>
+          <p class="font-display text-xl sm:text-2xl font-bold text-sky-400">
+            Gaming & Development Ecosystem
+          </p>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+            A full-stack gaming and development platform combining competitive gaming infrastructure, AI-assisted features, community showcases, APIs, tournaments, subscriptions, and developer-focused tools into a single web ecosystem.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <span class="px-4 py-2 rounded-full bg-sky-400/10 text-sky-400 border border-sky-500/40 text-xs font-mono font-bold text-center">
+            🔒 PRIVATE REPOSITORY
+          </span>
+          <a href="projects.html" class="btn-outline-yellow text-sm justify-center">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- What This Platform Contains -->
+    <section class="space-y-4 fade-in-on-scroll">
+      <h2 class="font-display text-2xl font-extrabold text-white">What This Platform Contains</h2>
+      <p class="text-slate-300 text-base leading-relaxed font-light max-w-4xl">
+        MAVIS has evolved beyond being a personal website. It's structured as the <strong class="text-sky-400">KLYVEX Platform</strong>, with MAVIS being the repository/project foundation behind it. The homepage is <strong class="text-yellow-400">database-driven</strong>, pulling live streams, sponsors, subscription plans, fighters, tournaments and game information from the backend.
+      </p>
+    </section>
+
+    <!-- 5 Core Ecosystem Modules -->
+    <section class="tilted-skew-backdrop">
+      <div class="tilted-skew-content max-w-7xl mx-auto px-6 space-y-8">
+        <div>
+          <span class="text-xs font-mono text-sky-400 uppercase tracking-widest font-bold">Platform Architecture</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">5 Core Ecosystem Modules</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="capability-card space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="cap-number">1</span>
+              <h3 class="font-display font-bold text-white">Competitive Gaming Infrastructure</h3>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Games, players/fighters, teams, tournaments, competitive events, live streams, dynamic tournament countdowns, and gaming showcases — all database-driven.
+            </p>
+          </div>
+
+          <div class="capability-card space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="cap-number">2</span>
+              <h3 class="font-display font-bold text-white">AI Lab</h3>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Dedicated <code class="text-yellow-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">ai-lab.php</code> and <code class="text-yellow-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">js/ai-lab.js</code> modules for integrated AI experimentation directly on the platform.
+            </p>
+          </div>
+
+          <div class="capability-card space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="cap-number">3</span>
+              <h3 class="font-display font-bold text-white">Developer API Platform</h3>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              API key management, full documentation for Attendance & Geofencing APIs, and a developer-facing ecosystem. Includes <code class="text-sky-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">api-showcase.php</code> and key management pages.
+            </p>
+          </div>
+
+          <div class="capability-card space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="cap-number">4</span>
+              <h3 class="font-display font-bold text-white">Community Showcase Hub</h3>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              A submission flow for community members to submit their own Game, API, or Tool. Approved projects appear on the community showcase — making MAVIS a platform for other people's projects too.
+            </p>
+          </div>
+
+          <div class="capability-card space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="cap-number">5</span>
+              <h3 class="font-display font-bold text-white">Subscription & Sponsor Engine</h3>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Database-driven <code class="text-yellow-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">subscription_plans</code> and <code class="text-yellow-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">sponsors</code> with active/inactive status, display ordering, logo URLs, and website links rendered dynamically.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section class="space-y-8 fade-in-on-scroll">
+      <div>
+        <span class="text-xs font-mono text-yellow-400 uppercase tracking-widest font-bold">Technical Stack</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">Application Architecture</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="arch-layer-card space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-indigo-950/80 border border-indigo-500/40 flex items-center justify-center">
+              <i class="fa-brands fa-php text-lg text-indigo-300"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-white">Structured PHP Framework</h3>
+              <p class="text-xs font-mono text-slate-400">Composer Autoloading</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Built with Composer autoloading (<code class="text-sky-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">Mavis\Services\ContentService</code>, <code class="text-sky-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">Mavis\Core\Database</code>), PDO queries, and clean MVC service boundaries. Not just individual PHP files — a proper application architecture.
+          </p>
+        </div>
+
+        <div class="arch-layer-card space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-sky-950/80 border border-sky-500/40 flex items-center justify-center">
+              <i class="fa-solid fa-wand-magic-sparkles text-lg text-sky-400"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-white">Motion & Interaction Design</h3>
+              <p class="text-xs font-mono text-slate-400">Tailwind + Custom Animations</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Parallax scrolling, scroll storytelling (<code class="text-yellow-400 bg-slate-900 px-1.5 py-0.5 rounded text-xs">data-scrollytelling</code>), light-sweep cards, tilt interaction, magnetic controls, animated countdowns, and responsive transitions.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Full Tech Stack -->
+    <section class="space-y-6 fade-in-on-scroll">
+      <h2 class="font-display text-xl font-extrabold text-white">Technology Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        <span class="tech-badge text-indigo-300"><i class="fa-brands fa-php mr-1"></i> PHP</span>
+        <span class="tech-badge text-sky-400">MYSQL</span>
+        <span class="tech-badge text-yellow-400"><i class="fa-brands fa-js mr-1"></i> JAVASCRIPT</span>
+        <span class="tech-badge text-orange-400"><i class="fa-brands fa-html5 mr-1"></i> HTML</span>
+        <span class="tech-badge text-sky-400">TAILWIND CSS</span>
+        <span class="tech-badge text-sky-400">COMPOSER</span>
+        <span class="tech-badge text-sky-400">REST APIS</span>
+        <span class="tech-badge text-yellow-400">AI INTEGRATION</span>
+        <span class="tech-badge text-red-400">AUTHENTICATION</span>
+        <span class="tech-badge text-yellow-400">API KEY MANAGEMENT</span>
+        <span class="tech-badge text-emerald-400">DATABASE-DRIVEN</span>
+      </div>
+    </section>
+
+    <!-- Navigation CTA -->
+    <div class="pt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800">
+      <a href="project-quantyx.html" class="btn-outline-slate text-sm">
+        ← Prev: QUANTYX
+      </a>
+      <a href="project-vaultguard.html" class="btn-pill-yellow text-sm">
+        Next: VaultGuard 360 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-yellow-500/20 bg-slate-950 py-8 text-slate-400 text-xs font-mono z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2026 Akintunde Dolapo Elisha (BK / MAVIS) · 400 Level LAUTECH, Nigeria</p>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/MAVIS-creator" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors">GitHub</a>
+        <a href="https://x.com/Klyvex" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-colors">X (@Klyvex)</a>
+        <a href="https://instagram.com/adetayoibk" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors">IG (@adetayoibk)</a>
+        <a href="terminal.html" class="hover:text-yellow-400 transition-colors">CLI Shell</a>
+        <a href="contact.html" class="hover:text-yellow-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
