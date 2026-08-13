@@ -31,7 +31,7 @@ function initNavbar() {
   });
 }
 
-/* 2. Background Particle Grid Canvas (Reference Image 1) */
+/* 2. Background Particle Grid Canvas */
 function initParticleCanvas() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
@@ -59,14 +59,6 @@ function initParticleCanvas() {
     });
   }
 
-  let mouseX = width / 2;
-  let mouseY = height / 2;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
@@ -78,13 +70,11 @@ function initParticleCanvas() {
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
-      // Draw particle
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fillStyle = p.color + '0.6)';
       ctx.fill();
 
-      // Connect near particles
       for (let j = i + 1; j < particles.length; j++) {
         let p2 = particles[j];
         let dx = p.x - p2.x;
@@ -113,7 +103,6 @@ function initSimulators() {
   // SHA-256 Hash Chain Simulator
   const hashInput = document.getElementById('simStudentName');
   const hashOutput = document.getElementById('simHashResult');
-  const prevHashElem = document.getElementById('simPrevHash');
 
   if (hashInput && hashOutput) {
     let currentPrev = "0000a89f3c71b209e84b";
@@ -126,7 +115,7 @@ function initSimulators() {
     });
   }
 
-  // VaultGuard Malware Process Scanner Sandbox
+  // VaultGuard Sandbox
   const scanBtn = document.getElementById('simScanBtn');
   const scanOutput = document.getElementById('simScanOutput');
 
@@ -151,7 +140,7 @@ function initSimulators() {
     });
   }
 
-  // Geo-Fence Link Tester
+  // Geo-Fence Tester
   const testFenceBtn = document.getElementById('simFenceBtn');
   const fenceOutput = document.getElementById('simFenceResult');
 
@@ -170,7 +159,6 @@ function initSimulators() {
   }
 }
 
-/* Helper to compute SHA-256 string */
 async function computeSha256(message) {
   const msgBuffer = new TextEncoder().encode(message);
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -209,11 +197,11 @@ function executeCommand(cmd, historyElem) {
         <p class="text-yellow-400 mb-1">Available MAVIS-CLI Commands:</p>
         <p>• <span class="text-sky-400">about</span>      - Print Akintunde Dolapo Elisha bio & details</p>
         <p>• <span class="text-sky-400">projects</span>   - List flagship security & software builds</p>
-        <p>• <span class="text-sky-400">skills</span>     - Display tech stack & capabilities matrix</p>
+        <p>• <span class="text-sky-400">skills</span>     - Display tech stack (HTML5, CSS3, JS, PHP, Python, React, Node, Supabase, Postgres)</p>
         <p>• <span class="text-sky-400">exploring</span>  - AI x Gaming x Cybersecurity vision</p>
         <p>• <span class="text-sky-400">security</span>   - View VaultGuard & Attendance integrity status</p>
         <p>• <span class="text-sky-400">clear</span>      - Clear terminal screen</p>
-        <p>• <span class="text-sky-400">contact</span>    - Show contact details & social channels</p>
+        <p>• <span class="text-sky-400">contact</span>    - Show contact details, email & social channels</p>
       `;
       break;
     case 'about':
@@ -228,14 +216,14 @@ function executeCommand(cmd, historyElem) {
         <p class="text-yellow-400 font-semibold mb-1">Flagship Projects:</p>
         <p>1. <span class="text-sky-400 font-bold">VaultGuard 360</span> - Windows Security & Remediation Suite</p>
         <p>2. <span class="text-sky-400 font-bold">Blockchain Attendance</span> - SHA-256 & Device Fingerprinting</p>
-        <p>3. <span class="text-sky-400 font-bold">HIGH Q SOLID ACADEMY</span> - Portal & Education System</p>
+        <p>3. <span class="text-sky-400 font-bold">HIGH Q SOLID ACADEMY</span> - highqsolidacademy.com</p>
         <p>4. <span class="text-sky-400 font-bold">QUANTYX</span> - AI Multi-Model Gaming Intelligence</p>
         <p>5. <span class="text-sky-400 font-bold">Geo-Fence Link Generator</span> - Location-Aware JWT Security</p>
       `;
       break;
     case 'skills':
       res.innerHTML = `
-        <p class="text-sky-400">Languages & Tools:</p> JavaScript, Python, PHP, C#, HTML5, CSS3, Tailwind, SQL, Git<br>
+        <p class="text-sky-400">Core Languages & Stack:</p> HTML5, CSS3, JavaScript, PHP, Python, React, Node.js, Supabase, PostgreSQL, Git<br>
         <p class="text-sky-400 mt-1">Specialties:</p> Web Security, SHA-256 Hash Chains, Device Fingerprinting, Multi-Model AI, Automation scripts.
       `;
       break;
@@ -258,6 +246,8 @@ function executeCommand(cmd, historyElem) {
       res.innerHTML = `
         <p>Email: <span class="text-yellow-400">akintunde.dolapo1@gmail.com</span></p>
         <p>GitHub: <span class="text-sky-400">github.com/MAVIS-creator</span></p>
+        <p>X (Twitter): <span class="text-sky-400">@Klyvex</span></p>
+        <p>Instagram: <span class="text-sky-400">@adetayoibk</span></p>
       `;
       break;
     case '':
@@ -277,7 +267,7 @@ function initCopyEmail() {
 
   if (copyBtn && copyToast) {
     copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('akintundeakintunde.dolapo1@gmail.com');
+      navigator.clipboard.writeText('akintunde.dolapo1@gmail.com');
       copyToast.classList.remove('hidden');
       setTimeout(() => copyToast.classList.add('hidden'), 2500);
     });

@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akintunde Dolapo Elisha (MAVIS / BK) — Developer & Cybersecurity Student</title>
   <meta name="description" content="Portfolio of Akintunde Dolapo Elisha (BK / MAVIS) - 400 Level LAUTECH Computer Science & Cybersecurity Student, Developer, Gamer, and AI-Native Experimenter.">
+  <!-- FontAwesome 6 for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Master Styles -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100 bg-slate-950">
@@ -37,7 +42,7 @@
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button id="mobileMenuToggle" class="md:hidden text-slate-300 hover:text-white p-2">
+      <button id="mobileMenuToggle" title="Toggle Navigation Menu" class="md:hidden text-slate-300 hover:text-white p-2">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
@@ -70,7 +75,7 @@
         <!-- High-Impact Editorial Heading -->
         <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight text-white leading-[1.1]">
           AKINTUNDE <br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-400">DOLAPO ELISHA</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-yellow-400">DOLAPO ELISHA</span>
           <span class="text-yellow-400 font-mono text-3xl sm:text-5xl">→</span>
         </h1>
 
@@ -84,7 +89,7 @@
           I build software, explore technology, research security controls, and occasionally get carried away with an idea. AI-native experimenter driven by curiosity.
         </p>
 
-        <!-- Action CTA Buttons & Social Links (Image 1 style) -->
+        <!-- Action CTA Buttons & Social Links (FontAwesome Icons) -->
         <div class="flex flex-wrap items-center gap-4 pt-4">
           <a href="projects.html" class="btn-pill-blue text-base px-7 py-3">
             VIEW MY WORK <i data-lucide="arrow-right" class="w-5 h-5"></i>
@@ -93,34 +98,55 @@
             <i data-lucide="terminal" class="w-5 h-5 text-yellow-400"></i> LAUNCH CLI
           </a>
           
+          <!-- Social Icons (FontAwesome 6) -->
           <div class="flex items-center gap-3 pl-2">
-            <a href="https://github.com/MAVIS-creator" target="_blank" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-sky-400 hover:border-sky-500 transition-all">
-              <i data-lucide="github" class="w-5 h-5"></i>
+            <!-- GitHub -->
+            <a href="https://github.com/MAVIS-creator" target="_blank" rel="noopener noreferrer" title="GitHub Profile" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-sky-400 hover:text-yellow-400 hover:border-yellow-400 transition-all shadow-md">
+              <i class="fa-brands fa-github text-xl"></i>
             </a>
-            <a href="contact.html" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-yellow-400 hover:border-yellow-400 transition-all">
-              <i data-lucide="mail" class="w-5 h-5"></i>
+            <!-- Email -->
+            <a href="mailto:akintunde.dolapo1@gmail.com" title="Direct Email" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-yellow-400 hover:text-sky-400 hover:border-sky-500 transition-all shadow-md">
+              <i class="fa-solid fa-envelope text-lg"></i>
+            </a>
+            <!-- X / Twitter (@Klyvex) -->
+            <a href="https://x.com/Klyvex" target="_blank" rel="noopener noreferrer" title="X / Twitter (@Klyvex)" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-200 hover:text-sky-400 hover:border-sky-500 transition-all shadow-md">
+              <i class="fa-brands fa-x-twitter text-lg"></i>
+            </a>
+            <!-- Instagram (@adetayoibk) -->
+            <a href="https://instagram.com/adetayoibk" target="_blank" rel="noopener noreferrer" title="Instagram (@adetayoibk)" class="w-11 h-11 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-pink-400 hover:text-yellow-400 hover:border-yellow-400 transition-all shadow-md">
+              <i class="fa-brands fa-instagram text-xl"></i>
             </a>
           </div>
         </div>
 
         <!-- Currently Building Status Tag -->
         <div class="pt-6 flex items-center gap-3 text-xs font-mono text-slate-400">
-          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-ping"></span>
           <span>CURRENTLY EXPLORING: <strong class="text-slate-200 font-semibold">AI × Gaming × Software × Cybersecurity</strong></span>
         </div>
       </div>
 
-      <!-- Right Column: Glowing Circular Avatar with 5 Orbiting Tech Stack Badges (HTML5, CSS3, JS, PHP, Python) -->
+      <!-- Right Column: Glowing Circular Avatar with 5 Official Tech Stack Badges (FontAwesome) -->
       <div class="lg:col-span-5 flex justify-center items-center">
         <div class="avatar-halo-container">
           <img src="assets/profile.png" alt="Akintunde Dolapo Elisha" class="avatar-image-inner" onerror="this.src='assets/MAVIS-creator_logo.png'">
           
-          <!-- 5 Orbiting Main Tech Badges: HTML5, CSS3, JS, PHP, Python -->
-          <div class="orbit-badge orbit-badge-1" title="HTML5"><i data-lucide="code-2" class="w-5 h-5 text-orange-500"></i></div>
-          <div class="orbit-badge orbit-badge-2" title="CSS3"><i data-lucide="palette" class="w-5 h-5 text-blue-400"></i></div>
-          <div class="orbit-badge orbit-badge-3" title="JavaScript (JS)"><i data-lucide="file-code-2" class="w-5 h-5 text-yellow-400"></i></div>
-          <div class="orbit-badge orbit-badge-4" title="PHP"><i data-lucide="server" class="w-5 h-5 text-indigo-400"></i></div>
-          <div class="orbit-badge orbit-badge-5" title="Python"><i data-lucide="terminal" class="w-5 h-5 text-sky-400"></i></div>
+          <!-- 5 Official Tech Stack Badges: HTML5, CSS3, JS, PHP, Python -->
+          <div class="orbit-badge orbit-badge-html" title="HTML5">
+            <i class="fa-brands fa-html5 text-2xl text-orange-500"></i>
+          </div>
+          <div class="orbit-badge orbit-badge-css" title="CSS3">
+            <i class="fa-brands fa-css3-alt text-2xl text-blue-500"></i>
+          </div>
+          <div class="orbit-badge orbit-badge-js" title="JavaScript (JS)">
+            <i class="fa-brands fa-js text-2xl text-yellow-400"></i>
+          </div>
+          <div class="orbit-badge orbit-badge-php" title="PHP">
+            <i class="fa-brands fa-php text-2xl text-indigo-400"></i>
+          </div>
+          <div class="orbit-badge orbit-badge-py" title="Python">
+            <i class="fa-brands fa-python text-2xl text-sky-400"></i>
+          </div>
         </div>
       </div>
 
@@ -145,7 +171,7 @@
           </div>
           <h3 class="font-display text-xl font-bold text-white">Web & Software Dev</h3>
           <p class="text-slate-400 text-sm leading-relaxed">
-            Building real-world web platforms, clean user interfaces, robust REST APIs, and scalable software solutions.
+            Building real-world web applications and REST services using HTML5, CSS3, JavaScript, React, Node.js, PHP, Python, Supabase, and PostgreSQL.
           </p>
         </div>
 
@@ -174,7 +200,7 @@
       </div>
     </section>
 
-    <!-- SELECTED WORK (FEATURED PROJECTS LINKED TO PUBLIC GITHUB REPOS) -->
+    <!-- SELECTED WORK (FEATURED PROJECTS LINKED TO PUBLIC GITHUB & LIVE REPOS) -->
     <section class="space-y-8">
       <div class="flex items-center justify-between border-b border-slate-800 pb-4">
         <div>
@@ -207,7 +233,7 @@
             <a href="projects.html#vaultguard" class="inline-flex items-center gap-1 text-sm font-mono text-slate-400 hover:text-white transition-colors">
               Details & Demo
             </a>
-            <a href="https://github.com/MAVIS-creator/PaintGuard" target="_blank" class="inline-flex items-center gap-1 text-sm font-mono font-semibold text-sky-400 hover:text-yellow-400 transition-colors">
+            <a href="https://github.com/MAVIS-creator/PaintGuard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-sm font-mono font-semibold text-sky-400 hover:text-yellow-400 transition-colors">
               View Public GitHub Repo <i data-lucide="external-link" class="w-4 h-4"></i>
             </a>
           </div>
@@ -232,8 +258,56 @@
             <a href="projects.html#blockchain" class="inline-flex items-center gap-1 text-sm font-mono text-slate-400 hover:text-white transition-colors">
               Details & Demo
             </a>
-            <a href="https://github.com/MAVIS-creator/Blockchain-Based-Attendance-System" target="_blank" class="inline-flex items-center gap-1 text-sm font-mono font-semibold text-sky-400 hover:text-yellow-400 transition-colors">
+            <a href="https://github.com/MAVIS-creator/Blockchain-Based-Attendance-System" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-sm font-mono font-semibold text-sky-400 hover:text-yellow-400 transition-colors">
               View Public GitHub Repo <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: HIGH Q SOLID ACADEMY (with highqsolidacademy.com live URL) -->
+        <div class="card-hover-effect p-8 rounded-2xl space-y-5 relative overflow-hidden group">
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-400 font-mono font-bold text-lg">03 /</span>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-500/30 text-xs font-mono font-semibold">LIVE PLATFORM</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">HIGH Q SOLID ACADEMY</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Educational platform and portal application developed to streamline learning management, course material access, student records, and portal administration.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">WEB PORTAL</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 text-yellow-400 border border-slate-700">highqsolidacademy.com</span>
+          </div>
+          <div class="pt-2 flex items-center justify-between border-t border-slate-800/80">
+            <a href="https://github.com/MAVIS-creator/akintunde-abiodun-isaiah-portfolio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-mono text-slate-400 hover:text-white transition-colors">
+              GitHub Repo
+            </a>
+            <a href="https://highqsolidacademy.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-sm font-mono font-semibold text-yellow-400 hover:text-sky-400 transition-colors">
+              Visit highqsolidacademy.com <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: QUANTYX -->
+        <div class="card-hover-effect p-8 rounded-2xl space-y-5 relative overflow-hidden group">
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-400 font-mono font-bold text-lg">04 /</span>
+            <span class="px-2.5 py-1 rounded-full bg-yellow-950 text-yellow-400 border border-yellow-500/30 text-xs font-mono font-semibold">AI × GAMING PLATFORM</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">QUANTYX Platform</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Experimental gaming & AI intelligence platform built around AI-assisted game intelligence, simulations, and multi-model AI orchestration.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-900 text-yellow-400 border border-slate-700">MULTI-MODEL AI</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 text-sky-400 border border-slate-700">GAME INTELLIGENCE</span>
+          </div>
+          <div class="pt-2 flex items-center justify-between border-t border-slate-800/80">
+            <a href="currently-exploring.html" class="inline-flex items-center gap-1 text-xs font-mono text-slate-400 hover:text-white transition-colors">
+              Read Vision
+            </a>
+            <a href="https://github.com/MAVIS-creator/mavis-gaming-site" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-sm font-mono font-semibold text-sky-400 hover:text-yellow-400 transition-colors">
+              View Public Repo <i data-lucide="external-link" class="w-4 h-4"></i>
             </a>
           </div>
         </div>
@@ -266,7 +340,9 @@
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <p>© 2026 Akintunde Dolapo Elisha (BK / MAVIS) · 400 Level LAUTECH, Nigeria</p>
       <div class="flex items-center gap-6 text-slate-400">
-        <a href="https://github.com/MAVIS-creator" target="_blank" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="https://github.com/MAVIS-creator" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="https://x.com/Klyvex" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">X (@Klyvex)</a>
+        <a href="https://instagram.com/adetayoibk" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors">IG (@adetayoibk)</a>
         <a href="terminal.html" class="hover:text-yellow-400 transition-colors">CLI Shell</a>
         <a href="contact.html" class="hover:text-sky-400 transition-colors">Contact</a>
       </div>

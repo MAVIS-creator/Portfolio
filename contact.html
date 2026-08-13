@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-slate-950">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact & Connect — Akintunde Dolapo Elisha (MAVIS / BK)</title>
   <meta name="description" content="Connect with Akintunde Dolapo Elisha (BK / MAVIS) - 400 Level LAUTECH Computer Science & Cybersecurity student, developer, and experimenter.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100">
+<body class="bg-cyber-grid bg-radial-glow min-h-screen flex flex-col justify-between relative text-slate-100 bg-slate-950">
 
   <!-- Header Navigation -->
-  <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
+  <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
         <img src="assets/MAVIS-creator_logo.png" alt="MAVIS Logo" class="w-10 h-10 rounded-full border border-sky-500/50 object-cover group-hover:border-yellow-400 transition-colors">
@@ -32,7 +33,7 @@
         <a href="contact.html" class="btn-pill-blue">Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </nav>
 
-      <button id="mobileMenuToggle" class="md:hidden text-slate-300 hover:text-white p-2">
+      <button id="mobileMenuToggle" title="Toggle Navigation Menu" class="md:hidden text-slate-300 hover:text-white p-2">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
@@ -72,11 +73,11 @@
         <!-- Direct Email Pill Card -->
         <div class="card-hover-effect p-6 rounded-2xl space-y-3">
           <div class="flex items-center gap-3 text-sky-400">
-            <i data-lucide="mail" class="w-5 h-5"></i>
+            <i class="fa-solid fa-envelope text-lg"></i>
             <span class="font-mono text-xs text-slate-400 uppercase">Direct Email</span>
           </div>
           <p class="font-mono text-base text-yellow-400 font-semibold break-all">
-            akintundedolapo02@gmail.com
+            akintunde.dolapo1@gmail.com
           </p>
           <div class="pt-2">
             <button id="copyEmailBtn" class="btn-outline-slate text-xs py-2 px-4 w-full justify-center">
@@ -88,16 +89,33 @@
           </div>
         </div>
 
+        <!-- Social Media Profiles Grid (FontAwesome 6 Icons) -->
+        <div class="grid grid-cols-2 gap-4">
+          <!-- X / Twitter -->
+          <a href="https://x.com/Klyvex" target="_blank" rel="noopener noreferrer" class="card-hover-effect p-5 rounded-2xl space-y-2 block">
+            <i class="fa-brands fa-x-twitter text-2xl text-slate-200"></i>
+            <p class="text-xs font-mono text-slate-400">X (Twitter)</p>
+            <p class="text-sm font-mono text-sky-400 font-bold">@Klyvex</p>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://instagram.com/adetayoibk" target="_blank" rel="noopener noreferrer" class="card-hover-effect p-5 rounded-2xl space-y-2 block">
+            <i class="fa-brands fa-instagram text-2xl text-pink-400"></i>
+            <p class="text-xs font-mono text-slate-400">Instagram</p>
+            <p class="text-sm font-mono text-pink-400 font-bold">@adetayoibk</p>
+          </a>
+        </div>
+
         <!-- GitHub Profile Card -->
         <div class="card-hover-effect p-6 rounded-2xl space-y-3">
           <div class="flex items-center gap-3 text-sky-400">
-            <i data-lucide="github" class="w-5 h-5"></i>
+            <i class="fa-brands fa-github text-xl"></i>
             <span class="font-mono text-xs text-slate-400 uppercase">GitHub Profile</span>
           </div>
           <p class="font-mono text-base text-white font-semibold">
             github.com/MAVIS-creator
           </p>
-          <a href="https://github.com/MAVIS-creator" target="_blank" class="btn-pill-blue text-xs py-2 px-4 w-full justify-center">
+          <a href="https://github.com/MAVIS-creator" target="_blank" rel="noopener noreferrer" class="btn-pill-blue text-xs py-2 px-4 w-full justify-center">
             Visit GitHub Repositories <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -161,7 +179,9 @@
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <p>© 2026 Akintunde Dolapo Elisha (BK / MAVIS) · 400 Level LAUTECH, Nigeria</p>
       <div class="flex items-center gap-6">
-        <a href="https://github.com/MAVIS-creator" target="_blank" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="https://github.com/MAVIS-creator" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="https://x.com/Klyvex" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">X (@Klyvex)</a>
+        <a href="https://instagram.com/adetayoibk" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors">IG (@adetayoibk)</a>
         <a href="terminal.html" class="hover:text-yellow-400 transition-colors">CLI Shell</a>
         <a href="contact.html" class="hover:text-sky-400 transition-colors">Contact</a>
       </div>

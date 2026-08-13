@@ -14,7 +14,7 @@
   --color-red-security: #ef4444;
   --color-text-main: #f8fafc;
   --color-text-secondary: #94a3b8;
-  --color-border-subtle: rgba(51, 65, 85, 0.6);
+  --color-border-subtle: rgba(51, 65, 85, 0.7);
   --color-border-glow: rgba(56, 189, 248, 0.4);
 }
 
@@ -39,46 +39,50 @@ html, body {
 .bg-cyber-grid {
   background-color: #0b0f17 !important;
   background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
-/* Radial Light-Blue Glow Trick */
+/* Rich Dual-Tone Blue + Yellow Ambient Atmosphere Background */
 .bg-radial-glow {
-  background: radial-gradient(
-    circle at 75% 25%,
-    rgba(37, 99, 235, 0.18) 0%,
-    rgba(56, 189, 248, 0.06) 35%,
-    transparent 70%
-  ), #0b0f17;
+  background: 
+    radial-gradient(circle at 80% 15%, rgba(250, 204, 21, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 15% 55%, rgba(37, 99, 235, 0.24) 0%, transparent 50%),
+    radial-gradient(circle at 75% 85%, rgba(56, 189, 248, 0.14) 0%, transparent 45%),
+    linear-gradient(180deg, #0b0f17 0%, #080c14 100%);
 }
 
-/* Tilted Background Geometry Frame (Dark Theme Fix) */
+/* Tilted Background Geometry Frame (Rich Blue + Yellow Glow Border) */
 .tilted-geometry-frame {
   position: absolute;
   width: 92%;
   height: 88%;
   top: 6%;
   left: 4%;
-  background: rgba(15, 23, 42, 0.4);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  border-radius: 2rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(30, 41, 59, 0.45));
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 2.5rem;
   transform: rotate(-2.5deg);
   pointer-events: none;
   z-index: 0;
-  box-shadow: 0 0 60px rgba(11, 15, 23, 0.9) inset, 0 0 30px rgba(37, 99, 235, 0.1);
+  box-shadow: 
+    0 0 80px rgba(11, 15, 23, 0.95) inset,
+    0 0 50px rgba(37, 99, 235, 0.2),
+    0 0 35px rgba(250, 204, 21, 0.12);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
-/* Glowing Circular Avatar with 5 Orbiting Main Tech Badges */
+/* Glowing Circular Avatar Container */
 .avatar-halo-container {
   position: relative;
   width: 300px;
   height: 300px;
   border-radius: 50%;
   padding: 6px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(37, 99, 235, 0.6), rgba(250, 204, 21, 0.7));
-  box-shadow: 0 0 45px rgba(56, 189, 248, 0.4), 0 0 90px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(37, 99, 235, 0.7), rgba(250, 204, 21, 0.9));
+  box-shadow: 0 0 50px rgba(56, 189, 248, 0.45), 0 0 90px rgba(37, 99, 235, 0.3), 0 0 30px rgba(250, 204, 21, 0.25);
 }
 
 @media (min-width: 768px) {
@@ -97,30 +101,27 @@ html, body {
   background-color: #0f172a;
 }
 
-/* 5 Main Tech Stack Orbit Badges (HTML5, CSS3, JS, PHP, Python) */
+/* 5 Main Tech Stack Orbit Badges with FontAwesome Icons */
 .orbit-badge {
   position: absolute;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: #0f172a;
   border: 2px solid var(--color-blue-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.8), 0 0 14px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9), 0 0 16px rgba(56, 189, 248, 0.5);
   animation: floatOrbit 6s ease-in-out infinite alternate;
   z-index: 20;
 }
 
-/* Position 5 Orbit Badges around the circle */
-.orbit-badge-1 { top: -14px; left: 50%; transform: translateX(-50%); border-color: #e34f26; animation-delay: 0s; } /* HTML5 */
-.orbit-badge-2 { top: 22%; right: -22px; border-color: #1572b6; animation-delay: 1.2s; } /* CSS3 */
-.orbit-badge-3 { bottom: 8%; right: -10px; border-color: #f7df1e; animation-delay: 2.4s; } /* JS */
-.orbit-badge-4 { bottom: 8%; left: -10px; border-color: #777bb4; animation-delay: 3.6s; } /* PHP */
-.orbit-badge-5 { top: 22%; left: -22px; border-color: #3776ab; animation-delay: 4.8s; } /* Python */
+.orbit-badge-html { top: -16px; left: 50%; transform: translateX(-50%); border-color: #e34f26; animation-delay: 0s; }
+.orbit-badge-css { top: 22%; right: -24px; border-color: #1572b6; animation-delay: 1.2s; }
+.orbit-badge-js { bottom: 8%; right: -12px; border-color: #f7df1e; animation-delay: 2.4s; }
+.orbit-badge-php { bottom: 8%; left: -12px; border-color: #777bb4; animation-delay: 3.6s; }
+.orbit-badge-py { top: 22%; left: -24px; border-color: #3776ab; animation-delay: 4.8s; }
 
 @keyframes floatOrbit {
   0% { transform: translateY(0px) scale(1); }
@@ -158,18 +159,19 @@ html, body {
   50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* Hover Card Effects */
+/* Card Hover Effects */
 .card-hover-effect {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid rgba(51, 65, 85, 0.7);
   background: rgba(15, 23, 42, 0.85);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
 
 .card-hover-effect:hover {
   transform: translateY(-4px);
   border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 14px 35px -10px rgba(37, 99, 235, 0.3), 0 0 1px 1px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 14px 35px -10px rgba(37, 99, 235, 0.35), 0 0 1px 1px rgba(56, 189, 248, 0.3);
 }
 
 /* Custom Navigation Pill Buttons */
