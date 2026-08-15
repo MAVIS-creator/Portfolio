@@ -1,4 +1,4 @@
-/* KLYVEX Journey — 3D Cyber Core & Checkpoint Portal Engine
+/* KLYVEX Journey: 3D Cyber Core & Checkpoint Portal Engine
    An immersive Three.js 3D experience tracing Akintunde's tech evolution.
    Features a floating 3D Cyber Core, glowing checkpoint gateways, particle stars, and smooth scroll/drag navigation. */
 
@@ -7,14 +7,14 @@
 
   // ===== TECH MILESTONES DATA =====
   const MILESTONES = [
-    { year: '2020', tech: 'HTML5', icon: '🏗️', color: 0xe34f26, hexColor: '#e34f26', desc: 'The Foundation — Web semantics, structure, and the first lines of code.', detail: 'Learned HTML standards, DOM hierarchy, forms, semantic markup, and built my first interactive web pages.' },
-    { year: '2021', tech: 'CSS3', icon: '🎨', color: 0x38bdf8, hexColor: '#38bdf8', desc: 'Visual Design & Motion — Layouts, Flexbox, Grid, animations & micro-interactions.', detail: 'Mastered modern CSS architecture, responsive breakpoints, custom properties, glassmorphism, and keyframe animations.' },
-    { year: '2022', tech: 'JavaScript', icon: '⚡', color: 0xeab308, hexColor: '#eab308', desc: 'DOM Logic & Dynamic Interactivity — Bringing applications to life.', detail: 'Async/await, ES6+ features, fetch API, client-side state management, canvas rendering, and event-driven architecture.' },
-    { year: '2023', tech: 'PHP', icon: '🔧', color: 0xa5b4fc, hexColor: '#a5b4fc', desc: 'Server-Side Engineering & REST APIs — PDO MySQL, authentication & backend systems.', detail: 'Built structured PHP backends, PDO database abstraction layers, CSRF protection, rate-limiting DDoS firewalls, and admin control panels.' },
-    { year: '2023', tech: 'Python', icon: '🐍', color: 0xeab308, hexColor: '#eab308', desc: 'Systems Scripting, Automation & AI Orchestration — The versatile powerhouse.', detail: 'Automation scripts, security analysis tools, data processing pipelines, and building FastAPI orchestrators for multi-model AI routing.' },
-    { year: '2024', tech: 'Node.js & React', icon: '⚛️', color: 0x61dafb, hexColor: '#61dafb', desc: 'Modern Full-Stack Applications — Component architecture & Phaser 3 game engine.', detail: 'React functional components, custom hooks, TypeScript, Phaser 3 arcade physics integration, and scalable app architectures.' },
-    { year: '2025', tech: 'Supabase & Postgres', icon: '🗄️', color: 0x3ecf8e, hexColor: '#3ecf8e', desc: 'Real-Time Databases & Authentication — Enterprise-grade persistence.', detail: 'Supabase real-time subscriptions, row-level security policies, PostgreSQL schemas, email authentication, and password reset flows.' },
-    { year: '2026', tech: 'AI Orchestration & KLYVEX', icon: '🚀', color: 0xf59e0b, hexColor: '#f59e0b', desc: 'Multi-Model AI & The KLYVEX Vision — Building AI-native gaming intelligence.', detail: 'Groq (instant speed), Gemini (deep reasoning), OpenRouter routing, context management, and full-stack AI platform development.' }
+    { year: '2020', tech: 'HTML5', icon: '🏗️', color: 0xe34f26, hexColor: '#e34f26', desc: 'The Foundation: Web semantics, structure, and the first lines of code.', detail: 'Learned HTML standards, DOM hierarchy, forms, semantic markup, and built my first interactive web pages.' },
+    { year: '2021', tech: 'CSS3', icon: '🎨', color: 0x38bdf8, hexColor: '#38bdf8', desc: 'Visual Design & Motion: Layouts, Flexbox, Grid, animations & micro-interactions.', detail: 'Mastered modern CSS architecture, responsive breakpoints, custom properties, glassmorphism, and keyframe animations.' },
+    { year: '2022', tech: 'JavaScript', icon: '⚡', color: 0xeab308, hexColor: '#eab308', desc: 'DOM Logic & Dynamic Interactivity: Bringing applications to life.', detail: 'Async/await, ES6+ features, fetch API, client-side state management, canvas rendering, and event-driven architecture.' },
+    { year: '2023', tech: 'PHP', icon: '🔧', color: 0xa5b4fc, hexColor: '#a5b4fc', desc: 'Server-Side Engineering & REST APIs: PDO MySQL, authentication & backend systems.', detail: 'Built structured PHP backends, PDO database abstraction layers, CSRF protection, rate-limiting DDoS firewalls, and admin control panels.' },
+    { year: '2023', tech: 'Python', icon: '🐍', color: 0xeab308, hexColor: '#eab308', desc: 'Systems Scripting, Automation & AI Orchestration: The versatile powerhouse.', detail: 'Automation scripts, security analysis tools, data processing pipelines, and building FastAPI orchestrators for multi-model AI routing.' },
+    { year: '2024', tech: 'Node.js & React', icon: '⚛️', color: 0x61dafb, hexColor: '#61dafb', desc: 'Modern Full-Stack Applications: Component architecture & Phaser 3 game engine.', detail: 'React functional components, custom hooks, TypeScript, Phaser 3 arcade physics integration, and scalable app architectures.' },
+    { year: '2025', tech: 'Supabase & Postgres', icon: '🗄️', color: 0x3ecf8e, hexColor: '#3ecf8e', desc: 'Real-Time Databases & Authentication: Enterprise-grade persistence.', detail: 'Supabase real-time subscriptions, row-level security policies, PostgreSQL schemas, email authentication, and password reset flows.' },
+    { year: '2026', tech: 'AI Orchestration & KLYVEX', icon: '🚀', color: 0xf59e0b, hexColor: '#f59e0b', desc: 'Multi-Model AI & The KLYVEX Vision: Building AI-native gaming intelligence.', detail: 'Groq (instant speed), Gemini (deep reasoning), OpenRouter routing, context management, and full-stack AI platform development.' }
   ];
 
   const TRACK_SPACING = 22;

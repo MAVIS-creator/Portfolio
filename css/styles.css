@@ -47,11 +47,9 @@ html, body {
 /* Dominant Blue Atmosphere with Refined Warm Gold Highlights */
 .bg-radial-glow {
   background: 
-    radial-gradient(circle at 12% 25%, rgba(37, 99, 235, 0.35) 0%, transparent 55%),
-    radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.25) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(234, 179, 8, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 20% 90%, rgba(37, 99, 235, 0.25) 0%, transparent 50%),
-    linear-gradient(180deg, #07090e 0%, #060912 100%);
+    radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 55%),
+    #020617;
 }
 
 /* Glowing Dual Blue & Warm Gold Circular Avatar Container (Fluid Mobile Scale) */
@@ -61,8 +59,8 @@ html, body {
   height: 230px;
   border-radius: 50%;
   padding: 6px;
-  background: linear-gradient(135deg, #38bdf8, #2563eb, #eab308, #1d4ed8);
-  box-shadow: 0 0 35px rgba(56, 189, 248, 0.45), 0 0 50px rgba(37, 99, 235, 0.35), 0 0 20px rgba(234, 179, 8, 0.25);
+  background: #38bdf8;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
   margin: 0 auto;
 }
 
@@ -163,44 +161,44 @@ html, body {
 
 /* Button Variants: Dominant Electric Blue & Warm Amber Gold */
 .btn-pill-blue {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background-color: #2563eb;
   color: #ffffff !important;
   padding: 10px 24px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(147, 197, 253, 0.4);
+  border: 1px solid rgba(147, 197, 253, 0.3);
 }
 
 .btn-pill-blue:hover {
-  background: linear-gradient(135deg, #38bdf8, #2563eb);
-  box-shadow: 0 6px 26px rgba(56, 189, 248, 0.5);
+  background-color: #1d4ed8;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
   transform: translateY(-2px);
 }
 
 .btn-pill-yellow {
-  background: linear-gradient(135deg, #eab308, #ca8a04);
-  color: #07090e !important;
+  background-color: #f59e0b;
+  color: #020617 !important;
   padding: 10px 24px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(253, 224, 71, 0.5);
+  border: 1px solid rgba(253, 224, 71, 0.4);
 }
 
 .btn-pill-yellow:hover {
-  background: linear-gradient(135deg, #facc15, #eab308);
-  box-shadow: 0 6px 22px rgba(234, 179, 8, 0.5);
+  background-color: #d97706;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
   transform: translateY(-2px);
 }
 
@@ -225,28 +223,22 @@ html, body {
 }
 
 .btn-outline-slate {
-  background: rgba(11, 17, 30, 0.9);
-  color: #f8fafc !important;
+  background: rgba(15, 23, 42, 0.8);
+  color: #38bdf8 !important;
   padding: 10px 24px;
   border-radius: 9999px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-.btn-outline-slate:hover {
-  background: #162032;
-  border-color: #38bdf8;
-  color: #38bdf8 !important;
-}
-
 /* Active Nav Indicator with Yellow Accent */
 .nav-link-active {
-  color: var(--color-yellow-primary) !important;
+  color: #eab308 !important;
   font-weight: 700;
   position: relative;
 }
@@ -258,7 +250,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #facc15, #38bdf8);
+  background: #f59e0b;
   border-radius: 3px;
 }
 
