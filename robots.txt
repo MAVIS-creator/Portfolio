@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mavis-creator.github.io/sitemap.xml
+Sitemap: https://klyvex-studios.tech/sitemap.xml
