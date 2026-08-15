@@ -1,6 +1,7 @@
 /* Master JavaScript Engine - Akintunde Dolapo Elisha (MAVIS / BK) Portfolio */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initNavbar();
   initParticleCanvas();
   initSimulators();
@@ -324,4 +325,42 @@ function initScrollAnimations() {
 
 function escapeHtml(str) {
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/* 7. Light / Dark Theme Toggle Engine */
+function initThemeToggle() {
+  const themeBtns = document.querySelectorAll('.themeToggleBtn');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+
+  if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    updateThemeIcons('light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    updateThemeIcons('dark');
+  }
+
+  themeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcons(newTheme);
+    });
+  });
+}
+
+function updateThemeIcons(theme) {
+  const sunIcons = document.querySelectorAll('.theme-icon-sun');
+  const moonIcons = document.querySelectorAll('.theme-icon-moon');
+  
+  if (theme === 'light') {
+    sunIcons.forEach(el => el.classList.remove('hidden'));
+    moonIcons.forEach(el => el.classList.add('hidden'));
+  } else {
+    sunIcons.forEach(el => el.classList.add('hidden'));
+    moonIcons.forEach(el => el.classList.remove('hidden'));
+  }
 }

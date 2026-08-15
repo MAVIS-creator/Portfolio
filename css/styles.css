@@ -54,21 +54,30 @@ html, body {
     linear-gradient(180deg, #07090e 0%, #060912 100%);
 }
 
-/* Glowing Dual Blue & Warm Gold Circular Avatar Container */
+/* Glowing Dual Blue & Warm Gold Circular Avatar Container (Fluid Mobile Scale) */
 .avatar-halo-container {
   position: relative;
-  width: 310px;
-  height: 310px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
-  padding: 7px;
+  padding: 6px;
   background: linear-gradient(135deg, #38bdf8, #2563eb, #eab308, #1d4ed8);
-  box-shadow: 0 0 50px rgba(56, 189, 248, 0.45), 0 0 80px rgba(37, 99, 235, 0.35), 0 0 30px rgba(234, 179, 8, 0.25);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.45), 0 0 50px rgba(37, 99, 235, 0.35), 0 0 20px rgba(234, 179, 8, 0.25);
+  margin: 0 auto;
+}
+
+@media (min-width: 480px) {
+  .avatar-halo-container {
+    width: 280px;
+    height: 280px;
+    padding: 7px;
+  }
 }
 
 @media (min-width: 768px) {
   .avatar-halo-container {
-    width: 365px;
-    height: 365px;
+    width: 350px;
+    height: 350px;
   }
 }
 
@@ -79,34 +88,61 @@ html, body {
   object-fit: cover;
   border: 4px solid #07090e;
   background-color: #0b111e;
+  position: relative;
+  z-index: 10;
 }
 
-/* 5 Main Tech Stack Orbit Badges (FontAwesome Icons) */
-.orbit-badge {
+/* Orbit Track Rotating Wrapper (Smooth Clockwise Orbit) */
+.orbit-track {
   position: absolute;
-  width: 54px;
-  height: 54px;
+  inset: 0;
   border-radius: 50%;
-  background: #0b111e;
-  border: 2px solid var(--color-yellow-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9), 0 0 18px rgba(250, 204, 21, 0.5);
-  animation: floatOrbit 6s ease-in-out infinite alternate;
+  animation: spinOrbit 30s linear infinite;
+  pointer-events: none;
   z-index: 20;
 }
 
-.orbit-badge-html { top: -16px; left: 50%; transform: translateX(-50%); border-color: #e34f26; animation-delay: 0s; }
-.orbit-badge-css { top: 22%; right: -24px; border-color: #38bdf8; animation-delay: 1.2s; }
-.orbit-badge-js { bottom: 8%; right: -12px; border-color: #facc15; animation-delay: 2.4s; }
-.orbit-badge-php { bottom: 8%; left: -12px; border-color: #a5b4fc; animation-delay: 3.6s; }
-.orbit-badge-py { top: 22%; left: -24px; border-color: #facc15; animation-delay: 4.8s; }
+/* 5 Main Tech Stack Orbit Badges */
+.orbit-badge {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-surface, #0b111e);
+  border: 2px solid var(--color-yellow-primary, #eab308);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.8), 0 0 14px rgba(250, 204, 21, 0.4);
+  pointer-events: auto;
+}
 
-@keyframes floatOrbit {
-  0% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-8px) scale(1.08); }
-  100% { transform: translateY(4px) scale(0.96); }
+@media (min-width: 640px) {
+  .orbit-badge {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* Keep badge icon upright while track rotates */
+.orbit-badge i {
+  animation: counterSpinOrbit 30s linear infinite;
+}
+
+.orbit-badge-html { top: -14px; left: 50%; transform: translateX(-50%); border-color: #e34f26; }
+.orbit-badge-css { top: 22%; right: -12px; border-color: #38bdf8; }
+.orbit-badge-js { bottom: 8%; right: -6px; border-color: #facc15; }
+.orbit-badge-php { bottom: 8%; left: -6px; border-color: #a5b4fc; }
+.orbit-badge-py { top: 22%; left: -12px; border-color: #facc15; }
+
+@keyframes spinOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes counterSpinOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
 }
 
 /* Card Hover Effects with Dominant Blue and Warm Gold Borders */
@@ -650,4 +686,102 @@ html, body {
   .cyber-tilted-inner {
     transform: rotate(0.75deg);
   }
+}
+
+/* ============================================
+   LIGHT THEME DESIGN SYSTEM (Theme Toggle)
+   ============================================ */
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bg-slate-950 {
+  background-color: #f8fafc !important;
+}
+
+html[data-theme="light"] .bg-slate-900 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] .text-slate-100,
+html[data-theme="light"] .text-slate-200,
+html[data-theme="light"] .text-slate-300,
+html[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .text-slate-400 {
+  color: #475569 !important;
+}
+
+html[data-theme="light"] header {
+  background-color: rgba(248, 250, 252, 0.92) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+}
+
+html[data-theme="light"] #mobileMenu {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] footer {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .bg-cyber-grid {
+  background-color: #f8fafc !important;
+  background-image: 
+    linear-gradient(to right, rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px) !important;
+}
+
+html[data-theme="light"] .bg-radial-glow {
+  background: 
+    radial-gradient(circle at 12% 25%, rgba(37, 99, 235, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+}
+
+html[data-theme="light"] .card-hover-effect {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06) !important;
+}
+
+html[data-theme="light"] .card-hover-effect:hover {
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 16px 35px -10px rgba(37, 99, 235, 0.15) !important;
+}
+
+html[data-theme="light"] .cyber-tilted-frame,
+html[data-theme="light"] .tilted-skew-backdrop {
+  background: linear-gradient(135deg, #ffffff, #f1f5f9) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.08) !important;
+}
+
+html[data-theme="light"] .btn-outline-slate {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="light"] .btn-outline-slate:hover {
+  background: #f1f5f9 !important;
+  border-color: #2563eb !important;
+  color: #2563eb !important;
+}
+
+html[data-theme="light"] .orbit-badge {
+  background: #ffffff !important;
+}
+
+html[data-theme="light"] .avatar-image-inner {
+  border-color: #ffffff !important;
+  background-color: #f1f5f9 !important;
 }
