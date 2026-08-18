@@ -332,17 +332,12 @@ function initThemeToggle() {
   const themeBtns = document.querySelectorAll('.themeToggleBtn');
   const savedTheme = localStorage.getItem('theme') || 'light';
 
-  if (savedTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    updateThemeIcons('dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    updateThemeIcons('light');
-  }
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcons(savedTheme);
 
   themeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
       document.documentElement.setAttribute('data-theme', newTheme);

@@ -1,28 +1,80 @@
-/* Master Plain Light CSS System - Akintunde Dolapo Elisha (MAVIS / BK) Portfolio */
+/* Master Dual-Theme System (Light Default & Synced Dark Mode)
+   Akintunde Dolapo Elisha (MAVIS / BK) Portfolio
+*/
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-:root {
-  --bg-canvas: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-surface-hover: #f1f5f9;
-  --color-blue-primary: #1d4ed8;
-  --color-blue-electric: #2563eb;
-  --color-yellow-primary: #f59e0b;
-  --color-yellow-accent: #d97706;
-  --color-red-security: #dc2626;
-  --color-text-main: #0f172a;
-  --color-text-secondary: #475569;
+/* -------------------------------------------------------------
+   1. Theme Custom Properties (Light Mode Default)
+   ------------------------------------------------------------- */
+:root,
+html[data-theme="light"] {
+  --bg-page: #f8fafc;
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f1f5f9;
+  --bg-footer: #ffffff;
+  
+  --border-color: #e2e8f0;
+  --border-hover: #1d4ed8;
+  
+  --text-heading: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  
+  --brand-blue: #1d4ed8;
+  --brand-blue-hover: #1e40af;
+  --brand-amber: #d97706;
+  --brand-yellow: #f59e0b;
+  --brand-red: #dc2626;
+  
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --shadow-blue: 0 8px 25px rgba(29, 78, 216, 0.25);
+  --shadow-amber: 0 8px 25px rgba(245, 158, 11, 0.3);
 }
 
+/* -------------------------------------------------------------
+   2. Dark Theme Overrides (Synchronized Midnight Navy)
+   ------------------------------------------------------------- */
+html[data-theme="dark"] {
+  --bg-page: #0b1120;
+  --bg-header: rgba(11, 17, 32, 0.92);
+  --bg-card: #151f32;
+  --bg-card-subtle: #1e293b;
+  --bg-footer: #0f172a;
+  
+  --border-color: #1e293b;
+  --border-hover: #3b82f6;
+  
+  --text-heading: #f8fafc;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  --brand-blue: #3b82f6;
+  --brand-blue-hover: #60a5fa;
+  --brand-amber: #fbbf24;
+  --brand-yellow: #f59e0b;
+  --brand-red: #ef4444;
+  
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 35px rgba(0, 0, 0, 0.45);
+  --shadow-blue: 0 8px 30px rgba(59, 130, 246, 0.35);
+  --shadow-amber: 0 8px 30px rgba(251, 191, 36, 0.35);
+}
+
+/* -------------------------------------------------------------
+   3. Base Global Elements & Font Definitions
+   ------------------------------------------------------------- */
 html, body {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
+  background-color: var(--bg-page) !important;
+  color: var(--text-body) !important;
   font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .font-mono-code {
@@ -33,174 +85,139 @@ html, body {
   font-family: 'Outfit', sans-serif;
 }
 
-/* Plain Clean Backgrounds (No Dark Neon Gradients) */
-.bg-cyber-grid,
-.bg-radial-glow,
-.bg-slate-950 {
-  background-color: #f8fafc !important;
-  background-image: none !important;
-  background: #f8fafc !important;
+/* -------------------------------------------------------------
+   4. Universal Header & Navigation Styling
+   ------------------------------------------------------------- */
+header {
+  background-color: var(--bg-header) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.bg-slate-900,
-.bg-slate-900\/90,
-.bg-slate-900\/95,
-.bg-slate-900\/80 {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
+footer {
+  background-color: var(--bg-footer) !important;
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-muted) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* High-Contrast Plain Typography */
-.text-white,
-.text-slate-100,
-.text-slate-200 {
-  color: #0f172a !important;
+#mobileMenu {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
 }
 
-.text-slate-300,
-.text-slate-400 {
-  color: #475569 !important;
-}
-
-.text-sky-300,
-.text-sky-400 {
-  color: #1d4ed8 !important; /* Rich Royal Blue */
-}
-
-.text-yellow-400,
-.text-yellow-500,
-.text-amber-400 {
-  color: #d97706 !important; /* Warm Amber Accent */
-}
-
-.text-red-400,
-.text-red-500 {
-  color: #dc2626 !important; /* Arsenal Red Highlight */
-}
-
-/* Avatar Halo & Photo */
-.avatar-halo-container {
-  position: relative;
-  width: 230px;
-  height: 230px;
-  border-radius: 50%;
-  padding: 6px;
-  background: linear-gradient(135deg, #1d4ed8, #f59e0b, #dc2626);
-  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.18);
-  margin: 0 auto;
-}
-
-@media (min-width: 480px) {
-  .avatar-halo-container {
-    width: 280px;
-    height: 280px;
-    padding: 7px;
-  }
-}
-
-@media (min-width: 768px) {
-  .avatar-halo-container {
-    width: 350px;
-    height: 350px;
-  }
-}
-
-.avatar-image-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #ffffff;
-  background-color: #f1f5f9;
-  position: relative;
-  z-index: 10;
-}
-
-/* Orbit Track */
-.orbit-track {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  animation: spinOrbit 30s linear infinite;
-  pointer-events: none;
-  z-index: 20;
-}
-
-.orbit-badge {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid #f59e0b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
-  pointer-events: auto;
-}
-
-@media (min-width: 640px) {
-  .orbit-badge {
-    width: 52px;
-    height: 52px;
-  }
-}
-
-.orbit-badge i {
-  animation: counterSpinOrbit 30s linear infinite;
-}
-
-.orbit-badge-html { top: -14px; left: 50%; transform: translateX(-50%); border-color: #dc2626; }
-.orbit-badge-css { top: 22%; right: -12px; border-color: #1d4ed8; }
-.orbit-badge-js { bottom: 8%; right: -6px; border-color: #f59e0b; }
-.orbit-badge-php { bottom: 8%; left: -6px; border-color: #4f46e5; }
-.orbit-badge-py { top: 22%; left: -12px; border-color: #f59e0b; }
-
-@keyframes spinOrbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes counterSpinOrbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
-}
-
-/* Plain White Card Surfaces */
+/* -------------------------------------------------------------
+   5. Card System & Hover Animations
+   ------------------------------------------------------------- */
 .card-hover-effect {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid #e2e8f0 !important;
-  background: #ffffff !important;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04) !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-body) !important;
+  box-shadow: var(--shadow-sm) !important;
   border-radius: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-hover-effect:hover {
   transform: translateY(-4px);
-  border-color: #2563eb !important;
-  box-shadow: 0 16px 35px -10px rgba(37, 99, 235, 0.15), 0 0 15px rgba(245, 158, 11, 0.1) !important;
+  border-color: var(--border-hover) !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
-/* Header & Footer */
-header {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+/* -------------------------------------------------------------
+   6. High-Contrast Synced Typography Classes
+   ------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6,
+.text-slate-900,
+.text-slate-800,
+.text-white {
+  color: var(--text-heading) !important;
 }
 
-footer {
-  background-color: #ffffff !important;
-  border-top: 1px solid #e2e8f0 !important;
-  color: #475569 !important;
+p,
+.text-slate-600,
+.text-slate-700,
+.text-slate-300,
+.text-slate-200 {
+  color: var(--text-body) !important;
 }
 
-#mobileMenu {
-  background-color: rgba(255, 255, 255, 0.98) !important;
-  border-color: #e2e8f0 !important;
+.text-slate-500,
+.text-slate-400 {
+  color: var(--text-muted) !important;
 }
 
-/* Button System: Blue & Yellow Primary, Slate Secondary */
+/* Brand Highlight Color Overrides */
+.text-blue-700,
+.text-blue-600,
+.text-sky-400,
+.text-sky-300 {
+  color: var(--brand-blue) !important;
+}
+
+.text-amber-600,
+.text-amber-500,
+.text-yellow-500,
+.text-yellow-400 {
+  color: var(--brand-amber) !important;
+}
+
+.text-red-700,
+.text-red-600,
+.text-red-500,
+.text-red-400 {
+  color: var(--brand-red) !important;
+}
+
+/* -------------------------------------------------------------
+   7. Badge & Tag Component Tokens
+   ------------------------------------------------------------- */
+.badge-security-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgba(220, 38, 38, 0.12);
+  color: var(--brand-red) !important;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.badge-in-development {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgba(245, 158, 11, 0.12);
+  color: var(--brand-amber) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.dot-pulse {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--brand-red);
+}
+
+.dot-pulse-yellow {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--brand-amber);
+}
+
+/* -------------------------------------------------------------
+   8. Button Component Design System
+   ------------------------------------------------------------- */
 .btn-pill-blue {
   background-color: #1d4ed8 !important;
   color: #ffffff !important;
@@ -209,17 +226,18 @@ footer {
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
+  box-shadow: var(--shadow-blue);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   border: none !important;
+  cursor: pointer;
 }
 
 .btn-pill-blue:hover {
   background-color: #1e40af !important;
-  box-shadow: 0 6px 20px rgba(29, 78, 216, 0.35);
   transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(29, 78, 216, 0.4);
 }
 
 .btn-pill-yellow {
@@ -230,182 +248,58 @@ footer {
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+  box-shadow: var(--shadow-amber);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   border: none !important;
+  cursor: pointer;
 }
 
 .btn-pill-yellow:hover {
   background-color: #d97706 !important;
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
   transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.45);
 }
 
 .btn-outline-slate {
-  background: #ffffff !important;
-  color: #0f172a !important;
+  background-color: var(--bg-card) !important;
+  color: var(--text-heading) !important;
   padding: 10px 24px;
   border-radius: 9999px;
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  border: 1.5px solid #cbd5e1 !important;
+  border: 1px solid var(--border-color) !important;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .btn-outline-slate:hover {
-  background: #f8fafc !important;
-  border-color: #1d4ed8 !important;
-  color: #1d4ed8 !important;
+  border-color: var(--brand-blue) !important;
+  color: var(--brand-blue) !important;
+  transform: translateY(-2px);
 }
 
-.btn-outline-yellow {
-  background: #ffffff !important;
-  color: #d97706 !important;
-  padding: 10px 24px;
-  border-radius: 9999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.25s ease;
-  border: 1.5px solid #f59e0b !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+/* -------------------------------------------------------------
+   9. Scroll Animation Helper
+   ------------------------------------------------------------- */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.btn-outline-yellow:hover {
-  background: #f59e0b !important;
-  color: #ffffff !important;
+.fade-in-on-scroll.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Security & Lab Badges (Arsenal Red & Amber Yellow) */
-.badge-security-red {
-  background-color: #fef2f2 !important;
-  color: #dc2626 !important;
-  border: 1px solid #fecaca !important;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-family: 'Fira Code', monospace;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.badge-in-development {
-  background-color: #fffbeb !important;
-  color: #d97706 !important;
-  border: 1px solid #fde68a !important;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-family: 'Fira Code', monospace;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.dot-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #dc2626;
-}
-
-.dot-pulse-yellow {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #f59e0b;
-}
-
-/* Active Nav Indicator */
-.nav-link-active {
-  color: #1d4ed8 !important;
-  font-weight: 700;
-  position: relative;
-}
-
-.nav-link-active::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #f59e0b;
-  border-radius: 2px;
-}
-
-/* Terminal CLI Window */
-.terminal-window {
-  background-color: #ffffff !important;
-  border: 1px solid #cbd5e1 !important;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
-}
-
-.terminal-header {
-  background-color: #f1f5f9 !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-}
-
-.terminal-body {
-  background-color: #0f172a !important;
-  color: #38bdf8 !important;
-}
-
-/* Optional Dark Mode Override */
-html[data-theme="dark"],
-html[data-theme="dark"] body {
-  background-color: #07090e !important;
-  color: #f8fafc !important;
-}
-
-html[data-theme="dark"] .bg-cyber-grid,
-html[data-theme="dark"] .bg-radial-glow,
-html[data-theme="dark"] .bg-slate-950 {
-  background-color: #07090e !important;
-  color: #f8fafc !important;
-}
-
-html[data-theme="dark"] .bg-slate-900 {
-  background-color: #0b111e !important;
-  border-color: #1e293b !important;
-}
-
-html[data-theme="dark"] .text-white,
-html[data-theme="dark"] .text-slate-100,
-html[data-theme="dark"] .text-slate-200 {
-  color: #f8fafc !important;
-}
-
-html[data-theme="dark"] .text-slate-300,
-html[data-theme="dark"] .text-slate-400 {
-  color: #94a3b8 !important;
-}
-
-html[data-theme="dark"] header {
-  background-color: rgba(7, 9, 14, 0.92) !important;
-  border-color: #1e293b !important;
-}
-
-html[data-theme="dark"] footer {
-  background-color: #0b111e !important;
-  border-color: #1e293b !important;
-}
-
-html[data-theme="dark"] .card-hover-effect {
-  background: #0b111e !important;
-  border-color: #1e293b !important;
-}
-
-/* Reduced Motion Accessibility */
+/* -------------------------------------------------------------
+   10. Reduced Motion Accessibility
+   ------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
