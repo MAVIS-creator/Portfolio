@@ -330,14 +330,14 @@ function escapeHtml(str) {
 /* 7. Light / Dark Theme Toggle Engine */
 function initThemeToggle() {
   const themeBtns = document.querySelectorAll('.themeToggleBtn');
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  const savedTheme = localStorage.getItem('theme') || 'light';
 
-  if (savedTheme === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    updateThemeIcons('light');
-  } else {
+  if (savedTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
     updateThemeIcons('dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    updateThemeIcons('light');
   }
 
   themeBtns.forEach(btn => {
