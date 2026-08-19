@@ -24,25 +24,26 @@ html[data-theme="light"] {
   
   --brand-blue: #1d4ed8;
   --brand-blue-hover: #1e40af;
-  --brand-amber: #d97706;
-  --brand-yellow: #f59e0b;
+  --brand-yellow: #eab308;
+  --brand-yellow-hover: #ca8a04;
+  --brand-amber: #ca8a04;
   --brand-red: #dc2626;
   
   --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
   --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.08);
   --shadow-blue: 0 8px 25px rgba(29, 78, 216, 0.25);
-  --shadow-amber: 0 8px 25px rgba(245, 158, 11, 0.3);
+  --shadow-yellow: 0 8px 25px rgba(234, 179, 8, 0.35);
 }
 
 /* -------------------------------------------------------------
-   2. Dark Theme Overrides (Normal Sky Blue & Gold on Dark Slate)
+   2. Dark Theme Overrides (Clean Dark Charcoal & Bright Colors)
    ------------------------------------------------------------- */
 html[data-theme="dark"] {
-  --bg-page: #090d16;
-  --bg-header: rgba(9, 13, 22, 0.94);
-  --bg-card: #121824;
-  --bg-card-subtle: #1c2436;
-  --bg-footer: #090d16;
+  --bg-page: #080c14;
+  --bg-header: rgba(8, 12, 20, 0.94);
+  --bg-card: #111724;
+  --bg-card-subtle: #192234;
+  --bg-footer: #080c14;
   
   --border-color: #1e293b;
   --border-hover: #38bdf8;
@@ -53,14 +54,15 @@ html[data-theme="dark"] {
   
   --brand-blue: #38bdf8;
   --brand-blue-hover: #60a5fa;
-  --brand-amber: #f59e0b;
-  --brand-yellow: #fbbf24;
+  --brand-yellow: #facc15;
+  --brand-yellow-hover: #eab308;
+  --brand-amber: #facc15;
   --brand-red: #ef4444;
   
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 10px 35px rgba(0, 0, 0, 0.5);
   --shadow-blue: 0 8px 30px rgba(56, 189, 248, 0.3);
-  --shadow-amber: 0 8px 30px rgba(245, 158, 11, 0.35);
+  --shadow-yellow: 0 8px 30px rgba(250, 204, 21, 0.35);
 }
 
 /* -------------------------------------------------------------
@@ -159,9 +161,10 @@ p,
 
 .text-amber-600,
 .text-amber-500,
+.text-yellow-600,
 .text-yellow-500,
 .text-yellow-400 {
-  color: var(--brand-amber) !important;
+  color: var(--brand-yellow) !important;
 }
 
 .text-red-700,
@@ -197,9 +200,9 @@ p,
   font-family: 'Fira Code', monospace;
   font-size: 0.75rem;
   font-weight: 700;
-  background-color: rgba(245, 158, 11, 0.12);
-  color: var(--brand-amber) !important;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background-color: rgba(250, 204, 21, 0.15);
+  color: var(--brand-yellow) !important;
+  border: 1px solid rgba(250, 204, 21, 0.35);
 }
 
 .dot-pulse {
@@ -213,7 +216,7 @@ p,
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
-  background-color: var(--brand-amber);
+  background-color: var(--brand-yellow);
 }
 
 /* -------------------------------------------------------------
@@ -242,14 +245,14 @@ p,
 }
 
 .btn-pill-yellow {
-  background-color: #f59e0b !important;
-  color: #ffffff !important;
+  background-color: var(--brand-yellow) !important;
+  color: #0f172a !important;
   padding: 10px 24px;
   border-radius: 9999px;
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: var(--shadow-amber);
+  box-shadow: var(--shadow-yellow);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -258,9 +261,9 @@ p,
 }
 
 .btn-pill-yellow:hover {
-  background-color: #d97706 !important;
+  background-color: var(--brand-yellow-hover) !important;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.45);
+  box-shadow: 0 10px 25px rgba(250, 204, 21, 0.45);
 }
 
 .btn-outline-slate {
@@ -285,7 +288,41 @@ p,
 }
 
 /* -------------------------------------------------------------
-   9. Scroll Animation Helper
+   9. Dark Mode Override System for Legacy HTML Tailwind Classes
+   ------------------------------------------------------------- */
+html[data-theme="dark"] .bg-white,
+html[data-theme="dark"] .bg-slate-50,
+html[data-theme="dark"] .bg-slate-100 {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+html[data-theme="dark"] .bg-slate-100\/80,
+html[data-theme="dark"] .bg-slate-200\/60,
+html[data-theme="dark"] .bg-slate-200 {
+  background-color: var(--bg-card-subtle) !important;
+  border-color: var(--border-color) !important;
+}
+
+html[data-theme="dark"] .text-slate-900,
+html[data-theme="dark"] .text-slate-800,
+html[data-theme="dark"] .text-slate-700 {
+  color: var(--text-heading) !important;
+}
+
+html[data-theme="dark"] .text-slate-600,
+html[data-theme="dark"] .text-slate-500 {
+  color: var(--text-body) !important;
+}
+
+html[data-theme="dark"] .border-slate-200,
+html[data-theme="dark"] .border-slate-300,
+html[data-theme="dark"] .border-slate-100 {
+  border-color: var(--border-color) !important;
+}
+
+/* -------------------------------------------------------------
+   10. Scroll Animation & Reduced Motion Accessibility
    ------------------------------------------------------------- */
 .fade-in-on-scroll {
   opacity: 0;
@@ -298,9 +335,6 @@ p,
   transform: translateY(0);
 }
 
-/* -------------------------------------------------------------
-   10. Reduced Motion Accessibility
-   ------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

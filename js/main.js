@@ -258,19 +258,6 @@ function executeCommand(cmd, historyElem) {
       historyElem.appendChild(res);
       historyElem.scrollTop = historyElem.scrollHeight;
       setTimeout(() => { window.location.href = 'project-mavis.html'; }, 2000);
-      return;
-    case 'journey':
-    case 'klyvex':
-    case 'secret':
-      res.innerHTML = `
-        <p class="text-amber-400 font-bold">🔓 Easter Egg Unlocked: KLYVEX ORIGINS 3D</p>
-        <p class="text-slate-300">Launching 3D Tech Journey experience...</p>
-        <p class="text-xs text-slate-500 mt-1">Redirecting to klyvex-journey.html in 2 seconds...</p>
-      `;
-      historyElem.appendChild(res);
-      historyElem.scrollTop = historyElem.scrollHeight;
-      setTimeout(() => { window.location.href = 'klyvex-journey.html'; }, 2000);
-      return;
     case 'contact':
       res.innerHTML = `
         <p>Email: <span class="text-yellow-400">akintunde.dolapo1@gmail.com</span></p>
