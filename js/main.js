@@ -260,7 +260,7 @@ function executeCommand(cmd, historyElem) {
       setTimeout(() => { window.location.href = 'project-mavis.html'; }, 2000);
     case 'contact':
       res.innerHTML = `
-        <p>Email: <span class="text-yellow-400">akintunde.dolapo1@gmail.com</span></p>
+        <p>Email: <span class="text-yellow-400">mavisenquires@gmail.com</span></p>
         <p>GitHub: <span class="text-sky-400">github.com/MAVIS-creator</span></p>
         <p>X (Twitter): <span class="text-yellow-400">@Klyvex</span></p>
         <p>Instagram: <span class="text-pink-400">@adetayoibk</span></p>
@@ -283,7 +283,7 @@ function initCopyEmail() {
 
   if (copyBtn && copyToast) {
     copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('akintunde.dolapo1@gmail.com');
+      navigator.clipboard.writeText('mavisenquires@gmail.com');
       copyToast.classList.remove('hidden');
       setTimeout(() => copyToast.classList.add('hidden'), 2500);
     });
