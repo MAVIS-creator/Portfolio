@@ -175,7 +175,7 @@ async function loadHomeNews() {
 async function loadArticle() {
   const article = document.querySelector("[data-blog-post]");
   if (!article) return;
-  const slug = new URLSearchParams(location.search).get("slug");
+  const slug = getArticleSlug();
   if (!slug) return location.assign("/blog/");
   try {
     const response = await fetch(`/api/posts?slug=${encodeURIComponent(slug)}`),
@@ -203,6 +203,17 @@ async function loadArticle() {
   } catch {
     article.innerHTML =
       '<h1>Post not found</h1><p><a href="/blog/">Return to the blog</a></p>';
+  }
+}
+function getArticleSlug() {
+  const querySlug = new URLSearchParams(location.search).get("slug");
+  if (querySlug) return querySlug;
+  const match = location.pathname.match(/^\/blog\/article\/([^/]+)\/?$/);
+  if (!match) return "";
+  try {
+    return decodeURIComponent(match[1]);
+  } catch {
+    return "";
   }
 }
 function commentForm() {
