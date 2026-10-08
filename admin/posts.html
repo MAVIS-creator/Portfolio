@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Posts | Klyvex Admin</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <link rel="stylesheet" href="/admin/alerts.css" />
+    <script src="/admin/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js"></script>
+  </head>
+  <body class="admin-page" data-page="posts">
+    <div class="admin-app" hidden>
+      <aside class="admin-sidebar">
+        <a class="admin-brand" href="/admin/overview"
+          ><img
+            class="admin-logo"
+            src="/assets/klyvex_logo.png"
+            alt="Klyvex Studios"
+          /><span>Content studio</span></a
+        >
+        <nav>
+          <a href="/admin/overview" data-nav="overview"><b>01</b> Overview</a
+          ><a href="/admin/posts" data-nav="posts"><b>02</b> Posts</a
+          ><a href="/admin/comments" data-nav="comments"><b>03</b> Comments</a
+          ><a href="/admin/settings" data-nav="settings"><b>04</b> Settings</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <a href="/" target="_blank">Open website ↗</a
+          ><button class="button secondary" id="logout">Sign out</button>
+        </div>
+      </aside>
+      <main class="admin-main">
+        <div class="admin-main-inner">
+          <header class="admin-header admin-toolbar">
+            <div>
+              <p class="page-kicker">Publishing</p>
+              <h1>Posts</h1>
+              <p>Create focused articles for the Klyvex blog.</p>
+            </div>
+            <button class="button secondary" id="newPost" type="button">
+              + New post
+            </button>
+          </header>
+          <div class="editor-layout">
+            <section class="admin-card editor-card">
+              <div class="card-heading">
+                <div>
+                  <span class="step-label">Editor</span>
+                  <h2 id="editorTitle">New post</h2>
+                </div>
+                <span class="autosave-note">Changes save when submitted</span>
+              </div>
+              <form id="postForm" class="admin-form">
+                <input type="hidden" id="postId" />
+                <div class="field-grid">
+                  <label class="field-wide"
+                    >Post title<input
+                      id="title"
+                      required
+                      maxlength="180"
+                      placeholder="A clear, useful headline" /></label
+                  ><label
+                    >URL slug<input
+                      id="slug"
+                      maxlength="190"
+                      placeholder="generated-from-title" /></label
+                  ><label
+                    >Category<select id="category" required>
+                      <option value="Cybersecurity trends">
+                        Cybersecurity trends
+                      </option>
+                      <option value="Digital safety">Digital safety</option>
+                      <option value="Software">Software</option>
+                      <option value="Gaming technology">
+                        Gaming technology
+                      </option>
+                      <option value="AI">AI</option>
+                      <option value="Building in public">
+                        Building in public
+                      </option>
+                    </select></label
+                  ><label
+                    >Publication status<select id="status">
+                      <option value="draft">Draft</option>
+                      <option value="published">Published</option>
+                    </select></label
+                  >
+                </div>
+                <label
+                  >Short excerpt<textarea
+                    id="excerpt"
+                    class="excerpt-field"
+                    required
+                    maxlength="320"
+                    placeholder="A concise summary for cards and search results"
+                  ></textarea
+                  ><small
+                    ><span id="excerptCount">0</span>/320 characters</small
+                  ></label
+                >
+                <div class="image-field">
+                  <div>
+                    <span class="step-label">Featured image</span>
+                    <h3>Article cover</h3>
+                    <p>
+                      Paste an image URL or select a JPG, PNG or WebP file up to
+                      1.5 MB.
+                    </p>
+                    <label
+                      >Image URL<input
+                        id="featuredImage"
+                        type="url"
+                        placeholder="https://example.com/image.jpg" /></label
+                    ><label class="file-picker"
+                      >Choose image<input
+                        id="featuredImageFile"
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                    /></label>
+                  </div>
+                  <div class="image-preview" id="imagePreview">
+                    <span>No image selected</span>
+                  </div>
+                </div>
+                <label
+                  >Article content<textarea
+                    id="content"
+                    class="content-editor"
+                    required
+                    placeholder="Write the article in clear paragraphs..."
+                  ></textarea>
+                </label>
+                <div class="editor-footer">
+                  <button
+                    class="button secondary"
+                    id="cancelEdit"
+                    type="button"
+                  >
+                    Reset</button
+                  ><button class="button primary" type="submit">
+                    Save post
+                  </button>
+                </div>
+              </form>
+            </section>
+            <aside class="admin-card post-library">
+              <div class="card-heading">
+                <div>
+                  <span class="step-label">Library</span>
+                  <h2>Existing posts</h2>
+                </div>
+              </div>
+              <div id="postList"><p>Loading posts...</p></div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="/admin/admin.js"></script>
+  </body>
+</html>

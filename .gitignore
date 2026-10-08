@@ -1,0 +1,14 @@
+.env
+.env.local
+.env.*.local
+/storage/
+/vendor/
+/node_modules/
+composer.lock
+*.log
+
+.vercel
+.env*
+!.env.example
+.portfolio-secret.php
+.admin-password.txt

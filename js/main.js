@@ -1,348 +1,266 @@
-/* Master JavaScript Engine - Akintunde Dolapo Elisha (MAVIS / BK) Portfolio */
-
-document.addEventListener('DOMContentLoaded', () => {
-  initThemeToggle();
-  initNavbar();
-  initParticleCanvas();
-  initSimulators();
-  initTerminalEngine();
-  initCopyEmail();
-  initScrollAnimations();
+document.addEventListener("DOMContentLoaded", () => {
+  renderShell();
+  applyBrand();
+  initTheme();
+  initMenu();
+  initReveal();
+  initContact();
+  loadBlog();
+  loadHomeNews();
+  loadArticle();
 });
-
-/* 1. Mobile Navigation & Active Links */
-function initNavbar() {
-  const toggleBtn = document.getElementById('mobileMenuToggle');
-  const menuContainer = document.getElementById('mobileMenu');
-  
-  if (toggleBtn && menuContainer) {
-    toggleBtn.addEventListener('click', () => {
-      menuContainer.classList.toggle('hidden');
-    });
-  }
-
-  // Highlight Active Link based on current URL path
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-link');
-  
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('nav-link-active');
+function applyBrand() {
+  document
+    .querySelectorAll(".site-brand img")
+    .forEach((image) => (image.src = "/assets/klyvex_logo.png"));
+  document
+    .querySelectorAll('link[rel~="icon"],link[rel="apple-touch-icon"]')
+    .forEach((link) => link.remove());
+  const icon = document.createElement("link");
+  icon.rel = "icon";
+  icon.type = "image/png";
+  icon.href = "/assets/klyvex_logo.png";
+  document.head.append(icon);
+  const social = location.origin + "/assets/klyvex_logo.png";
+  document
+    .querySelector('meta[property="og:image"]')
+    ?.setAttribute("content", social);
+  document
+    .querySelector('meta[name="twitter:image"]')
+    ?.setAttribute("content", social);
+}
+function renderShell() {
+  const active = location.pathname.split("/").filter(Boolean)[0] || "home",
+    header = document.querySelector("body > header"),
+    footer = document.querySelector("body > footer"),
+    links = [
+      ["home", "Home", "/"],
+      ["about", "About", "/about"],
+      ["portfolio", "Portfolio", "/portfolio/"],
+      ["blog", "Blog", "/blog/"],
+      ["contact", "Contact", "/contact"],
+    ];
+  if (header)
+    header.outerHTML = `<header class="site-header sticky top-0 z-50"><div class="site-nav max-w-7xl mx-auto px-6"><a class="site-brand" href="/"><img src="/assets/mind-control_klyvex_logo.svg" alt="Klyvex Studios"><span><strong>Klyvex Studios</strong><small>Technology · Games · Software</small></span></a><nav id="siteNav" aria-label="Main navigation"><button class="menu-close" type="button" aria-label="Close menu"><i data-lucide="x"></i></button>${links.map(([id, label, url]) => `<a href="${url}"${active === id ? ' aria-current="page"' : ""}>${label}</a>`).join("")}<a href="/cv" target="_blank">CV</a><button class="themeToggleBtn" type="button" aria-label="Toggle colour theme"><i data-lucide="sun-moon"></i></button></nav><button id="mobileMenuToggle" class="site-menu" type="button" aria-expanded="false" aria-controls="siteNav"><i data-lucide="menu"></i><span>Menu</span></button><button class="menu-scrim" type="button" aria-label="Close menu"></button></div></header>`;
+  if (footer)
+    footer.outerHTML = `<footer class="site-footer"><div class="max-w-7xl mx-auto px-6"><p>© ${new Date().getFullYear()} Klyvex Studios · Built by Akintunde Dolapo Elisha</p><nav><a href="/portfolio/">Portfolio</a><a href="/blog/">Blog</a><a href="/contact">Contact</a><a href="https://github.com/MAVIS-creator" target="_blank" rel="noopener noreferrer">GitHub</a></nav></div></footer>`;
+}
+function initTheme() {
+  document.documentElement.dataset.theme =
+    localStorage.getItem("theme") || "light";
+  document.querySelector(".themeToggleBtn")?.addEventListener("click", () => {
+    const next =
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem("theme", next);
+  });
+}
+function initMenu() {
+  const button = document.querySelector("#mobileMenuToggle"),
+    nav = document.querySelector("#siteNav"),
+    scrim = document.querySelector(".menu-scrim"),
+    close = () => {
+      nav?.classList.remove("open");
+      scrim?.classList.remove("open");
+      button?.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    };
+  button?.addEventListener("click", () => {
+    const open = !nav.classList.contains("open");
+    nav.classList.toggle("open", open);
+    scrim?.classList.toggle("open", open);
+    button.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("menu-open", open);
+  });
+  scrim?.addEventListener("click", close);
+  nav?.querySelector(".menu-close")?.addEventListener("click", close);
+  nav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+}
+function initReveal() {
+  document
+    .querySelectorAll(".fade-in-on-scroll")
+    .forEach((x) => x.classList.add("visible"));
+  if (window.lucide) lucide.createIcons();
+}
+function initContact() {
+  const form = document.querySelector("#contactForm");
+  if (!form) return;
+  form.removeAttribute("onsubmit");
+  const fields = [...form.querySelectorAll("input,textarea")];
+  ["name", "email", "subject", "message"].forEach((name, index) => {
+    if (fields[index]) fields[index].name = name;
+  });
+  const trap = document.createElement("input");
+  trap.name = "website";
+  trap.tabIndex = -1;
+  trap.autocomplete = "off";
+  trap.className = "form-trap";
+  form.append(trap);
+  const notice = document.createElement("p");
+  notice.className = "form-notice";
+  notice.setAttribute("role", "status");
+  form.append(notice);
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    notice.textContent = "Sending...";
+    try {
+      const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        }),
+        data = await response.json();
+      if (!response.ok)
+        throw new Error(data.error || "Unable to send message.");
+      form.reset();
+      notice.textContent = data.message;
+      notice.dataset.state = "success";
+    } catch (error) {
+      notice.textContent = error.message;
+      notice.dataset.state = "error";
+    } finally {
+      button.disabled = false;
     }
   });
 }
-
-/* 2. Background Particle Grid Canvas (Blue + Yellow Particles) */
-function initParticleCanvas() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
-
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
-
-  const particles = [];
-  const particleCount = Math.min(Math.floor(width / 22), 65);
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.45,
-      vy: (Math.random() - 0.5) * 0.45,
-      size: Math.random() * 2.2 + 1,
-      color: Math.random() > 0.4 ? 'rgba(250, 204, 21, ' : 'rgba(56, 189, 248, '
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < particles.length; i++) {
-      let p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + '0.7)';
-      ctx.fill();
-
-      for (let j = i + 1; j < particles.length; j++) {
-        let p2 = particles[j];
-        let dx = p.x - p2.x;
-        let dy = p.y - p2.y;
-        let dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 115) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(250, 204, 21, ${0.12 * (1 - dist / 115)})`;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-}
-
-/* 3. Interactive Project Simulators */
-function initSimulators() {
-  // SHA-256 Hash Chain Simulator
-  const hashInput = document.getElementById('simStudentName');
-  const hashOutput = document.getElementById('simHashResult');
-
-  if (hashInput && hashOutput) {
-    let currentPrev = "0000a89f3c71b209e84b";
-    
-    hashInput.addEventListener('input', async () => {
-      const val = hashInput.value || "Student Record";
-      const combined = currentPrev + val + Date.now();
-      const hashStr = await computeSha256(combined);
-      hashOutput.textContent = hashStr;
-    });
-  }
-
-  // VaultGuard Sandbox
-  const scanBtn = document.getElementById('simScanBtn');
-  const scanOutput = document.getElementById('simScanOutput');
-
-  if (scanBtn && scanOutput) {
-    scanBtn.addEventListener('click', () => {
-      scanOutput.innerHTML = `<span class="text-yellow-400">[AUDIT]</span> Initializing system integrity verification...<br>`;
-      scanBtn.disabled = true;
-
-      const steps = [
-        '<span class="text-sky-400">[1/4]</span> Auditing system process memory & handles...',
-        '<span class="text-yellow-400">[2/4]</span> Scanning startup persistence registry entries...',
-        '<span class="text-emerald-400">[3/4]</span> USB Immunization shield: ACTIVE',
-        '<span class="badge-security-red"><span class="dot-pulse"></span> SYSTEM AUDIT CLEAN: 0 Threats Detected</span>'
-      ];
-
-      steps.forEach((step, idx) => {
-        setTimeout(() => {
-          scanOutput.innerHTML += `${step}<br>`;
-          if (idx === steps.length - 1) scanBtn.disabled = false;
-        }, (idx + 1) * 750);
+const postCard = (post) =>
+  `<article class="simple-card blog-card">${post.featured_image ? `<img class="blog-card-image" src="${escapeHtml(post.featured_image)}" alt="">` : ""}<div class="blog-card-body"><span class="blog-category">${escapeHtml(post.category || "Software")}</span><time>${date(post.published_at)}</time><h2>${escapeHtml(post.title)}</h2><p>${escapeHtml(post.excerpt)}</p><div class="post-meta"><span><i data-lucide="heart"></i>${Number(post.likes_count || 0)}</span><span><i data-lucide="message-circle"></i>${Number(post.comments_count || 0)}</span></div><a href="/blog/article/${encodeURIComponent(post.slug)}">Read article <i data-lucide="arrow-right"></i></a></div></article>`;
+async function loadBlog() {
+  const list = document.querySelector("[data-blog-list]");
+  if (!list) return;
+  try {
+    const response = await fetch("/api/posts"),
+      posts = await response.json();
+    const render = (category = "all") => {
+      const visible =
+        category === "all"
+          ? posts
+          : posts.filter((post) => post.category === category);
+      list.innerHTML = visible.length
+        ? visible.map(postCard).join("")
+        : "<p>No posts in this category yet.</p>";
+      if (window.lucide) lucide.createIcons();
+    };
+    render();
+    document
+      .querySelector("[data-blog-filters]")
+      ?.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-category]");
+        if (!button) return;
+        document
+          .querySelectorAll("[data-category]")
+          .forEach((item) => item.classList.toggle("active", item === button));
+        render(button.dataset.category);
       });
-    });
-  }
-
-  // Geo-Fence Tester
-  const testFenceBtn = document.getElementById('simFenceBtn');
-  const fenceOutput = document.getElementById('simFenceResult');
-
-  if (testFenceBtn && fenceOutput) {
-    testFenceBtn.addEventListener('click', () => {
-      const lat = (8.4799 + (Math.random() - 0.5) * 0.01).toFixed(4);
-      const lng = (4.5418 + (Math.random() - 0.5) * 0.01).toFixed(4);
-      fenceOutput.innerHTML = `
-        <div class="p-3 bg-slate-900/90 rounded border border-yellow-500/40 text-xs font-mono">
-          <p class="text-slate-300">GPS Coords: <span class="text-yellow-400">${lat}° N, ${lng}° E</span></p>
-          <p class="text-slate-300">Geofence Radius: <span class="text-sky-400">500m (LAUTECH Campus)</span></p>
-          <p class="mt-1 font-semibold text-emerald-400">✅ LINK VALIDATED: Token Expires in 14m 59s</p>
-        </div>
-      `;
-    });
+  } catch {
+    list.innerHTML = "<p>The blog is temporarily unavailable.</p>";
   }
 }
-
-async function computeSha256(message) {
-  const msgBuffer = new TextEncoder().encode(message);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+async function loadHomeNews() {
+  const list = document.querySelector("[data-home-news]");
+  if (!list) return;
+  try {
+    const response = await fetch("/api/posts"),
+      posts = await response.json();
+    list.innerHTML = posts.length
+      ? posts.slice(0, 3).map(postCard).join("")
+      : "<p>Fresh cybersecurity notes are coming soon.</p>";
+    if (window.lucide) lucide.createIcons();
+  } catch {
+    list.innerHTML = "<p>Recent notes are temporarily unavailable.</p>";
+  }
 }
-
-/* 4. MAVIS-CLI Terminal Engine */
-function initTerminalEngine() {
-  const termInput = document.getElementById('termInput');
-  const termHistory = document.getElementById('termHistory');
-
-  if (!termInput || !termHistory) return;
-
-  termInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const cmd = termInput.value.trim().toLowerCase();
-      termInput.value = '';
-      executeCommand(cmd, termHistory);
+async function loadArticle() {
+  const article = document.querySelector("[data-blog-post]");
+  if (!article) return;
+  const slug = new URLSearchParams(location.search).get("slug");
+  if (!slug) return location.assign("/blog/");
+  try {
+    const response = await fetch(`/api/posts?slug=${encodeURIComponent(slug)}`),
+      data = await response.json();
+    if (!response.ok) throw new Error();
+    const post = data.post;
+    document.title = `${post.title} | Klyvex Studios`;
+    article.innerHTML = `<p class="page-kicker">${date(post.published_at)}</p><h1>${escapeHtml(post.title)}</h1><div class="article-body">${post.content_html}</div><section class="engagement"><div class="engagement-actions"><button class="icon-action" data-like type="button"><i data-lucide="heart"></i><span>${Number(post.likes_count || 0)}</span> Like</button><button class="icon-action" data-share type="button"><i data-lucide="share-2"></i> Share</button><a class="icon-action" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.href)}" target="_blank" rel="noopener noreferrer"><i data-lucide="linkedin"></i> LinkedIn</a><a class="icon-action" href="https://x.com/intent/post?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer"><i data-lucide="twitter"></i> X</a></div><div class="comments"><h2>Comments</h2>${(data.comments || []).map((c) => `<article class="comment"><strong>${escapeHtml(c.name)}</strong><time>${date(c.created_at)}</time><p>${escapeHtml(c.comment)}</p></article>`).join("") || "<p>No approved comments yet.</p>"}${data.comments_enabled ? commentForm() : compactNotice("Comments are currently closed.")}</div></section>`;
+    if (post.featured_image) {
+      const image = document.createElement("img");
+      image.className = "article-featured-image";
+      image.src = post.featured_image;
+      image.alt = "";
+      article.querySelector("h1").after(image);
+    }
+    bindEngagement(slug, article);
+    if (window.lucide) lucide.createIcons();
+  } catch {
+    article.innerHTML =
+      '<h1>Post not found</h1><p><a href="/blog/">Return to the blog</a></p>';
+  }
+}
+function commentForm() {
+  return `<form class="comment-form"><h3>Join the conversation</h3><label>Name<input name="name" required maxlength="80"></label><label>Email<input name="email" type="email" required maxlength="190"></label><input class="form-trap" name="website" tabindex="-1" autocomplete="off"><label>Comment<textarea name="comment" required minlength="3" maxlength="1500"></textarea></label><button class="btn-pill-blue" type="submit"><i data-lucide="send"></i> Submit for review</button><p class="form-notice" role="status"></p></form>`;
+}
+function compactNotice(message) {
+  return `<p class="comment-closed">${message}</p>`;
+}
+function bindEngagement(slug, article) {
+  article.querySelector("[data-like]")?.addEventListener("click", async (e) => {
+    const button = e.currentTarget;
+    button.disabled = true;
+    try {
+      const response = await fetch("/api/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "like", slug }),
+        }),
+        data = await response.json();
+      button.querySelector("span").textContent = data.likes_count;
+    } catch {
+    } finally {
+      button.disabled = false;
     }
   });
-}
-
-function executeCommand(cmd, historyElem) {
-  const line = document.createElement('div');
-  line.className = 'mb-2';
-  line.innerHTML = `<span class="text-yellow-400">mavis@lautech:~$</span> <span class="text-white">${escapeHtml(cmd)}</span>`;
-  historyElem.appendChild(line);
-
-  const res = document.createElement('div');
-  res.className = 'mb-4 text-slate-300 text-sm font-mono leading-relaxed';
-
-  switch (cmd) {
-    case 'help':
-      res.innerHTML = `
-        <p class="text-sky-400 mb-1 font-bold">Available MAVIS-CLI Commands:</p>
-        <p>• <span class="text-sky-400">about</span>      - Print Akintunde Dolapo Elisha bio & details</p>
-        <p>• <span class="text-sky-400">projects</span>   - List flagship security & software builds</p>
-        <p>• <span class="text-sky-400">skills</span>     - Display tech stack (HTML5, CSS3, JS, PHP, Python, React, Node, Supabase, Postgres)</p>
-        <p>• <span class="text-sky-400">exploring</span>  - AI x Gaming x Cybersecurity vision</p>
-        <p>• <span class="text-sky-400">security</span>   - View VaultGuard & Attendance integrity status</p>
-        <p>• <span class="text-sky-400">clear</span>      - Clear terminal screen</p>
-        <p>• <span class="text-sky-400">contact</span>    - Show contact details, email & social channels</p>
-      `;
-      break;
-    case 'about':
-      res.innerHTML = `
-        <p class="text-white font-bold">Akintunde Dolapo Elisha (MAVIS / BK)</p>
-        <p class="text-slate-300">400 Level Computer Science (Cybersecurity Specialization) Student at LAUTECH, Nigeria.</p>
-        <p class="text-slate-300">Developer, Security Researcher, Gamer & Computer Enthusiast.</p>
-      `;
-      break;
-    case 'projects':
-      res.innerHTML = `
-        <p class="text-sky-400 font-bold mb-1">Flagship Builds:</p>
-        <p>1. <span class="text-white">QUANTYX</span> - AI Gaming Intelligence Platform (Python, PHP REST API, Multi-Model Routing)</p>
-        <p>2. <span class="text-white">VaultGuard 360</span> - Windows Security & Remediation Suite</p>
-        <p>3. <span class="text-white">Blockchain Attendance</span> - Tamper-Evident SHA-256 Hash Chain System</p>
-        <p>4. <span class="text-white">HIGH Q SOLID ACADEMY</span> - Production Educational Portal (highqsolidacademy.com)</p>
-        <p>5. <span class="text-white">MindGrid: Neural Clash</span> - Memory Arcade Game MVP (React, Phaser 3, Supabase)</p>
-      `;
-      break;
-    case 'skills':
-      res.innerHTML = `
-        <p class="text-sky-400 font-bold mb-1">Technical Stack & Competencies:</p>
-        <p>• <span class="text-amber-400">Core Languages:</span> HTML5, CSS3, JavaScript (ES6+), PHP, Python</p>
-        <p>• <span class="text-sky-400">Frontend:</span> React, TypeScript, Tailwind CSS, Phaser 3, Three.js</p>
-        <p>• <span class="text-indigo-300">Backend & DB:</span> Node.js, Express, PHP PDO, MySQL, Supabase, PostgreSQL</p>
-        <p>• <span class="text-emerald-400">AI & Security:</span> Groq, Gemini, OpenRouter Routing, SHA-256 Hashing, Geofencing</p>
-      `;
-      break;
-    case 'exploring':
-      res.innerHTML = `
-        <p class="text-amber-400 font-bold">Current Frontier:</p>
-        <p class="text-slate-300">Building intelligent AI-driven systems at the intersection of Gaming Intelligence, Multi-Model AI Orchestration, and System Security Controls.</p>
-      `;
-      break;
-    case 'security':
-      res.innerHTML = `
-        <p class="text-red-400 font-bold">Cybersecurity & Research Status:</p>
-        <p>✓ VaultGuard 360 - Active Windows Remediation & Persistence Audit</p>
-        <p>✓ Cryptographic Attendance - SHA-256 Immutable Hash Chain Verified</p>
-        <p>✓ GPS Geofencing - Location Token Validation Engine Active</p>
-      `;
-      break;
-    case 'clear':
-      historyElem.innerHTML = '';
-      return;
-    case 'mavis':
-      res.innerHTML = `
-        <p class="text-sky-400 font-bold">🔒 Secret Unlocked: MAVIS PLATFORM ARCHITECTURE</p>
-        <p class="text-slate-300">Accessing classified MAVIS ecosystem documentation...</p>
-        <p class="text-xs text-slate-500 mt-1">Redirecting to project-mavis.html in 2 seconds...</p>
-      `;
-      historyElem.appendChild(res);
-      historyElem.scrollTop = historyElem.scrollHeight;
-      setTimeout(() => { window.location.href = 'project-mavis.html'; }, 2000);
-    case 'contact':
-      res.innerHTML = `
-        <p>Email: <span class="text-yellow-400">mavisenquires@gmail.com</span></p>
-        <p>GitHub: <span class="text-sky-400">github.com/MAVIS-creator</span></p>
-        <p>X (Twitter): <span class="text-yellow-400">@Klyvex</span></p>
-        <p>Instagram: <span class="text-pink-400">@adetayoibk</span></p>
-      `;
-      break;
-    case '':
-      return;
-    default:
-      res.innerHTML = `<span class="text-red-400">Command not found: "${escapeHtml(cmd)}". Type <span class="text-yellow-400">help</span> for commands.</span>`;
-  }
-
-  historyElem.appendChild(res);
-  historyElem.scrollTop = historyElem.scrollHeight;
-}
-
-/* 5. Copy Email Helper */
-function initCopyEmail() {
-  const copyBtn = document.getElementById('copyEmailBtn');
-  const copyToast = document.getElementById('copyToast');
-
-  if (copyBtn && copyToast) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('mavisenquires@gmail.com');
-      copyToast.classList.remove('hidden');
-      setTimeout(() => copyToast.classList.add('hidden'), 2500);
-    });
-  }
-}
-
-/* 6. Scroll Fade-In-Out Animation Observer */
-function initScrollAnimations() {
-  const elements = document.querySelectorAll('.fade-in-on-scroll');
-  
-  if (!('IntersectionObserver' in window)) {
-    elements.forEach(el => el.classList.add('fade-in-visible'));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in-visible');
+  article.querySelector("[data-share]")?.addEventListener("click", async () => {
+    if (navigator.share)
+      await navigator.share({ title: document.title, url: location.href });
+    else await navigator.clipboard.writeText(location.href);
+  });
+  article
+    .querySelector(".comment-form")
+    ?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const notice = e.currentTarget.querySelector(".form-notice");
+      try {
+        const response = await fetch("/api/posts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "comment",
+              slug,
+              ...Object.fromEntries(new FormData(e.currentTarget)),
+            }),
+          }),
+          data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+        e.currentTarget.reset();
+        notice.textContent = data.message;
+        notice.dataset.state = "success";
+      } catch (error) {
+        notice.textContent = error.message || "Unable to submit comment.";
+        notice.dataset.state = "error";
       }
     });
-  }, { threshold: 0.15 });
-
-  elements.forEach(el => observer.observe(el));
 }
-
-function escapeHtml(str) {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-/* 7. Light / Dark Theme Toggle Engine */
-function initThemeToggle() {
-  const themeBtns = document.querySelectorAll('.themeToggleBtn');
-  const savedTheme = localStorage.getItem('theme') || 'light';
-
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcons(savedTheme);
-
-  themeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcons(newTheme);
-    });
+function date(value) {
+  return new Date(value).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 }
-
-function updateThemeIcons(theme) {
-  const sunIcons = document.querySelectorAll('.theme-icon-sun');
-  const moonIcons = document.querySelectorAll('.theme-icon-moon');
-  
-  if (theme === 'light') {
-    sunIcons.forEach(el => el.classList.remove('hidden'));
-    moonIcons.forEach(el => el.classList.add('hidden'));
-  } else {
-    sunIcons.forEach(el => el.classList.add('hidden'));
-    moonIcons.forEach(el => el.classList.remove('hidden'));
-  }
+function escapeHtml(value = "") {
+  const node = document.createElement("div");
+  node.textContent = value;
+  return node.innerHTML;
 }

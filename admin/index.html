@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Admin Sign In | Klyvex Studios</title>
+    <link rel="icon" type="image/png" href="/assets/klyvex_logo.png" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <link rel="stylesheet" href="/admin/alerts.css" />
+    <script src="/admin/alerts.js"></script>
+  </head>
+  <body class="admin-page" data-page="login">
+    <main class="admin-login">
+      <section class="admin-card">
+        <img
+          class="admin-logo"
+          src="/assets/klyvex_logo.png"
+          alt="Klyvex Studios"
+        />
+        <p class="page-kicker">Restricted area</p>
+        <h1>Admin sign in</h1>
+        <p>Authenticate to manage the Klyvex Studios blog.</p>
+        <form id="loginForm" class="admin-form">
+          <label for="username">Username</label
+          ><input
+            id="username"
+            name="username"
+            autocomplete="username"
+            required
+          /><label for="password">Password</label
+          ><input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          /><button class="button primary" type="submit">Sign in</button>
+        </form>
+      </section>
+    </main>
+    <script src="/admin/admin.js"></script>
+  </body>
+</html>

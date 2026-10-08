@@ -1,0 +1,1 @@
+const crypto=require('crypto');const password=process.argv[2];if(!password||password.length<14){console.error('Provide a unique password of at least 14 characters.');process.exit(1)}const salt=crypto.randomBytes(24).toString('hex'),hash=crypto.scryptSync(password,salt,64).toString('hex');console.log(`${salt}:${hash}`);

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Settings | Klyvex Admin</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <link rel="stylesheet" href="/admin/alerts.css" />
+    <script src="/admin/alerts.js"></script>
+  </head>
+  <body class="admin-page" data-page="settings">
+    <div class="admin-app" hidden>
+      <aside class="admin-sidebar">
+        <img
+          class="admin-logo"
+          src="/assets/klyvex_logo.png"
+          alt="Klyvex Studios"
+        />
+        <nav>
+          <a href="/admin/overview" data-nav="overview">Overview</a
+          ><a href="/admin/posts" data-nav="posts">Posts</a
+          ><a href="/admin/comments" data-nav="comments">Comments</a
+          ><a href="/admin/settings" data-nav="settings">Settings</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <a href="/" target="_blank">View website</a
+          ><button class="button secondary" id="logout">Sign out</button>
+        </div>
+      </aside>
+      <main class="admin-main">
+        <div class="admin-main-inner">
+          <header class="admin-header">
+            <div>
+              <p class="page-kicker">Configuration</p>
+              <h1>Settings</h1>
+            </div>
+          </header>
+          <section class="admin-card">
+            <form id="settingsForm">
+              <div class="settings-row">
+                <div>
+                  <h2>Reader comments</h2>
+                  <p>
+                    Turn comment submission on or off. Existing approved
+                    comments remain visible.
+                  </p>
+                  <p class="settings-state" id="settingsState">Loading...</p>
+                </div>
+                <label class="admin-toggle"
+                  ><input id="commentsEnabled" type="checkbox" /> Accept new
+                  comments</label
+                >
+              </div>
+              <button class="button primary" type="submit">
+                Save settings
+              </button>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="/admin/admin.js"></script>
+  </body>
+</html>
