@@ -1,6 +1,24 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/terminal.html",
+      "destination": "/portfolio/",
+      "permanent": true
+    },
+    { "source": "/terminal", "destination": "/portfolio/", "permanent": true },
+    {
+      "source": "/project-quantyx.html",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/project-quantyx",
+      "destination": "/projects",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",

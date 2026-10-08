@@ -1,5 +1,58 @@
-const {callGateway}=require('../lib/gateway');
-const origin='https://www.klyvex-studios.tech';
-const pages=[['/','1.0'],['/portfolio/','0.9'],['/blog/','0.9'],['/about','0.7'],['/what-i-do','0.7'],['/projects','0.8'],['/currently-exploring','0.6'],['/contact','0.7']];
-module.exports=async(req,res)=>{if(req.method!=='GET')return res.status(405).send('Method not allowed');let posts=[];try{posts=(await callGateway('list_posts')).posts||[]}catch(error){console.error('Dynamic sitemap blog lookup failed:',error.message)}const staticUrls=pages.map(([path,priority])=>url(`${origin}${path}`,null,priority));const postUrls=posts.map(post=>url(`${origin}/blog/article/${encodeURIComponent(post.slug)}`,post.published_at,'0.8'));const xml=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...staticUrls,...postUrls].join('\n')}\n</urlset>`;res.setHeader('Content-Type','application/xml; charset=utf-8');res.setHeader('Cache-Control','public, s-maxage=300, stale-while-revalidate=3600');return res.status(200).send(xml)};
-function url(location,lastModified,priority){return `  <url><loc>${escapeXml(location)}</loc>${lastModified?`<lastmod>${new Date(lastModified).toISOString()}</lastmod>`:''}<priority>${priority}</priority></url>`}function escapeXml(value){return String(value).replace(/[<>&'\"]/g,char=>({'<':'&lt;','>':'&gt;','&':'&amp;',"'":'&apos;','"':'&quot;'}[char]))}
+const { callGateway } = require("../lib/gateway");
+const origin = "https://www.klyvex-studios.tech";
+const pages = [
+  ["/", "1.0"],
+  ["/portfolio/", "0.9"],
+  ["/blog/", "0.9"],
+  ["/about", "0.7"],
+  ["/what-i-do", "0.7"],
+  ["/projects", "0.8"],
+  ["/currently-exploring", "0.6"],
+  ["/contact", "0.7"],
+  ["/cv", "0.6"],
+  ["/project-mavis", "0.7"],
+  ["/project-blockchain", "0.7"],
+  ["/project-vaultguard", "0.7"],
+];
+module.exports = async (req, res) => {
+  if (req.method !== "GET") return res.status(405).send("Method not allowed");
+  let posts = [];
+  try {
+    posts = (await callGateway("list_posts")).posts || [];
+  } catch (error) {
+    console.error("Dynamic sitemap blog lookup failed:", error.message);
+  }
+  const staticUrls = pages.map(([path, priority]) =>
+    url(`${origin}${path}`, null, priority),
+  );
+  const postUrls = posts.map((post) =>
+    url(
+      `${origin}/blog/article/${encodeURIComponent(post.slug)}`,
+      post.published_at,
+      "0.8",
+    ),
+  );
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...staticUrls, ...postUrls].join("\n")}\n</urlset>`;
+  res.setHeader("Content-Type", "application/xml; charset=utf-8");
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=300, stale-while-revalidate=3600",
+  );
+  return res.status(200).send(xml);
+};
+function url(location, lastModified, priority) {
+  return `  <url><loc>${escapeXml(location)}</loc>${lastModified ? `<lastmod>${new Date(lastModified).toISOString()}</lastmod>` : ""}<priority>${priority}</priority></url>`;
+}
+function escapeXml(value) {
+  return String(value).replace(
+    /[<>&'\"]/g,
+    (char) =>
+      ({
+        "<": "&lt;",
+        ">": "&gt;",
+        "&": "&amp;",
+        "'": "&apos;",
+        '"': "&quot;",
+      })[char],
+  );
+}

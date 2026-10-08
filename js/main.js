@@ -183,6 +183,13 @@ async function loadArticle() {
     if (!response.ok) throw new Error();
     const post = data.post;
     document.title = `${post.title} | Klyvex Studios`;
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.append(canonical);
+    }
+    canonical.href = `https://www.klyvex-studios.tech/blog/article/${encodeURIComponent(post.slug)}`;
     article.innerHTML = `<p class="page-kicker">${date(post.published_at)}</p><h1>${escapeHtml(post.title)}</h1><div class="article-body">${post.content_html}</div><section class="engagement"><div class="engagement-actions"><button class="icon-action" data-like type="button"><i data-lucide="heart"></i><span>${Number(post.likes_count || 0)}</span> Like</button><button class="icon-action" data-share type="button"><i data-lucide="share-2"></i> Share</button><a class="icon-action" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.href)}" target="_blank" rel="noopener noreferrer"><i data-lucide="linkedin"></i> LinkedIn</a><a class="icon-action" href="https://x.com/intent/post?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(post.title)}" target="_blank" rel="noopener noreferrer"><i data-lucide="twitter"></i> X</a></div><div class="comments"><h2>Comments</h2>${(data.comments || []).map((c) => `<article class="comment"><strong>${escapeHtml(c.name)}</strong><time>${date(c.created_at)}</time><p>${escapeHtml(c.comment)}</p></article>`).join("") || "<p>No approved comments yet.</p>"}${data.comments_enabled ? commentForm() : compactNotice("Comments are currently closed.")}</div></section>`;
     if (post.featured_image) {
       const image = document.createElement("img");
