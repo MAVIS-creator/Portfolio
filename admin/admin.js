@@ -4,6 +4,9 @@ const $ = (selector) => document.querySelector(selector),
 if (page === "posts" && window.tinymce)
   tinymce.init({
     selector: "#content",
+    base_url: "/admin/vendor/tinymce",
+    suffix: ".min",
+    license_key: "gpl",
     height: 440,
     menubar: false,
     branding: false,
@@ -141,14 +144,29 @@ function renderPosts() {
 }
 $("#postForm")?.addEventListener("submit", async (event) => {
   event.preventDefault();
+  const form = event.currentTarget,
+    editor = window.tinymce?.get("content"),
+    articleContent = editor?.getContent() || $("#content").value;
+  if (!form.reportValidity()) return;
+  if (!articleContent.replace(/<[^>]*>/g, "").trim()) {
+    await Swal.fire({
+      icon: "warning",
+      title: "Article content is required",
+      text: "Write some content in the editor before saving this post.",
+      confirmButtonColor: "#2457d6",
+    });
+    editor?.focus();
+    return;
+  }
+  const submitButton = form.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
   const id = Number($("#postId").value) || null,
     payload = {
       id,
       title: $("#title").value,
       slug: $("#slug").value,
       excerpt: $("#excerpt").value,
-      content:
-        window.tinymce?.get("content")?.getContent() || $("#content").value,
+      content: articleContent,
       status: $("#status").value,
       category: $("#category").value,
       featured_image: $("#featuredImage").value,
@@ -164,6 +182,8 @@ $("#postForm")?.addEventListener("submit", async (event) => {
     alertSuccess("Post saved");
   } catch (error) {
     alertError(error);
+  } finally {
+    submitButton.disabled = false;
   }
 });
 $("#cancelEdit")?.addEventListener("click", clearPost);

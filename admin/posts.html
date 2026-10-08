@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/admin/admin.css" />
     <link rel="stylesheet" href="/admin/alerts.css" />
     <script src="/admin/alerts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js"></script>
+    <script src="/admin/vendor/tinymce/tinymce.min.js"></script>
   </head>
   <body class="admin-page" data-page="posts">
     <div class="admin-app" hidden>
@@ -53,7 +53,7 @@
                 </div>
                 <span class="autosave-note">Changes save when submitted</span>
               </div>
-              <form id="postForm" class="admin-form">
+              <form id="postForm" class="admin-form" novalidate>
                 <input type="hidden" id="postId" />
                 <div class="field-grid">
                   <label class="field-wide"
@@ -129,7 +129,6 @@
                   >Article content<textarea
                     id="content"
                     class="content-editor"
-                    required
                     placeholder="Write the article in clear paragraphs..."
                   ></textarea>
                 </label>
